@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "vehicle": "Schlingmann HLF 20 / MAN TGM 13.290 / Feuerwehr Liederbach / 2016",
+  "status": "photo-based minimum visible inventory, not an official complete loading list",
+  "coordinateConvention": "X along truck, front negative; Y left negative; Z up. Geometry author defines home coordinates.",
+  "count": 11,
+  "notesRu": [
+    "Список дополняет основной каталог 33 предметов и не изменяет его.",
+    "Две полностью видимые сборки дыхательных аппаратов, одна закрытая сумка, шесть фонарей и две оранжево-чёрные переносные рации. Частично закрытые аппараты и дополнительная чёрная рация на дальней стенке не включены без уточнения геометрии.",
+    "Все массы и размеры оценочные. Содержимое красной сумки неизвестно.",
+    "Порядковые номера фонарей служат идентификаторами тренажёра и не являются заводскими инвентарными номерами.",
+    "Сиденья, подголовники, поручни, зарядные базы и крепления стационарны. Съёмность закрытого красного контейнера принята для взаимодействия, а не подтверждена отдельным фото демонтажа.",
+    "Источники производителей описывают класс оборудования, а не доказывают точную модель оборудования Liederbach."
+  ],
+  "items": [
+    {
+      "geometry_kind": "scba",
+      "category": "respiratory",
+      "massKg": 12,
+      "sizeXYZ": [
+        0.28,
+        0.33,
+        0.66
+      ],
+      "nameDe": "Pressluftatmer mit Tragegestell",
+      "nameRu": "Дыхательный аппарат со сжатым воздухом",
+      "nameEn": "Self-contained breathing apparatus",
+      "descriptionDe": "Versorgt die tragende Person unabhängig von der Umgebungsluft mit Atemluft aus einer Druckluftflasche. Auf dem Fahrzeugfoto sind Flasche, schwarzes Tragegestell und Gurte erkennbar; der Dräger-Schriftzug ist sichtbar. Gerätebaureihe, Flaschenvolumen und Fülldruck sind nicht sicher ablesbar. Sitz, Kopfstütze und Fahrzeughalterung bleiben fest eingebaut.",
+      "descriptionRu": "Обеспечивает дыхание воздухом из переносного баллона независимо от окружающей атмосферы. На фотографии видны баллон, чёрная спинка и ремни; читается надпись Dräger. Точная серия аппарата, объём и рабочее давление баллона не установлены. Сиденье, подголовник и крепление остаются в машине.",
+      "descriptionEn": "Supplies breathing air from a carried cylinder independently of the surrounding atmosphere. The vehicle photo shows the cylinder, black backplate and harness; Dräger branding is visible. The exact apparatus series, cylinder capacity and working pressure cannot be confirmed. The seat, headrest and vehicle bracket remain fixed.",
+      "massNoteDe": "Geschätzte Gesamtmasse mit Flasche und Tragesystem für die Simulation; keine Herstellerangabe für dieses konkrete Gerät.",
+      "massNoteRu": "Оценочная масса аппарата с баллоном и ремнями для симуляции; не паспортное значение конкретного комплекта.",
+      "massNoteEn": "Estimated mass including cylinder and harness for the simulation; not a manufacturer specification for this particular assembly.",
+      "manufacturer": "Dräger",
+      "purposeSourceUrls": [
+        "https://www.draeger.com/de_at/Productfinder/Respiratory-Protection/Breathing-Apparatus/Self-Contained-Breathing-Apparatus-SCBA"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_scba_left",
+      "photoLocation": "left complete assembly on crew bench",
+      "prefix": "item_cabin_scba_left_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://www.draeger.com/de_at/Productfinder/Respiratory-Protection/Breathing-Apparatus/Self-Contained-Breathing-Apparatus-SCBA"
+      ],
+      "label": "Дыхательный аппарат со сжатым воздухом",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "scba",
+      "category": "respiratory",
+      "massKg": 12,
+      "sizeXYZ": [
+        0.28,
+        0.33,
+        0.66
+      ],
+      "nameDe": "Pressluftatmer mit Tragegestell",
+      "nameRu": "Дыхательный аппарат со сжатым воздухом",
+      "nameEn": "Self-contained breathing apparatus",
+      "descriptionDe": "Versorgt die tragende Person unabhängig von der Umgebungsluft mit Atemluft aus einer Druckluftflasche. Auf dem Fahrzeugfoto sind Flasche, schwarzes Tragegestell und Gurte erkennbar; der Dräger-Schriftzug ist sichtbar. Gerätebaureihe, Flaschenvolumen und Fülldruck sind nicht sicher ablesbar. Sitz, Kopfstütze und Fahrzeughalterung bleiben fest eingebaut.",
+      "descriptionRu": "Обеспечивает дыхание воздухом из переносного баллона независимо от окружающей атмосферы. На фотографии видны баллон, чёрная спинка и ремни; читается надпись Dräger. Точная серия аппарата, объём и рабочее давление баллона не установлены. Сиденье, подголовник и крепление остаются в машине.",
+      "descriptionEn": "Supplies breathing air from a carried cylinder independently of the surrounding atmosphere. The vehicle photo shows the cylinder, black backplate and harness; Dräger branding is visible. The exact apparatus series, cylinder capacity and working pressure cannot be confirmed. The seat, headrest and vehicle bracket remain fixed.",
+      "massNoteDe": "Geschätzte Gesamtmasse mit Flasche und Tragesystem für die Simulation; keine Herstellerangabe für dieses konkrete Gerät.",
+      "massNoteRu": "Оценочная масса аппарата с баллоном и ремнями для симуляции; не паспортное значение конкретного комплекта.",
+      "massNoteEn": "Estimated mass including cylinder and harness for the simulation; not a manufacturer specification for this particular assembly.",
+      "manufacturer": "Dräger",
+      "purposeSourceUrls": [
+        "https://www.draeger.com/de_at/Productfinder/Respiratory-Protection/Breathing-Apparatus/Self-Contained-Breathing-Apparatus-SCBA"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_scba_right",
+      "photoLocation": "right complete assembly on crew bench",
+      "prefix": "item_cabin_scba_right_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://www.draeger.com/de_at/Productfinder/Respiratory-Protection/Breathing-Apparatus/Self-Contained-Breathing-Apparatus-SCBA"
+      ],
+      "label": "Дыхательный аппарат со сжатым воздухом",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "equipment_bag",
+      "category": "container",
+      "massKg": 8,
+      "sizeXYZ": [
+        0.24,
+        0.4,
+        0.54
+      ],
+      "nameDe": "Rote Tasche mit Warndreieck",
+      "nameRu": "Красная сумка с предупреждающим треугольником",
+      "nameEn": "Red bag with warning triangle",
+      "descriptionDe": "Geschlossene rote Tasche beziehungsweise Schutzhülle zwischen den sichtbaren Atemschutzgeräten; auf der Vorderseite befindet sich ein gelbes Warndreieck. Der Inhalt ist auf dem Foto nicht erkennbar. Sie wird daher als tragbarer Behälter dargestellt und keiner bestimmten medizinischen oder technischen Ausstattung zugeordnet.",
+      "descriptionRu": "Закрытая красная сумка или защитный чехол между видимыми дыхательными аппаратами; спереди жёлтый предупреждающий треугольник. Содержимое на фотографии не видно. Поэтому предмет представлен как переносной контейнер без утверждения о медицинском или техническом комплекте внутри.",
+      "descriptionEn": "A closed red bag or protective cover between the visible breathing apparatus sets, with a yellow warning triangle on its front. Its contents are not visible in the photo. It is represented as a portable container without assigning any specific medical or technical equipment to it.",
+      "massNoteDe": "Reiner Simulationswert. Der unbekannte Inhalt erlaubt keine belastbare Schätzung der tatsächlichen Gesamtmasse.",
+      "massNoteRu": "Условное значение для физики. При неизвестном содержимом реальную полную массу определить нельзя.",
+      "massNoteEn": "Simulation value only. The unknown contents prevent a reliable estimate of the actual total mass.",
+      "purposeSourceUrls": [],
+      "identificationConfidence": "medium",
+      "id": "cabin_red_bag",
+      "photoLocation": "centre of crew bench, between two complete SCBA assemblies",
+      "prefix": "item_cabin_red_bag_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg"
+      ],
+      "label": "Красная сумка с предупреждающим треугольником",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_left_1",
+      "photoLocation": "left wall group, lamp 1; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_left_1_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_left_2",
+      "photoLocation": "left wall group, lamp 2; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_left_2_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_left_3",
+      "photoLocation": "left wall group, lamp 3; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_left_3_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_right_1",
+      "photoLocation": "right wall group, lamp 1; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_right_1_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_right_2",
+      "photoLocation": "right wall group, lamp 2; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_right_2_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_right_3",
+      "photoLocation": "right wall group, lamp 3; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_right_3_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "handheld_radio",
+      "category": "communication",
+      "massKg": 0.6,
+      "sizeXYZ": [
+        0.065,
+        0.045,
+        0.21
+      ],
+      "nameDe": "Handsprechfunkgerät",
+      "nameRu": "Переносная радиостанция",
+      "nameEn": "Handheld two-way radio",
+      "descriptionDe": "Tragbares Funkgerät für die Sprachkommunikation der Einsatzkräfte. Auf dem Foto sind orange-schwarze Geräte in Wandhalterungen sichtbar. Eine Motorola-Markierung ist an einem abgesetzten Lautsprechermikrofon zu erkennen; das genaue Funkgerätemodell und der Funkstandard sind nicht sicher bestimmt. Die Halterung bleibt im Fahrzeug.",
+      "descriptionRu": "Переносная радиостанция для голосовой связи участников работ. На фотографии видны оранжево-чёрные аппараты в настенных держателях. На выносном микрофоне читается Motorola; точная модель самой рации и стандарт связи не установлены. Держатель остаётся в машине.",
+      "descriptionEn": "A handheld radio for voice communication between responders. Orange-and-black units are visible in wall-mounted holders. Motorola branding can be read on a remote speaker microphone; the exact radio model and radio standard are unconfirmed. The holder remains fixed to the vehicle.",
+      "massNoteDe": "Geschätzte Masse mit Akku; keine verifizierte Herstellerangabe für das abgebildete Modell.",
+      "massNoteRu": "Оценочная масса с аккумулятором; паспортное значение именно изображённой модели не найдено.",
+      "massNoteEn": "Estimated mass including battery; no verified manufacturer value for the pictured model.",
+      "purposeSourceUrls": [
+        "https://www.motorolasolutions.com/content/dam/msi/docs/business/solutions/industry_solutions/government/fire_protection/motorola_bos/_documents/tetra-endgerate.pdf"
+      ],
+      "identificationConfidence": "medium",
+      "id": "cabin_radio_left",
+      "photoLocation": "left wall, orange-and-black portable unit",
+      "prefix": "item_cabin_radio_left_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://www.motorolasolutions.com/content/dam/msi/docs/business/solutions/industry_solutions/government/fire_protection/motorola_bos/_documents/tetra-endgerate.pdf"
+      ],
+      "label": "Переносная радиостанция",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "handheld_radio",
+      "category": "communication",
+      "massKg": 0.6,
+      "sizeXYZ": [
+        0.065,
+        0.045,
+        0.21
+      ],
+      "nameDe": "Handsprechfunkgerät",
+      "nameRu": "Переносная радиостанция",
+      "nameEn": "Handheld two-way radio",
+      "descriptionDe": "Tragbares Funkgerät für die Sprachkommunikation der Einsatzkräfte. Auf dem Foto sind orange-schwarze Geräte in Wandhalterungen sichtbar. Eine Motorola-Markierung ist an einem abgesetzten Lautsprechermikrofon zu erkennen; das genaue Funkgerätemodell und der Funkstandard sind nicht sicher bestimmt. Die Halterung bleibt im Fahrzeug.",
+      "descriptionRu": "Переносная радиостанция для голосовой связи участников работ. На фотографии видны оранжево-чёрные аппараты в настенных держателях. На выносном микрофоне читается Motorola; точная модель самой рации и стандарт связи не установлены. Держатель остаётся в машине.",
+      "descriptionEn": "A handheld radio for voice communication between responders. Orange-and-black units are visible in wall-mounted holders. Motorola branding can be read on a remote speaker microphone; the exact radio model and radio standard are unconfirmed. The holder remains fixed to the vehicle.",
+      "massNoteDe": "Geschätzte Masse mit Akku; keine verifizierte Herstellerangabe für das abgebildete Modell.",
+      "massNoteRu": "Оценочная масса с аккумулятором; паспортное значение именно изображённой модели не найдено.",
+      "massNoteEn": "Estimated mass including battery; no verified manufacturer value for the pictured model.",
+      "purposeSourceUrls": [
+        "https://www.motorolasolutions.com/content/dam/msi/docs/business/solutions/industry_solutions/government/fire_protection/motorola_bos/_documents/tetra-endgerate.pdf"
+      ],
+      "identificationConfidence": "medium",
+      "id": "cabin_radio_right",
+      "photoLocation": "right wall, orange-and-black portable unit",
+      "prefix": "item_cabin_radio_right_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://www.motorolasolutions.com/content/dam/msi/docs/business/solutions/industry_solutions/government/fire_protection/motorola_bos/_documents/tetra-endgerate.pdf"
+      ],
+      "label": "Переносная радиостанция",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    }
+  ]
+}

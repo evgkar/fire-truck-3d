@@ -1,41 +1,51 @@
-# Schlingmann HLF 20 — тренажёр комплектации
+# Schlingmann HLF 20 — Beladungstrainer
 
-[Открыть тренажёр](https://evgkar.github.io/fire-truck-3d/)
+[Open the trainer](https://evgkar.github.io/fire-truck-3d/)
 
-Интерактивная реконструкция MAN TGM / Schlingmann HLF 20 пожарной части Feuerwehr Liederbach. Четыре двери кабины, семь отсеков, подробный салон и 33 переносимых предмета или транспортных комплекта. Страница полностью автономна: Three.js, Cannon-es, геометрия, материалы и окружение включены в HTML.
+Interactive reconstruction of the Feuerwehr Liederbach MAN TGM / Schlingmann HLF 20. Four opening cab doors, seven equipment compartments and 44 movable items or transport sets, including 11 cabin items. The single HTML file contains the model, Three.js, Cannon-es, authored textures and lighting environment and works offline.
 
-## Возможности
+## Languages
 
-- Вращение и масштабирование, виды бортов, места водителя и салона.
-- Немецкие и русские названия, назначения, массы, источники и границы достоверности в карточке каждого предмета.
-- Извлечение, перенос, отпускание и установка только в собственное крепление.
-- Кнопки «Вытащить всё» и «Загрузить всё».
-- Игра: случайная раскладка, таймер и 100 очков за правильное размещение каждого предмета с первой попытки. Ошибка лишает очков за этот предмет; автозагрузка завершает игровой режим без дополнительных очков.
-- Гравитация, инерция, трение, столкновения с площадкой, машиной и другими предметами.
+Deutsch is the initial default. English and Russian are available in the top-right selector. Language choice is saved locally. Switching language preserves the camera, equipment positions and training score. Interface, item names, descriptions, mass notes, source captions and accessibility labels are translated; original German lettering on the vehicle stays unchanged.
 
-## Управление
+## Interaction
 
-Тяните фон для вращения, используйте колесо или кнопки масштаба. Нажмите на предмет в сцене или каталоге, затем «Вынуть и взять»/«Поднять», либо перетаскивайте его непосредственно. Во время переноса колесо изменяет высоту, R вращает предмет, Esc или «Отпустить» освобождает захват. Установите предмет в отмеченное крепление или выберите код места в панели. Два пальца управляют масштабом на сенсорном экране.
+- Drag empty background to orbit; scroll or pinch to zoom.
+- Ctrl + drag pans the view. On a touchscreen, drag with two fingers to pan; changing their distance zooms.
+- Click an item for its details. Double-click/double-tap or choose “Pick up” to lift it.
+- Point at a storage position to highlight it. Click the item's own position to animate it back into its mount. A wrong mount releases the item and it falls.
+- Direct dragging also moves equipment with physics. While carrying, the wheel changes height, R rotates the item, and Esc releases it.
+- “Hide cab” removes the cab shell and doors while retaining seats, dashboard, fixed mounts and portable equipment.
+- Storage-position buttons provide a keyboard and touch alternative to precise 3D selection.
+- “Unload all” and “Load all” handle the complete inventory.
 
-## Достоверность и ограничения
+## Training
 
-Это подробная процедурная реконструкция по фотографиям, пока не фотореалистичный цифровой двойник и не сертифицированный тренажёр работы с пожарным оборудованием. Моделируется изучение укладки. Геометрия, скрытая часть кабины и большинство размеров оценочные; содержимое закрытых сумок и кейсов не выдумывается. Несколько предметов перемещаются транспортными комплектами. Каталог не является полной заводской ведомостью загрузки.
+Items are scattered randomly in front of the truck. Correct placement on the first attempt awards 100 points per item. A wrong mount forfeits that item's points. Dropping onto the ground is not a placement attempt. Loading everything automatically ends the exercise without extra points. The hover highlight never reveals which mount is correct.
 
-У EISEMANN BSKA 13EV подтверждены паспортные габариты 820 × 440 × 580 мм и 150 кг без аккумулятора. Масса с аккумулятором, топливом и принадлежностями выше. Остальные 32 массы оценочные. Физические формы для контактов упрощены; гибкость рукавов и работа механизмов не моделируются. Перенос осуществляется условным виртуальным захватом с помощью расчёта для тяжёлых агрегатов, а не имитирует силу одного человека.
+## Reconstruction and limits
 
-## Источники
+This is a detailed procedural reconstruction for learning storage positions, not a photographic digital scan or a certified operational simulator. Visible crew-cab equipment and exterior details follow photographs. The exact Liederbach dashboard is not fully documented; its shape follows MAN TGM 13.290 reference vehicles from Dachau (2015) and Günding (2016). Pedals, gauge markings and individual switches remain approximate. Unconfirmed models, masses, dimensions and closed-case contents are identified as such.
 
-- [Feuerwehr Liederbach — HLF 20](https://www.feuerwehr-liederbach.de/hlf-20/): описание машины и семь фотографий, до 4592 × 2584 пикселей.
-- [WS Brandschutztechnik](https://www.ws-brandschutztechnik.de/referenzen/feuerwehrfahrzeuge): восемь дополнительных фотографий поставки, включая насосный отсек и салон.
-- [Исходное видео, 1:34–1:45](https://youtu.be/vlrIXLORpqk?t=94).
-- Полные ссылки и оговорки: [equipment-catalog.json](equipment-catalog.json), [reference-research.json](reference-research.json).
+The cabin inventory includes two breathing-apparatus sets, a closed red bag, six hand lamps and two handheld radios. Seats, chargers, brackets and wired equipment remain fixed. Closed bags/cases are moved as complete containers without invented contents.
 
-Оригинальные фотографии не включены в опубликованную страницу. Каталог ссылается на сайты правообладателей; локальные пути в нём обозначают исследовательские материалы.
+The EISEMANN BSKA 13EV generator is documented at 820 × 440 × 580 mm and 150 kg without its battery. Other masses are estimates. Gravity, inertia, friction and collisions are simulated with simplified rigid-body shapes. Heavy loads use assumed crew assistance; human strength, flexible hoses and operational tool mechanisms are not simulated. Animated docking routes are visual guidance, not collision-planned robotics.
 
-## Компоненты
+## Sources
+
+- [Feuerwehr Liederbach — HLF 20](https://www.feuerwehr-liederbach.de/hlf-20/): vehicle description and seven original photographs, up to 4592 × 2584.
+- [WS Brandschutztechnik — delivery photographs](https://www.ws-brandschutztechnik.de/referenzen/feuerwehrfahrzeuge): eight further images, including crew compartment and pump panel.
+- [Kreisbrandinspektion Dachau — Günding 2016](https://www.kbi-dachau.de/florian-guending-401.html): MAN TGM cockpit reference.
+- [Kreisbrandinspektion Dachau — Dachau 2015](https://www.kbi-dachau.de/florian-dachau-401-und-402.html): MAN TGM dashboard and seat reference.
+- [Original video, 1:34–1:45](https://youtu.be/vlrIXLORpqk?t=94).
+- Research details: [equipment catalog](equipment-catalog.json), [cabin equipment](cabin-equipment.json), [reference research](reference-research.json), [cockpit research](cockpit-research.json).
+
+Original reference photographs are not embedded or republished in the game. Sources link to their publishers. Geometry and dashboard textures are authored reconstructions.
+
+## Dependencies
 
 - Three.js r128 — MIT.
 - Cannon-es 0.20.0 — MIT.
-- [Poly Haven: Studio Small 01](https://polyhaven.com/a/studio_small_01), Greg Zaal — CC0, уменьшенное HDR-окружение.
+- [Poly Haven Studio Small 01](https://polyhaven.com/a/studio_small_01), Greg Zaal — CC0, reduced HDR environment.
 
-Лицензии библиотек сохранены внутри HTML. Проверены правила начисления очков, запрет чужих мест, отсутствие повторного начисления, загрузка без очков, падение, контакт с землёй, столкновение предметов и исключение закреплённых предметов из физики. Основные взаимодействия дополнительно проверены в браузере.
+Library licenses are retained inside the HTML. Validation covers unique storage positions, first-attempt scoring and anti-farming, assisted loading, gravity/contact/collision, release from grip, continuous docking animation, translated inventory and interaction scenarios. Browser checks cover loading, camera views, actual 3D selection, double-click pickup, incorrect placement, language switching and responsive layout.

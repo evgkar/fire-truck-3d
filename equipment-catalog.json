@@ -59,7 +59,12 @@
         "https://www.bse-usv-technik.de/WebRoot/Store16/Shops/63415186/53D6/18F8/CC3E/FD62/5644/C0A8/2BBC/0A76/EISEMANN_DIN_BSKA_13EV_de.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "exact_model"
+      "purposeSourceScope": "exact_model",
+      "nameEn": "EISEMANN BSKA 13EV generator",
+      "descriptionDe": "Der benzinbetriebene Stromerzeuger versorgt geeignete Beleuchtung, Elektrowerkzeuge und Pumpen. Das EISEMANN-Datenblatt nennt für den BSKA 13EV Anschlüsse mit 230/400 V. Hersteller und Modell sind auf dem Fahrzeugfoto ablesbar. Das schwere Aggregat hat einen Rahmen und klappbare Tragegriffe; es ist nicht für das Tragen durch eine einzelne Person vorgesehen.",
+      "descriptionEn": "This petrol generator supplies compatible lighting, power tools and pumps. The EISEMANN data sheet lists 230/400 V outputs for the BSKA 13EV. The manufacturer and model can be read in the vehicle photo. The heavy unit has a frame and folding carrying handles; it is not intended to be carried by one person.",
+      "massNoteDe": "150 kg ohne Batterie laut Datenblatt EISEMANN BSKA 13 E / 13 EV. Die tatsächliche Masse mit Batterie, Kraftstoff und Zubehör ist höher und wurde nicht gemessen.",
+      "massNoteEn": "150 kg without battery according to the EISEMANN BSKA 13 E / 13 EV data sheet. The actual mass with battery, fuel and accessories is higher and has not been measured."
     },
     {
       "id": "ppv_fan",
@@ -93,7 +98,12 @@
         "https://blog.rosenbauer.com/de/fanergy-der-richtige-luefter-fuer-jeden-einsatz/"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Portable positive-pressure fan",
+      "descriptionDe": "Der tragbare Lüfter unterstützt die Belüftung und Entrauchung im Rahmen der Feuerwehrtaktik. Auf dem Fahrzeugfoto sind ein rotes Gehäuse, ein Schutzrahmen und Räder erkennbar. Genaues Modell, Luftleistung und Antriebsart sind unbekannt; die Funktion wird nur für diese Geräteklasse beschrieben.",
+      "descriptionEn": "This portable fan supports ventilation and smoke removal as part of firefighting tactics. The vehicle photo shows a red housing, protective frame and wheels. The exact model, airflow and drive type are unknown; the purpose describes the equipment class only.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "cable_reel",
@@ -127,7 +137,12 @@
         "https://www.mennekes.de/industry/loesungen-und-leistungen/feuerwehr-und-katastrophenschutz/"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Electrical cable reel",
+      "descriptionDe": "Die Leitungstrommel verbindet eine Stromquelle mit geeigneten Geräten in größerer Entfernung. Auf dem Foto ist eine gelbe Leitung auf einem tragbaren Gestell zu sehen. Länge, Leiterquerschnitt, Schutzart und zulässige Belastung dieses Exemplars sind unbekannt.",
+      "descriptionEn": "The cable reel connects a power source to compatible equipment at a distance. The photo shows a yellow cable on a portable frame. Its length, conductor size, protection rating and permitted load are unknown.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "electrical_tool_case",
@@ -156,7 +171,12 @@
       "label": "Кейс «Электроинструмент»",
       "bay": "left1",
       "purposeRu": "Защищённое хранение и переноска содержимого кейса.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Case labelled Elektrowerkzeug",
+      "descriptionDe": "Aluminiumkoffer mit Griff und Verschlüssen; die Beschriftung Elektrowerkzeug ist lesbar. Die einzelnen Werkzeuge im geschlossenen Koffer sind nicht sichtbar und werden daher nicht aufgelistet. Die Masse enthält einen angenommenen Inhalt.",
+      "descriptionEn": "An aluminium case with a handle and latches; Elektrowerkzeug, meaning power tools, is readable. Individual tools inside the closed case are not visible and are therefore not listed. The mass includes an assumed contents allowance.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "blue_equipment_case",
@@ -185,7 +205,12 @@
       "label": "Синий кейс оборудования",
       "bay": "left1",
       "purposeRu": "Переноска и хранение оборудования в закрытом контейнере.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Blue equipment case",
+      "descriptionDe": "Der obere blaue Koffer mit schwarzem Griff und Verschlüssen schützt und bündelt die gelagerte Ausrüstung. Beschriftung und Inhalt konnten anhand des Fotos nicht bestimmt werden; die Masse ist ein Simulationswert.",
+      "descriptionEn": "The upper blue case with a black handle and latches protects and contains stored equipment. Its label and contents could not be identified from the photo; its mass is a simulation estimate.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "upper_aluminium_case",
@@ -214,7 +239,12 @@
       "label": "Алюминиевый кейс оборудования",
       "bay": "left1",
       "purposeRu": "Переноска и защищённое хранение оборудования.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Aluminium equipment case",
+      "descriptionDe": "Großer Aluminiumkoffer mit Griffen und Verschlüssen. Er ist auf dem Foto geschlossen; konkrete Werkzeuge oder Verbrauchsmaterialien darin sind unbekannt. Abmessungen und Masse sind Näherungswerte.",
+      "descriptionEn": "A large aluminium case with handles and latches. It is closed in the photo; the specific tools or consumables inside are unknown. Its dimensions and mass are approximate.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "fall_arrest_case",
@@ -243,7 +273,12 @@
       "label": "Кейс со страховочным снаряжением",
       "bay": "left2",
       "purposeRu": "Хранение комплекта, обозначенного для защиты от падения.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Fall-protection equipment case",
+      "descriptionDe": "Die Beschriftung ABSTURZSICHERUNG ist lesbar und benennt den Zweck des Gerätesatzes. Da der Kasten geschlossen ist, lassen sich bestimmte Seile, Auffanggurte oder Karabiner darin nicht bestätigen. Dargestellt wird der Behälter selbst.",
+      "descriptionEn": "The readable ABSTURZSICHERUNG label identifies the set as fall-protection equipment. Because the case is closed, specific ropes, harnesses or carabiners inside cannot be confirmed. The model represents the container itself.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "water_vacuum",
@@ -277,7 +312,12 @@
         "https://www.nilfisk.com/fr-fr/professionnel/produits/aspirateurs-industriels/aspirateurs-eau-et-poussiere-monophases/attix-751-61-vattensugare%2B302001529/"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "NILFISK ALTO wet vacuum",
+      "descriptionDe": "Der NILFISK-ALTO-Wassersauger nimmt Flüssigkeit über einen Schlauch in einen Behälter auf. Erkennbar sind der blaue Kopf, ein Edelstahlbehälter und Räder. Die offizielle Nilfisk-Feuerwehrbaureihe umfasst Wasseraufnahme und Abpumpen; die genaue Ausführung und eine Abwasserpumpe dieses Geräts sind jedoch nicht bestätigt.",
+      "descriptionEn": "The NILFISK ALTO wet vacuum collects liquid through a hose into a tank. A blue head, stainless-steel tank and wheels are visible. The official Nilfisk fire-service range includes water collection and pumping, but the exact variant and a discharge pump on this unit are unconfirmed.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "large_black_bag",
@@ -306,7 +346,12 @@
       "label": "Большая чёрная сумка оборудования",
       "bay": "left2",
       "purposeRu": "Переноска и удержание мягко упакованного оборудования.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Large black equipment bag",
+      "descriptionDe": "Der große schwarze Gerätesack ist mit zwei blauen Gurten befestigt. Die Hülle schützt den Inhalt bei Lagerung und Transport. Der Inhalt ist nicht sichtbar; weder ein Rettungskissen noch ein Hebekissen oder ein anderes bestimmtes Gerät wird ihm zugeschrieben.",
+      "descriptionEn": "The large black bag is secured with two blue straps. Its cover protects the contents during storage and transport. Those contents are not visible; it is not identified as a rescue cushion, lifting bag or any other specific device.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "small_black_bag",
@@ -335,7 +380,12 @@
       "label": "Малая чёрная сумка оборудования",
       "bay": "left2",
       "purposeRu": "Переноска и хранение небольшого комплекта.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Small black equipment bag",
+      "descriptionDe": "Kleine schwarze Tasche mit gelbem Griff im unteren Bereich des Geräteraums. Ihr Inhalt ist verdeckt, deshalb wird nur der Behälter benannt. Die Masse ist geschätzt.",
+      "descriptionEn": "A small black bag with a yellow handle in the lower part of the compartment. Its contents are concealed, so only the container is identified. Its mass is approximate.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "hose_basket_1",
@@ -369,7 +419,12 @@
         "https://www.schlauchtragekorb-flexattack.de/wp-content/uploads/anwendungshinweise-flexattack-schlauchtragekorb.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Hose basket 1",
+      "descriptionDe": "Der Metallkorb hält gefaltete Schläuche für den Transport zur Einsatzstelle zusammen. Sichtbar sind gelbgrüne Schläuche, ein Griff und ein blauer Gurt. Durchmesser, Länge und Anzahl der Schläuche sind nicht bestätigt.",
+      "descriptionEn": "The metal basket holds folded hoses for carrying to the deployment area. Yellow-green hoses, a handle and a blue strap are visible. The diameter, length and number of hoses are unconfirmed.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "hose_basket_2",
@@ -403,7 +458,12 @@
         "https://www.schlauchtragekorb-flexattack.de/wp-content/uploads/anwendungshinweise-flexattack-schlauchtragekorb.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Hose basket 2",
+      "descriptionDe": "Der Metallkorb hält gefaltete Schläuche für den Transport zur Einsatzstelle zusammen. Sichtbar sind gelbgrüne Schläuche, ein Griff und ein blauer Gurt. Durchmesser, Länge und Anzahl der Schläuche sind nicht bestätigt.",
+      "descriptionEn": "The metal basket holds folded hoses for carrying to the deployment area. Yellow-green hoses, a handle and a blue strap are visible. The diameter, length and number of hoses are unconfirmed.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "hose_basket_3",
@@ -437,7 +497,12 @@
         "https://www.schlauchtragekorb-flexattack.de/wp-content/uploads/anwendungshinweise-flexattack-schlauchtragekorb.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Hose basket 3",
+      "descriptionDe": "Der Metallkorb hält gefaltete Schläuche für den Transport zur Einsatzstelle zusammen. Sichtbar sind gelbgrüne Schläuche, ein Griff und ein blauer Gurt. Durchmesser, Länge und Anzahl der Schläuche sind nicht bestätigt.",
+      "descriptionEn": "The metal basket holds folded hoses for carrying to the deployment area. Yellow-green hoses, a handle and a blue strap are visible. The diameter, length and number of hoses are unconfirmed.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "hose_basket_4",
@@ -471,7 +536,12 @@
         "https://www.schlauchtragekorb-flexattack.de/wp-content/uploads/anwendungshinweise-flexattack-schlauchtragekorb.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Hose basket 4",
+      "descriptionDe": "Der Metallkorb hält gefaltete Schläuche für den Transport zur Einsatzstelle zusammen. Sichtbar sind gelbgrüne Schläuche, ein Griff und ein blauer Gurt. Durchmesser, Länge und Anzahl der Schläuche sind nicht bestätigt.",
+      "descriptionEn": "The metal basket holds folded hoses for carrying to the deployment area. Yellow-green hoses, a handle and a blue strap are visible. The diameter, length and number of hoses are unconfirmed.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "shovel",
@@ -500,7 +570,12 @@
       "label": "Ручной инструмент с деревянным черенком",
       "bay": "left3",
       "purposeRu": "Ручной инструмент; конкретная рабочая функция не установлена.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Hand tool with wooden shaft",
+      "descriptionDe": "Ein hölzerner Werkzeugstiel ist sichtbar. Der Werkzeugkopf wird durch benachbarte Ausrüstung verdeckt; eine sichere Zuordnung als Schaufel, Axt oder anderes Werkzeug ist nicht möglich. Die Geometrie bildet den sichtbaren Stiel nach.",
+      "descriptionEn": "A wooden tool shaft is visible. Its working end is hidden by adjacent equipment, so it cannot reliably be identified as a shovel, axe or another tool. The geometry represents the visible shaft.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "orange_hose_bundle",
@@ -529,7 +604,12 @@
       "label": "Оранжевые напорные рукава",
       "bay": "left3",
       "purposeRu": "Переносной запас пожарных рукавов для подачи воды.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Orange delivery-hose bundle",
+      "descriptionDe": "Orange Flachschläuche mit metallischen Kupplungen dienen zum Aufbau einer Schlauchleitung. Durchmesser, Länge und Anzahl der Schläuche sind nicht ablesbar; die Masse gilt für die gesamte angenommene Position.",
+      "descriptionEn": "Orange lay-flat hoses with metal couplings are used to form a hose line. Their diameter, length and quantity cannot be read; the mass applies to the modelled bundle as a whole.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "cribbing_upper",
@@ -563,7 +643,12 @@
         "https://www.weber-rescue.com/wAssets/docs/feuerwehr/kataloge-und-broschueren/de/KAT_Gesamtkatalog_Rettungsgeraete_2026A-DE.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Upper timber cribbing bundle",
+      "descriptionDe": "Helle Holzklötze und Keile sind unter einem blauen Gurt gestapelt. Das Unterlegmaterial dient zur Stabilisierung. Holzart, genauer Lieferumfang und zulässige Belastung sind nicht bestimmt.",
+      "descriptionEn": "Pale timber blocks and wedges are stacked under a blue strap. This cribbing material is used for stabilisation. The wood species, exact contents and permitted load are unknown.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "cribbing_middle",
@@ -597,11 +682,16 @@
         "https://www.weber-rescue.com/wAssets/docs/feuerwehr/kataloge-und-broschueren/de/KAT_Gesamtkatalog_Rettungsgeraete_2026A-DE.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Middle timber cribbing bundle",
+      "descriptionDe": "Helle Holzklötze und Keile sind unter einem blauen Gurt gestapelt. Das Unterlegmaterial dient zur Stabilisierung. Holzart, genauer Lieferumfang und zulässige Belastung sind nicht bestimmt.",
+      "descriptionEn": "Pale timber blocks and wedges are stacked under a blue strap. This cribbing material is used for stabilisation. The wood species, exact contents and permitted load are unknown.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "cribbing_lower",
-      "nameDe": "Unterlegholz-Pakete unten",
+      "nameDe": "Unterlegholz-Paket unten",
       "nameRu": "Нижний комплект деревянных подкладок",
       "descriptionRu": "Светлые деревянные бруски и клинья собраны в стопку под синим ремнём. Это подкладочный материал для стабилизации. Порода дерева, комплектность и допустимая нагрузка не установлены.",
       "category": "rescue",
@@ -631,7 +721,12 @@
         "https://www.weber-rescue.com/wAssets/docs/feuerwehr/kataloge-und-broschueren/de/KAT_Gesamtkatalog_Rettungsgeraete_2026A-DE.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Lower timber cribbing bundle",
+      "descriptionDe": "Helle Holzklötze und Keile sind unter einem blauen Gurt gestapelt. Das Unterlegmaterial dient zur Stabilisierung. Holzart, genauer Lieferumfang und zulässige Belastung sind nicht bestimmt.",
+      "descriptionEn": "Pale timber blocks and wedges are stacked under a blue strap. This cribbing material is used for stabilisation. The wood species, exact contents and permitted load are unknown.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "long_red_bag",
@@ -660,7 +755,12 @@
       "label": "Продолговатый красный чехол",
       "bay": "right1",
       "purposeRu": "Переноска длинного предмета или комплекта в защитном чехле.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Long red equipment cover",
+      "descriptionDe": "Die lange rote Schutzhülle ist am Schwenkbrett in G2 befestigt. Die teilweise sichtbare Beschriftung reicht nicht aus, um ihren Inhalt sicher zu bestimmen. Ihr wird kein konkretes Werkzeug oder Geräteset zugeordnet.",
+      "descriptionEn": "The long red protective cover is mounted on the swing-out panel in G2. The partly visible label is insufficient to identify its contents reliably. No specific tool or equipment set is assigned to it.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "hydraulic_ram_pair",
@@ -694,7 +794,12 @@
         "https://www.weber-rescue.com/wAssets/docs/feuerwehr/kataloge-und-broschueren/de/KAT_Gesamtkatalog_Rettungsgeraete_2026A-DE.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Pair of hydraulic rescue rams",
+      "descriptionDe": "Die beiden hydraulischen Rettungszylinder erzeugen eine lineare Kraft zum Bewegen verformter Bauteile. Auf dem Foto sind Zylinder, Kolbenstangen und Griffe sichtbar; Modelle, Hub und Kraft dieser Geräte sind unbekannt.",
+      "descriptionEn": "The pair of hydraulic rescue rams produces linear force to move deformed components. Cylinders, piston rods and handles are visible in the photo; the models, stroke and force ratings are unknown.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "hydraulic_powerpack_1",
@@ -728,7 +833,12 @@
         "https://www.weber-rescue.com/wAssets/docs/downloads/leistungsbeschreibungen/Leistungsbeschreibung-Aggregate_DE.pdf"
       ],
       "identificationConfidence": "medium",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "WEBER RESCUE hydraulic power unit 1",
+      "descriptionDe": "Das gelbe WEBER-RESCUE-Aggregat liefert den Hydraulikölstrom für hydraulische Werkzeuge. Die Marke ist auf dem Foto lesbar; Modell, Antriebsart und Leistung sind unbekannt. Die Herstellerquelle beschreibt diese Geräteklasse, nicht die Ausstattung dieses konkreten Exemplars.",
+      "descriptionEn": "The yellow WEBER RESCUE power unit supplies hydraulic fluid flow to hydraulic tools. The brand can be read in the photo; its model, drive type and output are unknown. The manufacturer source describes the equipment class, not the configuration of this particular unit.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "hydraulic_powerpack_2",
@@ -762,7 +872,12 @@
         "https://www.weber-rescue.com/wAssets/docs/downloads/leistungsbeschreibungen/Leistungsbeschreibung-Aggregate_DE.pdf"
       ],
       "identificationConfidence": "medium",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "WEBER RESCUE hydraulic power unit 2",
+      "descriptionDe": "Das gelbe WEBER-RESCUE-Aggregat liefert den Hydraulikölstrom für hydraulische Werkzeuge. Die Marke ist auf dem Foto lesbar; Modell, Antriebsart und Leistung sind unbekannt. Die Herstellerquelle beschreibt diese Geräteklasse, nicht die Ausstattung dieses konkreten Exemplars.",
+      "descriptionEn": "The yellow WEBER RESCUE power unit supplies hydraulic fluid flow to hydraulic tools. The brand can be read in the photo; its model, drive type and output are unknown. The manufacturer source describes the equipment class, not the configuration of this particular unit.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "hydraulic_hose_pair",
@@ -796,7 +911,12 @@
         "https://www.weber-rescue.com/wAssets/docs/downloads/leistungsbeschreibungen/Leistungsbeschreibung-Aggregate_DE.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Red and yellow hydraulic hoses",
+      "descriptionDe": "Die roten und gelben Hydraulikschläuche verbinden ein Hydraulikaggregat mit einem geeigneten Werkzeug. Auf dem Foto liegen sie kompakt auf einer Halterung. Länge, Kupplungstyp und zulässiger Druck sind nicht bestätigt.",
+      "descriptionEn": "The red and yellow hydraulic hoses connect a hydraulic power unit to a compatible tool. The photo shows them stored compactly on a holder. Their length, coupling type and permitted pressure are unconfirmed.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "traffic_cones",
@@ -830,7 +950,12 @@
         "https://trafficsafety.horizont.com/Content/TS/Documents/TS-KAT-D-2023_Web.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Stacked traffic cones",
+      "descriptionDe": "Gestapelte rote Leitkegel mit schwarzen quadratischen Füßen. Sie kennzeichnen den Arbeitsbereich und Hindernisse für den Verkehr. Im Geräteraum sind sie ineinandergesteckt; die genaue Anzahl und Höhe sind unbekannt.",
+      "descriptionEn": "Stacked red traffic cones with black square bases. They mark the working area and obstacles for traffic. They are nested in the compartment; their exact number and height are unknown.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "warning_lamps",
@@ -864,7 +989,12 @@
         "https://trafficsafety.horizont.com/Documents/Instruction%20manuals/horizont/Traffic%20Safety/Activ/man_86086_ZC_0725.pdf"
       ],
       "identificationConfidence": "high",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Set of four portable warning lamps",
+      "descriptionDe": "Vier tragbare gelbe Warnleuchten in roten Gehäusen erhöhen die Sichtbarkeit einer Absperrung und warnen herannahende Verkehrsteilnehmer. Modell, Betriebsarten und Stromversorgung dieser Leuchten sind nicht bestätigt.",
+      "descriptionEn": "Four portable yellow warning lights in red housings make a cordon more visible and alert approaching road users. Their model, operating modes and power supply are unconfirmed.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "blue_submersible_pump_1",
@@ -898,7 +1028,12 @@
         "https://www.rosenbauer.com/de/produkte/ausruestung/tauchpumpen"
       ],
       "identificationConfidence": "medium",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Blue portable pump 1",
+      "descriptionDe": "Die blaue tragbare Elektropumpe wurde anhand von Kabel, Griff und Anschlussstutzen erkannt. Geräte dieser Klasse dienen zum Abpumpen von Wasser. Hersteller, Ausführung, Förderleistung und zulässige Fördermedien lassen sich aus dem Foto nicht bestimmen.",
+      "descriptionEn": "The blue portable electric pump was identified by its cable, handle and outlet. Equipment in this class removes water. The manufacturer, variant, capacity and permitted pumped media cannot be determined from the photo.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "blue_submersible_pump_2",
@@ -932,7 +1067,12 @@
         "https://www.rosenbauer.com/de/produkte/ausruestung/tauchpumpen"
       ],
       "identificationConfidence": "medium",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Blue portable pump 2",
+      "descriptionDe": "Die blaue tragbare Elektropumpe wurde anhand von Kabel, Griff und Anschlussstutzen erkannt. Geräte dieser Klasse dienen zum Abpumpen von Wasser. Hersteller, Ausführung, Förderleistung und zulässige Fördermedien lassen sich aus dem Foto nicht bestimmen.",
+      "descriptionEn": "The blue portable electric pump was identified by its cable, handle and outlet. Equipment in this class removes water. The manufacturer, variant, capacity and permitted pumped media cannot be determined from the photo.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "stainless_submersible_pump",
@@ -966,7 +1106,12 @@
         "https://www.rosenbauer.com/de/produkte/ausruestung/tauchpumpen"
       ],
       "identificationConfidence": "medium",
-      "purposeSourceScope": "equipment_category_only"
+      "purposeSourceScope": "equipment_category_only",
+      "nameEn": "Pump with stainless-steel housing",
+      "descriptionDe": "Die elektrische Pumpe mit Edelstahlgehäuse wurde anhand von Kabel, Griff und Anschlussstutzen erkannt. Geräte dieser Klasse dienen zum Abpumpen von Wasser. Hersteller, Ausführung, Förderleistung und zulässige Fördermedien lassen sich aus dem Foto nicht bestimmen.",
+      "descriptionEn": "The electric pump with a stainless-steel housing was identified by its cable, handle and outlet. Equipment in this class removes water. The manufacturer, variant, capacity and permitted pumped media cannot be determined from the photo.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "co2_extinguisher",
@@ -995,7 +1140,12 @@
       "label": "Углекислотный огнетушитель",
       "bay": "right3",
       "purposeRu": "Переносное средство тушения; предполагаемый тип — углекислотный.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Carbon-dioxide fire extinguisher",
+      "descriptionDe": "Roter Feuerlöscher mit dem charakteristischen langen schwarzen CO₂-Schneerohr zur Abgabe des Löschmittels. Die Zuordnung beruht auf der Form des Schneerohrs. Hersteller, Füllmenge und Brandklassen sind auf dem Etikett nicht lesbar.",
+      "descriptionEn": "A red extinguisher with the characteristic long black CO₂ discharge horn for delivering extinguishing agent. The type is identified from the horn shape. Its manufacturer, charge and fire ratings are not readable on the label.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "second_extinguisher",
@@ -1024,7 +1174,12 @@
       "label": "Второй огнетушитель",
       "bay": "right3",
       "purposeRu": "Переносное средство тушения.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Fire extinguisher with yellow top",
+      "descriptionDe": "Ein zweiter roter Feuerlöscher mit gelbem Oberteil steht hinter dem vorderen. Er dient zur Abgabe von Löschmittel; Löschmittelart, Füllmenge und zulässige Brandklassen sind anhand des Fotos nicht bestimmt.",
+      "descriptionEn": "A second red extinguisher with a yellow top stands behind the front one. It delivers extinguishing agent, but its agent type, charge and applicable fire classes cannot be determined from the photo.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "pressure_vessel_device",
@@ -1053,7 +1208,12 @@
       "label": "Переносное устройство с напорной ёмкостью",
       "bay": "right3",
       "purposeRu": "Назначение устройства по доступным фотографиям не установлено.",
-      "identificationConfidence": "medium"
+      "identificationConfidence": "medium",
+      "nameEn": "Unidentified vessel with pressure gauge",
+      "descriptionDe": "Metallisches Gerät mit zylindrischem Behälter, schwarzem Oberteil, Manometer und Schläuchen. Das Foto belegt die äußere Form, aber weder Betriebsmedium noch Druck oder Funktion. Es wird als nicht identifiziertes Gerät mit Manometer dargestellt.",
+      "descriptionEn": "A metal device with a cylindrical vessel, black top, pressure gauge and hoses. The photo confirms its external form, but not the working medium, pressure or function. It is represented as an unidentified device with a pressure gauge.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
     },
     {
       "id": "rear_metal_case",
@@ -1082,7 +1242,451 @@
       "label": "Металлический кейс на поворотной панели",
       "bay": "right3",
       "purposeRu": "Защищённое хранение и переноска оборудования.",
-      "identificationConfidence": "high"
+      "identificationConfidence": "high",
+      "nameEn": "Metal case on swing-out panel",
+      "descriptionDe": "Kleiner Metallkoffer mit Griff und Verschlüssen am Schwenkbrett in G6. Der Inhalt ist verdeckt und nicht identifiziert; dargestellt wird nur der Behälter.",
+      "descriptionEn": "A small metal case with a handle and latches on the swing-out panel in G6. Its contents are concealed and unidentified; only the container is represented.",
+      "massNoteDe": "Schätzwert für die Physik des Trainers; die tatsächliche Masse dieses Exemplars wurde nicht gemessen.",
+      "massNoteEn": "Estimate for the simulator physics; the actual mass of this particular item has not been measured."
+    },
+    {
+      "geometry_kind": "scba",
+      "category": "respiratory",
+      "massKg": 12,
+      "sizeXYZ": [
+        0.28,
+        0.33,
+        0.66
+      ],
+      "nameDe": "Pressluftatmer mit Tragegestell",
+      "nameRu": "Дыхательный аппарат со сжатым воздухом",
+      "nameEn": "Self-contained breathing apparatus",
+      "descriptionDe": "Versorgt die tragende Person unabhängig von der Umgebungsluft mit Atemluft aus einer Druckluftflasche. Auf dem Fahrzeugfoto sind Flasche, schwarzes Tragegestell und Gurte erkennbar; der Dräger-Schriftzug ist sichtbar. Gerätebaureihe, Flaschenvolumen und Fülldruck sind nicht sicher ablesbar. Sitz, Kopfstütze und Fahrzeughalterung bleiben fest eingebaut.",
+      "descriptionRu": "Обеспечивает дыхание воздухом из переносного баллона независимо от окружающей атмосферы. На фотографии видны баллон, чёрная спинка и ремни; читается надпись Dräger. Точная серия аппарата, объём и рабочее давление баллона не установлены. Сиденье, подголовник и крепление остаются в машине.",
+      "descriptionEn": "Supplies breathing air from a carried cylinder independently of the surrounding atmosphere. The vehicle photo shows the cylinder, black backplate and harness; Dräger branding is visible. The exact apparatus series, cylinder capacity and working pressure cannot be confirmed. The seat, headrest and vehicle bracket remain fixed.",
+      "massNoteDe": "Geschätzte Gesamtmasse mit Flasche und Tragesystem für die Simulation; keine Herstellerangabe für dieses konkrete Gerät.",
+      "massNoteRu": "Оценочная масса аппарата с баллоном и ремнями для симуляции; не паспортное значение конкретного комплекта.",
+      "massNoteEn": "Estimated mass including cylinder and harness for the simulation; not a manufacturer specification for this particular assembly.",
+      "manufacturer": "Dräger",
+      "purposeSourceUrls": [
+        "https://www.draeger.com/de_at/Productfinder/Respiratory-Protection/Breathing-Apparatus/Self-Contained-Breathing-Apparatus-SCBA"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_scba_left",
+      "photoLocation": "left complete assembly on crew bench",
+      "prefix": "item_cabin_scba_left_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://www.draeger.com/de_at/Productfinder/Respiratory-Protection/Breathing-Apparatus/Self-Contained-Breathing-Apparatus-SCBA"
+      ],
+      "label": "Дыхательный аппарат со сжатым воздухом",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "scba",
+      "category": "respiratory",
+      "massKg": 12,
+      "sizeXYZ": [
+        0.28,
+        0.33,
+        0.66
+      ],
+      "nameDe": "Pressluftatmer mit Tragegestell",
+      "nameRu": "Дыхательный аппарат со сжатым воздухом",
+      "nameEn": "Self-contained breathing apparatus",
+      "descriptionDe": "Versorgt die tragende Person unabhängig von der Umgebungsluft mit Atemluft aus einer Druckluftflasche. Auf dem Fahrzeugfoto sind Flasche, schwarzes Tragegestell und Gurte erkennbar; der Dräger-Schriftzug ist sichtbar. Gerätebaureihe, Flaschenvolumen und Fülldruck sind nicht sicher ablesbar. Sitz, Kopfstütze und Fahrzeughalterung bleiben fest eingebaut.",
+      "descriptionRu": "Обеспечивает дыхание воздухом из переносного баллона независимо от окружающей атмосферы. На фотографии видны баллон, чёрная спинка и ремни; читается надпись Dräger. Точная серия аппарата, объём и рабочее давление баллона не установлены. Сиденье, подголовник и крепление остаются в машине.",
+      "descriptionEn": "Supplies breathing air from a carried cylinder independently of the surrounding atmosphere. The vehicle photo shows the cylinder, black backplate and harness; Dräger branding is visible. The exact apparatus series, cylinder capacity and working pressure cannot be confirmed. The seat, headrest and vehicle bracket remain fixed.",
+      "massNoteDe": "Geschätzte Gesamtmasse mit Flasche und Tragesystem für die Simulation; keine Herstellerangabe für dieses konkrete Gerät.",
+      "massNoteRu": "Оценочная масса аппарата с баллоном и ремнями для симуляции; не паспортное значение конкретного комплекта.",
+      "massNoteEn": "Estimated mass including cylinder and harness for the simulation; not a manufacturer specification for this particular assembly.",
+      "manufacturer": "Dräger",
+      "purposeSourceUrls": [
+        "https://www.draeger.com/de_at/Productfinder/Respiratory-Protection/Breathing-Apparatus/Self-Contained-Breathing-Apparatus-SCBA"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_scba_right",
+      "photoLocation": "right complete assembly on crew bench",
+      "prefix": "item_cabin_scba_right_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://www.draeger.com/de_at/Productfinder/Respiratory-Protection/Breathing-Apparatus/Self-Contained-Breathing-Apparatus-SCBA"
+      ],
+      "label": "Дыхательный аппарат со сжатым воздухом",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "equipment_bag",
+      "category": "container",
+      "massKg": 8,
+      "sizeXYZ": [
+        0.24,
+        0.4,
+        0.54
+      ],
+      "nameDe": "Rote Tasche mit Warndreieck",
+      "nameRu": "Красная сумка с предупреждающим треугольником",
+      "nameEn": "Red bag with warning triangle",
+      "descriptionDe": "Geschlossene rote Tasche beziehungsweise Schutzhülle zwischen den sichtbaren Atemschutzgeräten; auf der Vorderseite befindet sich ein gelbes Warndreieck. Der Inhalt ist auf dem Foto nicht erkennbar. Sie wird daher als tragbarer Behälter dargestellt und keiner bestimmten medizinischen oder technischen Ausstattung zugeordnet.",
+      "descriptionRu": "Закрытая красная сумка или защитный чехол между видимыми дыхательными аппаратами; спереди жёлтый предупреждающий треугольник. Содержимое на фотографии не видно. Поэтому предмет представлен как переносной контейнер без утверждения о медицинском или техническом комплекте внутри.",
+      "descriptionEn": "A closed red bag or protective cover between the visible breathing apparatus sets, with a yellow warning triangle on its front. Its contents are not visible in the photo. It is represented as a portable container without assigning any specific medical or technical equipment to it.",
+      "massNoteDe": "Reiner Simulationswert. Der unbekannte Inhalt erlaubt keine belastbare Schätzung der tatsächlichen Gesamtmasse.",
+      "massNoteRu": "Условное значение для физики. При неизвестном содержимом реальную полную массу определить нельзя.",
+      "massNoteEn": "Simulation value only. The unknown contents prevent a reliable estimate of the actual total mass.",
+      "purposeSourceUrls": [],
+      "identificationConfidence": "medium",
+      "id": "cabin_red_bag",
+      "photoLocation": "centre of crew bench, between two complete SCBA assemblies",
+      "prefix": "item_cabin_red_bag_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg"
+      ],
+      "label": "Красная сумка с предупреждающим треугольником",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_left_1",
+      "photoLocation": "left wall group, lamp 1; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_left_1_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_left_2",
+      "photoLocation": "left wall group, lamp 2; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_left_2_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_left_3",
+      "photoLocation": "left wall group, lamp 3; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_left_3_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_right_1",
+      "photoLocation": "right wall group, lamp 1; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_right_1_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_right_2",
+      "photoLocation": "right wall group, lamp 2; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_right_2_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "hand_lamp",
+      "category": "lighting",
+      "massKg": 0.9,
+      "sizeXYZ": [
+        0.09,
+        0.095,
+        0.22
+      ],
+      "nameDe": "Handlampe",
+      "nameRu": "Переносной фонарь",
+      "nameEn": "Hand lamp",
+      "descriptionDe": "Tragbare Leuchte zur Beleuchtung des unmittelbaren Arbeitsbereichs. Das Fahrzeugfoto zeigt gelb-schwarze Lampen in zwei Dreiergruppen. Hersteller, Modell und Leistungsdaten sind nicht sicher identifiziert. Nur die Lampe ist entnehmbar; die Ladeschale bleibt an der Kabinenwand.",
+      "descriptionRu": "Переносной светильник для освещения ближайшей рабочей зоны. На фотографии видны две группы по три жёлто-чёрных фонаря. Производитель, модель и характеристики не установлены. Снимается фонарь; зарядная база остаётся на стенке кабины.",
+      "descriptionEn": "A portable light for illuminating the immediate working area. The vehicle photo shows yellow-and-black lamps in two groups of three. The manufacturer, model and performance specifications are unconfirmed. The lamp is removable; its charging cradle remains on the cabin wall.",
+      "massNoteDe": "Geschätzte Masse einer einzelnen Lampe einschließlich Akku; das konkrete Modell ist nicht identifiziert.",
+      "massNoteRu": "Оценочная масса одного фонаря с аккумулятором; точная модель не установлена.",
+      "massNoteEn": "Estimated mass of one lamp including its battery; the exact model is unidentified.",
+      "purposeSourceUrls": [
+        "https://adalit.com/"
+      ],
+      "identificationConfidence": "high",
+      "id": "cabin_lamp_right_3",
+      "photoLocation": "right wall group, lamp 3; index is a simulation identifier",
+      "prefix": "item_cabin_lamp_right_3_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://adalit.com/"
+      ],
+      "label": "Переносной фонарь",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "handheld_radio",
+      "category": "communication",
+      "massKg": 0.6,
+      "sizeXYZ": [
+        0.065,
+        0.045,
+        0.21
+      ],
+      "nameDe": "Handsprechfunkgerät",
+      "nameRu": "Переносная радиостанция",
+      "nameEn": "Handheld two-way radio",
+      "descriptionDe": "Tragbares Funkgerät für die Sprachkommunikation der Einsatzkräfte. Auf dem Foto sind orange-schwarze Geräte in Wandhalterungen sichtbar. Eine Motorola-Markierung ist an einem abgesetzten Lautsprechermikrofon zu erkennen; das genaue Funkgerätemodell und der Funkstandard sind nicht sicher bestimmt. Die Halterung bleibt im Fahrzeug.",
+      "descriptionRu": "Переносная радиостанция для голосовой связи участников работ. На фотографии видны оранжево-чёрные аппараты в настенных держателях. На выносном микрофоне читается Motorola; точная модель самой рации и стандарт связи не установлены. Держатель остаётся в машине.",
+      "descriptionEn": "A handheld radio for voice communication between responders. Orange-and-black units are visible in wall-mounted holders. Motorola branding can be read on a remote speaker microphone; the exact radio model and radio standard are unconfirmed. The holder remains fixed to the vehicle.",
+      "massNoteDe": "Geschätzte Masse mit Akku; keine verifizierte Herstellerangabe für das abgebildete Modell.",
+      "massNoteRu": "Оценочная масса с аккумулятором; паспортное значение именно изображённой модели не найдено.",
+      "massNoteEn": "Estimated mass including battery; no verified manufacturer value for the pictured model.",
+      "purposeSourceUrls": [
+        "https://www.motorolasolutions.com/content/dam/msi/docs/business/solutions/industry_solutions/government/fire_protection/motorola_bos/_documents/tetra-endgerate.pdf"
+      ],
+      "identificationConfidence": "medium",
+      "id": "cabin_radio_left",
+      "photoLocation": "left wall, orange-and-black portable unit",
+      "prefix": "item_cabin_radio_left_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://www.motorolasolutions.com/content/dam/msi/docs/business/solutions/industry_solutions/government/fire_protection/motorola_bos/_documents/tetra-endgerate.pdf"
+      ],
+      "label": "Переносная радиостанция",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
+    },
+    {
+      "geometry_kind": "handheld_radio",
+      "category": "communication",
+      "massKg": 0.6,
+      "sizeXYZ": [
+        0.065,
+        0.045,
+        0.21
+      ],
+      "nameDe": "Handsprechfunkgerät",
+      "nameRu": "Переносная радиостанция",
+      "nameEn": "Handheld two-way radio",
+      "descriptionDe": "Tragbares Funkgerät für die Sprachkommunikation der Einsatzkräfte. Auf dem Foto sind orange-schwarze Geräte in Wandhalterungen sichtbar. Eine Motorola-Markierung ist an einem abgesetzten Lautsprechermikrofon zu erkennen; das genaue Funkgerätemodell und der Funkstandard sind nicht sicher bestimmt. Die Halterung bleibt im Fahrzeug.",
+      "descriptionRu": "Переносная радиостанция для голосовой связи участников работ. На фотографии видны оранжево-чёрные аппараты в настенных держателях. На выносном микрофоне читается Motorola; точная модель самой рации и стандарт связи не установлены. Держатель остаётся в машине.",
+      "descriptionEn": "A handheld radio for voice communication between responders. Orange-and-black units are visible in wall-mounted holders. Motorola branding can be read on a remote speaker microphone; the exact radio model and radio standard are unconfirmed. The holder remains fixed to the vehicle.",
+      "massNoteDe": "Geschätzte Masse mit Akku; keine verifizierte Herstellerangabe für das abgebildete Modell.",
+      "massNoteRu": "Оценочная масса с аккумулятором; паспортное значение именно изображённой модели не найдено.",
+      "massNoteEn": "Estimated mass including battery; no verified manufacturer value for the pictured model.",
+      "purposeSourceUrls": [
+        "https://www.motorolasolutions.com/content/dam/msi/docs/business/solutions/industry_solutions/government/fire_protection/motorola_bos/_documents/tetra-endgerate.pdf"
+      ],
+      "identificationConfidence": "medium",
+      "id": "cabin_radio_right",
+      "photoLocation": "right wall, orange-and-black portable unit",
+      "prefix": "item_cabin_radio_right_",
+      "compartment": "cabin",
+      "bay": "cabin",
+      "massBasis": "estimated",
+      "sizeBasis": "estimated",
+      "evidence": "photo_identified",
+      "photoRef": "site/references/liederbach-hlf-3-original.jpg",
+      "sourceUrls": [
+        "https://www.feuerwehr-liederbach.de/hlf-20/",
+        "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-3.jpg",
+        "https://www.motorolasolutions.com/content/dam/msi/docs/business/solutions/industry_solutions/government/fire_protection/motorola_bos/_documents/tetra-endgerate.pdf"
+      ],
+      "label": "Переносная радиостанция",
+      "removable": true,
+      "purposeSourceScope": "equipment_class_only"
     }
   ]
 }
