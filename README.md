@@ -40,6 +40,19 @@ The saved language is restored on load. On a first visit, the browser/system lan
 
 ## Training
 
+The Training tab provides four guided modes in German, English and Russian:
+
+0. Learn a compartment: face the open compartment, then use the arrows to focus each tool and read its description alongside an original reference photo.
+1. Find the compartment: identify a large isolated 3D tool and choose its bay, without a shelf-level answer.
+2. Fill a compartment: choose tools from a scrollable visual list and put each into its own mount in the empty compartment.
+3. Place one tool: every compartment starts open and empty; place the current tool in its exact mount before receiving the next one.
+
+Each test awards 100 points for a correct first attempt. Incorrect valid answers forfeit only that item's points; closed or nonexistent targets do not consume an attempt. Camera movement remains available while holding equipment. Buttons provide alternatives to precise 3D clicking. Descriptions, source links and location-bearing names are hidden during tests. Three Oberhaching positions that were inferred rather than documented are excluded from tests and marked in learning. Switching to another tab ends the guided exercise and returns to free exploration.
+
+The dated [evidence catalog](training-mode-research.json) covers all 124 items, with source-qualified DE/EN/RU descriptions, 54 photographic crops and full-frame compartment photos where no individual view is available. Crops are display windows into real photographs, never generated tool images. The 3D previews are explicitly labelled reconstructions. Learning cards link the original sources.
+
+The retained free loading game is available below the guided mode selector:
+
 Items are scattered randomly in front of the truck. Correct placement on the first attempt awards 100 points per item. A wrong mount forfeits that item's points. Dropping onto the ground is not a placement attempt. Loading everything automatically ends the exercise without extra points. The hover highlight never reveals which mount is correct.
 
 ## Reconstruction and limits
@@ -66,7 +79,9 @@ The Liederbach EISEMANN BSKA 13EV generator is documented at 820 x 440 x 580 mm 
 - [User-provided Miro inventory](https://miro.com/app/board/uXjVKwGF5Ug=/) and fifteen supplied compartment/interior photographs: Oberhaching storage layout and identification.
 - [Oberhaching equipment catalog](oberhaching-catalog.json) and [research](oberhaching-research.json): confirmed names, container contents, uncertain identifications and model limits. Contents hidden inside closed containers are described without inventing their appearance.
 
-Original reference photographs are not embedded or republished in the game. Sources link to their publishers. Geometry and dashboard textures are authored reconstructions.
+Eight original photographs supplied by the project owner are included for Oberhaching reference cards. Other photographs are displayed from the original publisher with attribution and a link; the site handles unavailable external images explicitly. No third-party photo redistribution license is assumed. The reference catalog also links newly located Oberhaching originals at approximately 7.5–9K resolution; those large files are not loaded automatically. Geometry and dashboard textures are authored reconstructions.
+
+The October 2026 geometry pass replaces the incorrect open-frame MAN generator with the photographed enclosed EISEMANN BSKA 13EV cabinet, and separately corrects the Mercedes BSKA 13 controls. Storz fittings have actual hollow bores, seals and opposing claws; hydraulic connectors have their own construction. The WEBER reel has real flange perforations and the photographed yellow/red cheeks. Breathing-apparatus harnesses use flat straps and buckles. Confirmed maker lettering follows the moving item. These refinements do not turn the reconstruction into a photogrammetric scan: unseen surfaces, unmeasured proportions and unconfirmed product variants remain uncertain.
 
 ## Dependencies
 
