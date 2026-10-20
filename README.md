@@ -1,8 +1,23 @@
-# Schlingmann HLF 20 — Beladungstrainer
+# Feuerwehr — 3D Beladungstrainer
 
 [Open the trainer](https://evgkar.github.io/fire-truck-3d/)
 
-Interactive reconstruction of the Feuerwehr Liederbach MAN TGM / Schlingmann HLF 20. Four opening cab doors, seven equipment compartments and 44 movable items or transport sets, including 11 cabin items. The single HTML file contains the model, Three.js, Cannon-es, authored textures and lighting environment and works offline.
+Interactive reconstructions of two fire engines with four opening cab doors, seven equipment compartments, individually labelled portable equipment and storage training:
+
+- Feuerwehr Liederbach: MAN TGM / Schlingmann HLF 20 — 44 movable items or transport sets, including 11 cabin items.
+- Feuerwehr Oberhaching 40/1: Mercedes-Benz Atego 1528 Allrad / Ziegler LF 16/12, 2003 — 80 movable items or transport sets.
+
+Choose a vehicle above the sidebar tabs. The selection is remembered; changing vehicles starts a new exercise. Direct links use `?vehicle=liederbach` or `?vehicle=oberhaching`. The startup camera faces the headlights for all three welcome flashes and then smoothly orbits to the overview. Dragging, zooming or choosing a view cancels the tour immediately; reduced-motion users get a direct transition. The welcome can be skipped or replayed.
+
+## Real 3D assets
+
+The viewer fetches separate GLB geometry and JSON metadata for the selected vehicle. Each standard glTF 2.0 GLB contains PBR material factors, normals, UV coordinates and named groups for the cab shell, doors, shutters and individual tools. Geometry is batched by material within each movable group. Doors retain hinge pivots and equipment retains independent origins. The file can be imported into compatible 3D editors or game engines.
+
+- [Liederbach vehicle GLB](assets/liederbach/scene.glb) · [metadata](assets/liederbach/metadata.json).
+- [Oberhaching vehicle GLB](assets/oberhaching/scene.glb) · [metadata](assets/oberhaching/metadata.json).
+- Each item's detail card includes a download link to its standalone GLB.
+
+The browser supplies authored procedural surface maps and lettering from metadata; those runtime maps/decals are not baked into the standalone GLBs. Light effects, physics, storage logic and camera movement are implemented by the viewer. To run locally, serve the complete folder over HTTP; opening the HTML directly with `file://` does not permit fetching the asset files.
 
 ## Languages
 
@@ -28,13 +43,13 @@ Items are scattered randomly in front of the truck. Correct placement on the fir
 
 ## Reconstruction and limits
 
-The latest exterior pass refines separate optical chambers, reflector surfaces, indicator lenses, rear light clusters, passenger-side observation mirrors, cab handles, shutter bars and towing hardware. The four chrome roof fittings are now hollow horn bells instead of lamps, following the photographs. Paint, glass, rubber, fabric and brushed metal have separate surface responses. The visible shapes follow the vehicle photographs; the exact electrical assignment of unlit headlight/rear-light sections remains a reconstruction.
+The Liederbach exterior pass refines separate optical chambers, reflector surfaces, indicator lenses, rear light clusters, passenger-side observation mirrors, cab handles, shutter bars and towing hardware. The four chrome roof fittings are hollow horn bells, following the photographs. Paint, glass, rubber, fabric and brushed metal have separate surface responses. The visible shapes follow the vehicle photographs; the exact electrical assignment of unlit headlight/rear-light sections remains a reconstruction.
 
 This is a detailed procedural reconstruction for learning storage positions, not a photographic digital scan or a certified operational simulator. Visible crew-cab equipment and exterior details follow photographs. The exact Liederbach dashboard is not fully documented; its shape follows MAN TGM 13.290 reference vehicles from Dachau (2015) and Günding (2016). Pedals, gauge markings and individual switches remain approximate. Unconfirmed models, masses, dimensions and closed-case contents are identified as such.
 
-The cabin inventory includes two breathing-apparatus sets, a closed red bag, six hand lamps and two handheld radios. Seats, chargers, brackets and wired equipment remain fixed. Closed bags/cases are moved as complete containers without invented contents.
+The Liederbach cabin inventory includes two breathing-apparatus sets, a closed red bag, six hand lamps and two handheld radios. The Oberhaching cabin adds two removable warning triangles, two rope bags, two handheld radios and a lamp; the door-mounted items follow their door hinges. Seats, chargers, brackets and wired equipment remain fixed. Closed bags/cases are moved as complete containers without invented contents.
 
-The EISEMANN BSKA 13EV generator is documented at 820 × 440 × 580 mm and 150 kg without its battery. Other masses are estimates. Gravity, inertia, friction and collisions are simulated with simplified rigid-body shapes. Heavy loads use assumed crew assistance; human strength, flexible hoses and operational tool mechanisms are not simulated. Animated docking routes are visual guidance, not collision-planned robotics.
+The Liederbach EISEMANN BSKA 13EV generator is documented at 820 x 440 x 580 mm and 150 kg without its battery. The Oberhaching generator is marked BSKA 13 in the supplied photograph; its model dimensions and mass are estimates. Other masses are estimates. Gravity, inertia, friction and collisions are simulated with simplified rigid-body shapes; each vehicle uses its own body and wheel collision profile. Heavy loads use assumed crew assistance; human strength, flexible hoses and operational tool mechanisms are not simulated. Animated docking routes are visual guidance, not collision-planned robotics.
 
 ## Sources
 
@@ -46,6 +61,9 @@ The EISEMANN BSKA 13EV generator is documented at 820 × 440 × 580 mm and 150 k
 - [Kreisbrandinspektion Dachau — Dachau 2015](https://www.kbi-dachau.de/florian-dachau-401-und-402.html): MAN TGM dashboard and seat reference.
 - [Original video, 1:34–1:45](https://youtu.be/vlrIXLORpqk?t=94).
 - Research details: [equipment catalog](equipment-catalog.json), [cabin equipment](cabin-equipment.json), [reference research](reference-research.json), [cockpit research](cockpit-research.json).
+- [Feuerwehr Oberhaching — LF 16/12 40/1](https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/): official specifications and ten exterior photographs up to 1920 x 1280.
+- [User-provided Miro inventory](https://miro.com/app/board/uXjVKwGF5Ug=/) and fifteen supplied compartment/interior photographs: Oberhaching storage layout and identification.
+- [Oberhaching equipment catalog](oberhaching-catalog.json) and [research](oberhaching-research.json): confirmed names, container contents, uncertain identifications and model limits. Contents hidden inside closed containers are described without inventing their appearance.
 
 Original reference photographs are not embedded or republished in the game. Sources link to their publishers. Geometry and dashboard textures are authored reconstructions.
 

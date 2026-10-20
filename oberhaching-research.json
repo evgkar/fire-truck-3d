@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "oberhaching",
+  "researchedAt": "2026-10-20",
+  "catalogPath": "site/oberhaching-catalog.json",
+  "scopeRu": "Исследование именно LF 16/12 Feuerwehr Oberhaching 40/1. Фото служат визуальными референсами, а не техническими чертежами.",
+  "sources": [
+    {
+      "url": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "kind": "official_fire_brigade_vehicle_page",
+      "localHtml": "site/references/oberhaching/official-lf1612.html",
+      "checked": true,
+      "notesRu": "Первичный источник параметров и десяти наружных фотографий с закрытыми и открытыми отсеками."
+    },
+    {
+      "url": "https://miro.com/app/board/uXjVKwGF5Ug=/",
+      "kind": "user_supplied_reference_board",
+      "localText": "site/references/oberhaching/miro-board-text.txt",
+      "readMethod": "read-only accessible DOM, supplied by parent agent",
+      "notesRu": "Перечни оборудования по отсекам и кабине. Текст не является результатом OCR; ошибки могли присутствовать на исходной доске. Это пользовательский референс, не независимая официальная спецификация."
+    },
+    {
+      "kind": "user_supplied_photographs",
+      "manifest": "site/references/oberhaching/user-sources.json",
+      "count": 15,
+      "notesRu": "Скопированы только 15 явно приложенных пользователем снимков. Локальные оригиналы не предназначены для публикации на сайте."
+    }
+  ],
+  "officialFacts": {
+    "callSign": "Florian Oberhaching 40/1",
+    "vehicleType": "LF 16/12",
+    "chassis": "Mercedes-Benz Atego 1528 Allrad",
+    "enginePowerPS": 280,
+    "yearBuilt": 2003,
+    "crew": 9,
+    "bodyBuilder": "Albert Ziegler GmbH, Giengen/Brenz",
+    "pump": "FP 16/8",
+    "pumpNominalFlowLitresPerMinute": 1600,
+    "waterTankLitres": 2000,
+    "foamTankLitres": 200,
+    "foamProportioner": "automatic",
+    "quickAttackHoseMetres": 30,
+    "scbaCount": 4,
+    "generatorRatedKVA": 13,
+    "wireRopePullerRatedTonnes": 3.2,
+    "roofMonitor": "foam/water",
+    "fanDrive": "electric",
+    "sourceUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/"
+  },
+  "registration": {
+    "value": "M 6087",
+    "basis": "user request and official vehicle photos",
+    "confidence": "high"
+  },
+  "overallDimensions": {
+    "value": null,
+    "reasonRu": "Подтверждённые габариты, колёсная база и координаты отсеков в использованных первичных материалах не указаны. Геометрия модели оценочная."
+  },
+  "officialImages": [
+    {
+      "file": "official-01.webp",
+      "path": "site/references/oberhaching/official-01.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/4c/8c/4c8cc7c2-d6c2-4f4c-8ff2-59f8de515718/dsc03588.jpg__1920x0_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-02.webp",
+      "path": "site/references/oberhaching/official-02.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/52/fb/52fbd198-a19e-4515-9cdc-46d0e156d636/dsc03590.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-03.webp",
+      "path": "site/references/oberhaching/official-03.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/6e/f7/6ef7f198-06d4-4885-a196-ea67ca7b00b1/dsc03592.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-04.webp",
+      "path": "site/references/oberhaching/official-04.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/2c/c3/2cc362f1-3bc2-4ba3-960e-7a8b90a2fb12/dsc03597.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-05.webp",
+      "path": "site/references/oberhaching/official-05.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/8d/01/8d0123c3-05b4-430d-bb77-58d906fc2ac1/dsc03602-bearbeitet.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-06.webp",
+      "path": "site/references/oberhaching/official-06.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/9a/0d/9a0d6532-96b7-457a-a5a2-6c026dc754fb/dsc03608-bearbeitet.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-07.webp",
+      "path": "site/references/oberhaching/official-07.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/fb/5c/fb5c9c32-8015-4acf-a36a-fd96a800317e/dsc03611-bearbeitet.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-08.webp",
+      "path": "site/references/oberhaching/official-08.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/25/c4/25c489e3-6522-4389-b0d8-ad82735d5e14/dsc03619.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-09.webp",
+      "path": "site/references/oberhaching/official-09.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/40/f5/40f5896c-71c5-4ae5-baac-00d0ccb3c17b/dsc03624-bearbeitet.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "file": "official-10.webp",
+      "path": "site/references/oberhaching/official-10.webp",
+      "url": "https://www.feuerwehr-oberhaching.de/media/filer_public_thumbnails/filer_public/48/ed/48edb965-1e85-499f-ac58-01017347d7c8/dsc03626.jpg__1920x0_ALIAS-model_image_large_crop_subsampling-2.webp",
+      "pageUrl": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/",
+      "width": 1920,
+      "height": 1280
+    }
+  ],
+  "officialImageAngles": [
+    "front-right, closed",
+    "front",
+    "front-left, closed",
+    "rear-left, closed",
+    "rear-right, closed",
+    "right side, open",
+    "rear-right, open",
+    "rear pump, open",
+    "rear-left, open",
+    "front-left, open"
+  ],
+  "userPhotoMap": {
+    "01": "Rear GR pump close-up",
+    "02": "G2 right-front",
+    "03": "G4 right-middle",
+    "04": "G5 lower shelf",
+    "05": "G4 full",
+    "06": "G5 full",
+    "07": "Rear-right with open compartments",
+    "08": "Right side open compartments",
+    "09": "G6 full",
+    "10": "G2 full",
+    "11": "G1 full",
+    "12": "G6 full",
+    "13": "G3 full",
+    "14": "Right side / G2",
+    "15": "Crew cabin through right door"
+  },
+  "compartmentMap": {
+    "left1": "G1",
+    "left2": "G3",
+    "left3": "G5",
+    "right1": "G2",
+    "right2": "G4",
+    "right3": "G6",
+    "rear": "GR",
+    "cabin": "Mannschaftsraum"
+  },
+  "observations": [
+    {
+      "subject": "G1 fan",
+      "confidence": "high",
+      "photoRef": "site/references/oberhaching/user-11.png",
+      "findingRu": "На жёлтом кожухе читается TEMPEST POWER BLOWER; официальная страница подтверждает электропривод. Точная модель не читается."
+    },
+    {
+      "subject": "G1 closed sets",
+      "confidence": "high",
+      "photoRef": "site/references/oberhaching/user-11.png",
+      "findingRu": "Небольшой средний металлический ящик имеет подписи Trennschleifer, Trennscheiben, Schutzbrillen; чёрный пакет подписан Sprungpolster. Верхний лоток относится к длинному инструменту и остаётся частью машины."
+    },
+    {
+      "subject": "G3 breathing equipment",
+      "confidence": "high",
+      "photoRef": "site/references/oberhaching/user-13.png",
+      "findingRu": "Виден отдельный поворотный держатель с двумя дыхательными аппаратами, две плоские коробки с подписями тросов и вложенные металлические лотки. Белые кресты на вертикальном кейсе видны, его внутреннее содержимое не показано."
+    },
+    {
+      "subject": "G5 hose and protection equipment",
+      "confidence": "high",
+      "photoRef": "site/references/oberhaching/user-06.png",
+      "findingRu": "Подписи и доска подтверждают две теплозащитные упаковки Form II, два противооткатных упора, четыре всасывающих рукава и три рукавные кассеты. В укладке 2×2 видны торцы всасывающих рукавов; полную длину нельзя измерить."
+    },
+    {
+      "subject": "G2 rescue equipment",
+      "confidence": "high",
+      "photoRef": "site/references/oberhaching/user-10.png",
+      "findingRu": "Видны три гидравлических цилиндра и насосный агрегат с рукавами на поворотной площадке. Доска уточняет принадлежность жёлтого плоского пакета к пневматическому подъёмному комплекту; точная модель и грузоподъёмность не установлены."
+    },
+    {
+      "subject": "G4 tools",
+      "confidence": "medium",
+      "photoRef": "site/references/oberhaching/user-05.png",
+      "findingRu": "Видны напорные рукавные пакеты, ручные стволы, красные водопроводные арматуры и большой красный переносной огнетушитель. Строки доски под G4 ошибочно повторяют кабину; названия неподписанных красных элементов основаны на форме и отмечены средней уверенностью."
+    },
+    {
+      "subject": "G6 generator",
+      "confidence": "high",
+      "photoRef": "site/references/oberhaching/user-12.png",
+      "findingRu": "Читаются EISEMANN, BSKA 13 и HIGH PROTECTION. Буквы EV на этой машине не подтверждены; характеристики другой BSKA 13 EV не переносились. 13 кВА подтверждено официальной страницей."
+    },
+    {
+      "subject": "G6 foam and hoses",
+      "confidence": "high",
+      "photoRef": "site/references/oberhaching/user-12.png",
+      "findingRu": "Три жёлтые канистры, красный водосборник и две рукавные укладки у катушки. Доска уточняет пенообразователь в канистрах и два B-рукава по 20 м. Уровень жидкости и номинальный объём канистр неизвестны."
+    },
+    {
+      "subject": "Cabin",
+      "confidence": "medium",
+      "photoRef": "site/references/oberhaching/user-15.png",
+      "findingRu": "Видны два знака аварийной остановки, два радиоустройства на противоположной стойке, две сине-жёлтые сумки у открытой двери и красный прибор под сиденьем. Последний интерпретирован как фонарь по форме и перечню; его линза не видна."
+    },
+    {
+      "subject": "External building equipment",
+      "confidence": "high",
+      "photoRef": "site/references/oberhaching/user-11.png",
+      "findingRu": "Два крупных синих гофрированных шланга пересекают передний план и относятся к стационарной вытяжке пожарного депо, не к загрузке автомобиля."
+    }
+  ],
+  "inventoryBoardNotes": {
+    "G1": "2 Feuerwehräxte; 2 Faltsignale; 5 Verkehrsleitkegel; Trennschleifer mit 4 Scheiben und 2 Schutzbrillen; Sprungpolster; je 2 Feuerpatschen, Spaten, Dunggabeln, Dunghacken, Stechschaufeln, Stoßbesen; Drucklüfter; Leitungstrommel; Greifzug; Erdanker; 12 Heringe; Trommelhaspel.",
+    "G3": "2 Atemanschlüsse; 3 Fluchthauben; Drahtseil; Abschleppseil und 2 Schäkel; 3 Mulden; 3 Euro-Blitz; Werkzeugkasten E; 2 C-Druckschläuche mit unklarem Zusatz C-2.",
+    "G5": "2 Hitzeschutzkleidungen Form II; 2 Unterlegkeile; 4 Saugschläuche; 2 Dichtungsplatten; 2 Schachtabdeckungen; Werkzeugkasten FWK; 3 Schlauchtragekörbe mit je 2 C-42-Schläuchen; 2 C-Schläuche 15 m; 2 Übergangsstücke A-B; Druckbegrenzungsventil; Verteiler; Ölbindemittelkanister; Ansaugschlauch; Abgasschlauch.",
+    "G2": "Flutlichttrage mit 2 Strahlern 1000 W, Abzweigstück, Verzurrung, Aufnahmebrücke, Stativ; Leitungstrommeln; Motorsäge mit Ersatzkette, Beinlingen und Forsthelm; Luftheber und Zubehör; 3 Rettungszylinder; Motorpumpenaggregat; Schneidgerät; Spreizer; 4 Unterbauschiebeblöcke; Formholz; Hydraulikzubehör; Schwelleraufsatz.",
+    "G4": "Board section is a misplaced copy of cabin text; not used as G4 inventory.",
+    "G6": "Schnellangriff S32 30 m mit Strahlrohr; 2 ABC-Kupplungsschlüssel; 2 B-Schläuche 20 m; Saugkorb; Saugschutzkorb; Sammelstück; Übergangsstück A-B; Schnellschlusshahn; Halteleine; Ventilleine; 3 Schaummittelbehälter; Verteiler; Stromerzeuger 13 kVA; Abgasschlauch.",
+    "cabin": "Board lists 4 handheld radios, 4 hand lamps, 2 warning lamps, 7 fire-service lines, 2 warning triangles, 4 breathing masks, 2 SCBA and 4 drinking bottles. Further first-aid, hand tools and safety clothing are listed inside seat boxes; these closed contents are not separate visible geometry.",
+    "ambiguousOriginalLabels": [
+      "C-2",
+      "Warkleidungen",
+      "Рас-Ex 2"
+    ],
+    "treatmentRu": "Исправлены однозначные орфографические ошибки; неоднозначные обозначения не превращены в точные модели или размеры. Плавающие ярлыки доски без связи с фото не считаются доказательством местоположения."
+  },
+  "fixedVsRemovable": {
+    "fixed": [
+      "FP16/8 pump and rear control panel",
+      "quick-attack reel and mount",
+      "roof water/foam monitor",
+      "roof light mast",
+      "shelves, sliders, swing frames and retention straps",
+      "seat boxes, radio charging bases and door brackets"
+    ],
+    "removableScope": "80 photo-visible individual objects or packaged kits; closed contents remain descriptions, not independently exposed meshes. Rear transport reels and concealed cabin inventory excluded from hand-carry gameplay in this catalog."
+  },
+  "catalogSummary": {
+    "itemCount": 80,
+    "byCompartment": {
+      "left1": 8,
+      "left2": 11,
+      "left3": 20,
+      "right1": 14,
+      "right2": 10,
+      "right3": 10,
+      "cabin": 7
+    },
+    "masses": "all estimated",
+    "dimensions": "all estimated",
+    "unverifiedModelNames": "not promoted to confirmed manufacturer specifications"
+  },
+  "limitsRu": [
+    "Не указана точная дата пользовательских фото или состояния загрузки. Состав на разных снимках и в перечне может отличаться.",
+    "Не все внутренние стороны оборудования видны; задние поверхности, скрытая длина рукавов и содержание неподписанных ящиков требуют допущений.",
+    "Координаты и габариты каталога — задание для подгонки геометрии, а не результат обмера.",
+    "Крупные синие шланги депо исключены; стационарные крепления и насос не считаются переносными предметами.",
+    "Пользовательские и официальные оригиналы сохранены для локального анализа; их включение в публичный сайт не требуется."
+  ],
+  "referenceManifests": [
+    "site/references/oberhaching/user-sources.json",
+    "site/references/oberhaching/official-sources.json"
+  ]
+}
