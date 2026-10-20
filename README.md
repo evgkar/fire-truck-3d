@@ -34,8 +34,9 @@ The saved language is restored on load. On a first visit, the browser/system lan
 - “Hide cab” removes the cab shell and doors while retaining seats, dashboard, fixed mounts and portable equipment.
 - Storage-position buttons provide a keyboard and touch alternative to precise 3D selection.
 - “Unload all” and “Load all” handle the complete inventory.
-- On loading, three synchronized high-beam/hazard pulses welcome the visitor. Successful individual stowage triggers two short hazard pulses after docking; bulk loading does not trigger a siren or a pulse per item.
-- The brief synthesized two-tone siren plays when audio is permitted, otherwise after the first interaction. The speaker button mutes it immediately and remembers the preference. The Vehicle tab can replay the welcome. It is not a recording of this particular truck.
+- On loading, three synchronized high-beam, hazard and blue-beacon pulses welcome the visitor. Successful individual stowage triggers two short hazard pulses after docking; bulk loading does not trigger a siren or a pulse per item.
+- Click a blue beacon or the roof horns to toggle the siren and blue beacons. Click a headlight to toggle steady high beams independently. The Vehicle tab provides the same two controls and can replay the welcome.
+- The synthesized two-tone siren plays when audio is permitted, otherwise after the first interaction. The speaker button mutes audio immediately and remembers the preference; light signals remain active. It is not a recording of this particular truck.
 
 ## Training
 
