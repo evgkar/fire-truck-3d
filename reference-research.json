@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "researchedAt": "2026-10-20",
+  "subject": "Schlingmann HLF 20, Feuerwehr Liederbach am Taunus, Florian Liederbach 46, MTK-LI 46",
+  "summaryRu": "Каталог содержит 33 видимых переносных предмета или комплектных позиции по фотографиям конкретного автомобиля. Он не является полной заводской ведомостью загрузки. Для незнакомых закрытых кейсов и сумок сохранены нейтральные названия.",
+  "vehicleFacts": {
+    "chassis": "MAN TGM 13.290 4×4 BL",
+    "bodyBuilder": "Schlingmann",
+    "buildYear": 2016,
+    "crew": "1/8",
+    "pump": "Schlingmann FPN 10-2000 mit AWR",
+    "waterLitres": 2000,
+    "foamLitres": 120,
+    "foamProportioner": "Schlingmann AutoMix 30 DE",
+    "sourceUrl": "https://www.feuerwehr-liederbach.de/hlf-20/",
+    "dimensionsRu": "Точные габариты, колёсная база, размеры отсеков и заводская ведомость оборудования для этого экземпляра в проверенных источниках не найдены."
+  },
+  "sourceSets": [
+    {
+      "title": "Официальная страница пожарной части",
+      "pageUrl": "https://www.feuerwehr-liederbach.de/hlf-20/",
+      "manifest": "site/references/sources.json",
+      "imageCount": 7,
+      "maxResolution": [
+        4592,
+        2584
+      ],
+      "mostUseful": [
+        "HLF-1.jpg: левый борт с открытыми отсеками",
+        "HLF-3.jpg: салон",
+        "HLF-4.jpg: правый борт с открытыми отсеками"
+      ],
+      "dateLimitRu": "Сегмент uploads/2025/09 отражает путь загрузки; дата съёмки не подтверждена. Состав оборудования мог отличаться от видео 2018 года."
+    },
+    {
+      "title": "WS Brandschutztechnik — фотографии поставщика",
+      "pageUrl": "https://www.ws-brandschutztechnik.de/referenzen/feuerwehrfahrzeuge",
+      "manifest": "site/references/ws-2016/sources.json",
+      "imageCount": 8,
+      "maxSidePixels": 720,
+      "filenameDate": "2016-11-01",
+      "mostUseful": [
+        "04: открытая поворотная панель G2 и внутренние кейсы",
+        "05: открытый задний насосный отсек GR",
+        "07: левый борт",
+        "08/09: дверь и интерьер кабины",
+        "10: правый борт"
+      ],
+      "dateLimitRu": "Дата 2016-11-01 содержится в именах файлов; дата съёмки не проверена по EXIF. На заднем фото виден номер MTK-LI 46."
+    }
+  ],
+  "photoFindings": [
+    {
+      "itemIds": [
+        "generator"
+      ],
+      "observationRu": "На жёлтом генераторе читаются EISEMANN и BSKA 13EV.",
+      "confidence": "high",
+      "photoRef": "site/references/inspection/left1.jpg"
+    },
+    {
+      "itemIds": [
+        "ppv_fan"
+      ],
+      "observationRu": "Красный круглый вентилятор находится справа от генератора в переносной металлической раме с колёсами. Точный тип привода и модель не подтверждены.",
+      "confidence": "high",
+      "photoRef": "site/references/inspection/left1.jpg"
+    },
+    {
+      "itemIds": [
+        "water_vacuum"
+      ],
+      "observationRu": "Синий агрегат в G3 имеет надпись NILFISK ALTO, бак из нержавеющей стали, колёса и шланг. Это водосос; точная модификация ATTIX не читается.",
+      "confidence": "high",
+      "photoRef": "site/references/inspection/left2.jpg"
+    },
+    {
+      "itemIds": [
+        "fall_arrest_case",
+        "electrical_tool_case"
+      ],
+      "observationRu": "На кейсах читаются ABSTURZSICHERUNG и Elektrowerkzeug. Перечень предметов внутри неизвестен.",
+      "confidence": "high",
+      "photoRefs": [
+        "site/references/inspection/left1.jpg",
+        "site/references/inspection/left2.jpg"
+      ]
+    },
+    {
+      "itemIds": [
+        "hose_basket_1",
+        "hose_basket_2",
+        "hose_basket_3",
+        "hose_basket_4"
+      ],
+      "observationRu": "В G5 видны четыре узкие металлические переносные корзины с уложенными рукавами и синими ремнями.",
+      "confidence": "high",
+      "photoRef": "site/references/inspection/left3.jpg"
+    },
+    {
+      "itemIds": [
+        "hydraulic_powerpack_1",
+        "hydraulic_powerpack_2",
+        "hydraulic_hose_pair",
+        "hydraulic_ram_pair"
+      ],
+      "observationRu": "В G2 видны гидравлические устройства, красно-жёлтый комплект шлангов и два жёлтых агрегата с WEBER RESCUE. Точные модели не присвоены.",
+      "confidence": "medium",
+      "photoRefs": [
+        "site/references/inspection/right1.jpg",
+        "site/references/ws-2016/liederbach-hlf20-04.jpg"
+      ]
+    },
+    {
+      "itemIds": [
+        "traffic_cones",
+        "warning_lamps"
+      ],
+      "observationRu": "Верхняя правая ячейка G4 содержит вложенные дорожные конусы с квадратными чёрными основаниями; ниже находятся четыре жёлтых сигнальных фонаря.",
+      "confidence": "high",
+      "photoRef": "site/references/inspection/right2.jpg"
+    },
+    {
+      "itemIds": [
+        "blue_submersible_pump_1",
+        "blue_submersible_pump_2",
+        "stainless_submersible_pump"
+      ],
+      "observationRu": "Нижние переносные агрегаты G4 имеют признаки электронасосов: кабель с вилкой, ручка и патрубок. Марка, модификация и характеристики по фото не установлены.",
+      "confidence": "medium",
+      "photoRef": "site/references/inspection/right2.jpg"
+    },
+    {
+      "itemIds": [
+        "co2_extinguisher",
+        "second_extinguisher",
+        "pressure_vessel_device"
+      ],
+      "observationRu": "В G6 видны два красных огнетушителя; длинный чёрный раструб переднего соответствует CO2. У соседнего металлического устройства видны манометр и шланги, но назначение и содержимое не подтверждены.",
+      "confidence": "medium",
+      "photoRef": "site/references/inspection/right3.jpg"
+    },
+    {
+      "itemIds": [],
+      "observationRu": "Синий рукавный барабан G6 и насосная установка GR стационарные; они не входят в переносной каталог. Фото поставщика 05 впервые показывает насосный пульт GR.",
+      "confidence": "high",
+      "photoRefs": [
+        "site/references/inspection/right3.jpg",
+        "site/references/ws-2016/liederbach-hlf20-05.jpg"
+      ]
+    }
+  ],
+  "manufacturerChecks": [
+    {
+      "manufacturer": "EISEMANN",
+      "model": "BSKA 13 E / 13 EV",
+      "sourceUrl": "https://www.bse-usv-technik.de/WebRoot/Store16/Shops/63415186/53D6/18F8/CC3E/FD62/5644/C0A8/2BBC/0A76/EISEMANN_DIN_BSKA_13EV_de.pdf",
+      "sourceType": "manufacturer_document_mirror",
+      "facts": {
+        "massKg": 150,
+        "massCondition": "without battery",
+        "dimensionsMm": [
+          820,
+          440,
+          580
+        ]
+      },
+      "applicationRu": "Модель читается на фото. В каталоге 150 кг отмечены как данные документа производителя без аккумулятора. Фактическая масса установленного агрегата с топливом, аккумулятором и принадлежностями не измерена."
+    },
+    {
+      "manufacturer": "Nilfisk",
+      "model": "ATTIX 751-61 EU",
+      "sourceUrl": "https://www.nilfisk.com/fr-fr/professionnel/produits/aspirateurs-industriels/aspirateurs-eau-et-poussiere-monophases/attix-751-61-vattensugare%2B302001529/",
+      "applicationRu": "Официальное описание подтверждает существование водососа ATTIX 7 для пожарных, но не доказывает точную модификацию на этой машине. Поэтому модель и характеристики не перенесены в каталог как точные."
+    },
+    {
+      "manufacturer": "WEBER RESCUE",
+      "sourceUrl": "https://www.weber-rescue.com/wAssets/docs/downloads/leistungsbeschreibungen/Leistungsbeschreibung-Aggregate_DE.pdf",
+      "applicationRu": "Текущие агрегаты производителя имеют несколько разных масс и комплектаций. Нет достаточных оснований приписывать одну из них старым устройствам на фото."
+    }
+  ],
+  "methodology": {
+    "evidenceRu": {
+      "vehicle_confirmed": "Предмет прямо назван в текстовом источнике именно этого автомобиля.",
+      "photo_identified": "Предмет или комплект виден на фотографии именно этого автомобиля; неопределённые свойства не утверждаются.",
+      "typical_hlf": "Типовое оборудование класса HLF без подтверждения наличия на этом автомобиле. В текущем каталоге таких позиций нет."
+    },
+    "massRu": "32 позиции имеют условную оценочную массу для симуляции. У генератора приведены 150 кг без аккумулятора из документа EISEMANN; это не результат взвешивания конкретного экземпляра.",
+    "sizeRu": "Размеры служат оценкой габаритного ящика для геометрии. У генератора использованы размеры документа производителя. Положение внутри модели и размеры ниш подгоняются по фотографиям.",
+    "groupingRu": "Комплект деревянных брусков, пара цилиндров, комплект шлангов, стопка конусов и четыре фонаря представлены отдельными игровыми позициями. Их масса относится ко всей позиции.",
+    "limitsRu": [
+      "Полная комплектация кабины и содержимое закрытых кейсов/сумок не установлены.",
+      "Поиск BOS-Fahrzeuge нашёл карточку предшественника Florian Liederbach 44; её оснащение не использовано для HLF20.",
+      "Результаты Feuerwehr-Magazin про Alsfeld-Liederbach относятся к другому населённому пункту и исключены.",
+      "Точного публичного заводского документа Schlingmann с перечнем загрузки данного экземпляра не найдено; использована фотогалерея поставщика.",
+      "Фотографии, оценки массы и упрощённые объекты не заменяют документацию и подготовку для реальной эксплуатации."
+    ]
+  },
+  "purposeReferences": [
+    {
+      "sourceUrl": "https://blog.rosenbauer.com/de/fanergy-der-richtige-luefter-fuer-jeden-einsatz/",
+      "scope": "equipment_category_only",
+      "purposeRu": "Назначение переносных вентиляторов: вентиляция и удаление дыма. Не доказывает марку вентилятора Liederbach."
+    },
+    {
+      "sourceUrl": "https://www.mennekes.de/industry/loesungen-und-leistungen/feuerwehr-und-katastrophenschutz/",
+      "scope": "equipment_category_only",
+      "purposeRu": "Назначение мобильного электрораспределения для пожарных."
+    },
+    {
+      "sourceUrl": "https://www.schlauchtragekorb-flexattack.de/wp-content/uploads/anwendungshinweise-flexattack-schlauchtragekorb.pdf",
+      "scope": "equipment_category_only",
+      "purposeRu": "Корзины используются для переноски и укладки рукавов; параметры этого конкретного изделия не перенесены в модель."
+    },
+    {
+      "sourceUrl": "https://www.weber-rescue.com/wAssets/docs/feuerwehr/kataloge-und-broschueren/de/KAT_Gesamtkatalog_Rettungsgeraete_2026A-DE.pdf",
+      "scope": "equipment_category_only",
+      "purposeRu": "Общие функции гидравлического инструмента и подкладочного материала; спецификации современного оборудования не приписываются экземплярам на фото."
+    },
+    {
+      "sourceUrl": "https://trafficsafety.horizont.com/Content/TS/Documents/TS-KAT-D-2023_Web.pdf",
+      "scope": "equipment_category_only",
+      "purposeRu": "Дорожные конусы и средства обозначения рабочей зоны."
+    },
+    {
+      "sourceUrl": "https://trafficsafety.horizont.com/Documents/Instruction%20manuals/horizont/Traffic%20Safety/Activ/man_86086_ZC_0725.pdf",
+      "scope": "equipment_category_only",
+      "purposeRu": "Назначение переносных сигнальных фонарей; модель и технические параметры фонарей автомобиля не определены."
+    },
+    {
+      "sourceUrl": "https://www.rosenbauer.com/de/produkte/ausruestung/tauchpumpen",
+      "scope": "equipment_category_only",
+      "purposeRu": "Назначение пожарных погружных насосов; не доказывает, что на Liederbach стоит Rosenbauer."
+    }
+  ]
+}
