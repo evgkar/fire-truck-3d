@@ -11,11 +11,11 @@ The saved language is restored on load. On a first visit, the browser/system lan
 ## Interaction
 
 - Use the expand icon beside the language selector for a full-screen scene. The same button or Esc restores the panels without dropping a held item. Browsers without the Fullscreen API expand the scene to fill the page. Camera orientation and training progress are retained.
-- Drag empty background to orbit; scroll or pinch to zoom.
+- Drag empty background to orbit; scroll or pinch to zoom. After "Pick up", dragging anywhere on the scene rotates the camera while the item stays held. A camera gesture never places or drops the item.
 - Ctrl + drag pans the view. On a touchscreen, drag with two fingers to pan; changing their distance zooms.
 - Click an item for its details. Double-click/double-tap or choose “Pick up” to lift it.
 - Point at a storage position to highlight it. Click the item's own position to animate it back into its mount. A wrong mount releases the item and it falls.
-- Direct dragging also moves equipment with physics. While carrying, the wheel changes height, R rotates the item, and Esc releases it.
+- Direct dragging also moves equipment with physics. While carrying, Shift + scroll changes item height, R rotates the item, and Esc releases it. Ordinary scrolling still zooms the camera.
 - “Hide cab” removes the cab shell and doors while retaining seats, dashboard, fixed mounts and portable equipment.
 - Storage-position buttons provide a keyboard and touch alternative to precise 3D selection.
 - “Unload all” and “Load all” handle the complete inventory.
