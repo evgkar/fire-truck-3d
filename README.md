@@ -10,6 +10,7 @@ The saved language is restored on load. On a first visit, the browser/system lan
 
 ## Interaction
 
+- Use the expand icon beside the language selector for a full-screen scene. The same button or Esc restores the panels without dropping a held item. Browsers without the Fullscreen API expand the scene to fill the page. Camera orientation and training progress are retained.
 - Drag empty background to orbit; scroll or pinch to zoom.
 - Ctrl + drag pans the view. On a touchscreen, drag with two fingers to pan; changing their distance zooms.
 - Click an item for its details. Double-click/double-tap or choose “Pick up” to lift it.

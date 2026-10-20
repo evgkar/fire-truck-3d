@@ -33,11 +33,12 @@ THE SOFTWARE.
 @media(min-width:701px) and (max-width:1000px){#stage{inset:0 0 45vh}.sidebar{top:55vh;bottom:0;left:0;right:0;width:100%;border-left:0;border-top:1px solid var(--line)}.brand-row{display:none}.tabs{padding:9px 14px 0}.tabs button{padding:8px}.panel-scroll{padding:13px 16px}.list{display:grid;grid-template-columns:1fr 1fr;gap:6px}.item-row{margin:0}.slot-list{grid-template-columns:repeat(8,1fr)}.selected-actions{grid-template-columns:repeat(4,1fr)}.scene-hint{bottom:65px}.viewbar{bottom:18px}.selected-card p{max-width:720px}}
 .toggles{flex-wrap:wrap;row-gap:8px}.slot-hover{border-color:#ffdb86;color:#ffe7b6;background:#302718f2;box-shadow:0 0 24px #e9b44d20}.slot-list button:hover,.slot-list button:focus-visible{border-color:#ffdb86;background:#443a28}#stage canvas{touch-action:none}
 .language-control{position:absolute;z-index:8;right:24px;top:21px}.language-control select{font-size:11px;padding:7px 9px;min-width:108px;background:#162128ed}.held-badge{top:66px}.identity{max-width:calc(100% - 165px)}@media(max-width:1000px){.language-control{right:15px;top:14px}.held-badge{top:85px}}@media(max-width:700px){.language-control{right:12px;top:12px}.language-control select{font-size:10px;min-width:94px;padding:6px}.identity{max-width:calc(100% - 124px)}.identity p{max-width:245px}.held-badge{top:88px}.scene-hint{line-height:1.4;bottom:82px}}
+.language-control{display:flex;align-items:center;gap:7px}.language-control .fullscreen-button{display:grid;place-items:center;width:36px;height:34px;padding:7px;background:#162128ed;flex:none}.fullscreen-button svg{width:19px;height:19px}.fullscreen-button .collapse-icon{display:none}body.scene-expanded .fullscreen-button .expand-icon{display:none}body.scene-expanded .fullscreen-button .collapse-icon{display:block}.identity{max-width:calc(100% - 210px)}body.scene-expanded #stage{position:fixed;inset:0;width:100%;height:100%;z-index:60;background:#10171b}body.scene-expanded .sidebar{display:none}#stage:fullscreen{inset:0;width:100%;height:100%;background:#10171b}#stage:-webkit-full-screen{inset:0;width:100%;height:100%;background:#10171b}#stage .language-control{top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right))}body.scene-expanded .viewbar{bottom:max(12px,env(safe-area-inset-bottom))}@media(max-width:700px){.identity{max-width:calc(100% - 162px)}.identity h1{font-size:19px}.language-control .fullscreen-button{height:29px;width:31px;padding:6px}.identity .eyebrow{line-height:1.35}.identity p{line-height:1.4}}
 </style>
 </head>
 <body>
 <main id="stage" aria-label="Трёхмерный тренажёр пожарной машины">
- <div class="language-control"><label class="sr-only" for="language">Deutsch / English / Русский</label><select id="language" aria-label="Deutsch / English / Русский"><option value="de">Deutsch</option><option value="en">English</option><option value="ru">Русский</option></select></div>
+ <div class="language-control"><label class="sr-only" for="language">Deutsch / English / Русский</label><select id="language" aria-label="Deutsch / English / Русский"><option value="de">Deutsch</option><option value="en">English</option><option value="ru">Русский</option></select><button id="fullscreen" class="fullscreen-button" type="button" aria-label="На весь экран" title="На весь экран" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="expand-icon" d="M9 3H3v6m12-6h6v6M3 15v6h6m6 0h6v-6"/><path class="collapse-icon" d="M3 9h6V3m6 0v6h6M9 21v-6H3m18 0h-6v6"/></svg></button></div>
  <header class="identity"><div class="eyebrow">Feuerwehr Liederbach · интерактивный тренажёр</div><h1>Schlingmann HLF 20</h1><p>MAN TGM 13.290 · исследуйте, извлекайте, укладывайте</p></header>
  <div id="labels" class="scene-labels"></div><div id="hover" class="hover" hidden></div><div id="slotHover" class="hover slot-hover" role="status" hidden></div><div id="notice" class="notice" role="status" hidden></div>
  <div id="heldBadge" class="held-badge" hidden><strong id="heldName"></strong><span id="heldMass"></span> · Esc — отпустить</div>
@@ -70,6 +71,7 @@ THE SOFTWARE.
   'use strict';
   // The Russian source phrases are stable keys; vehicle lettering stays original.
   const phrases = [
+    ['На весь экран','Vollbild','Full screen'],['Выйти из полноэкранного режима','Vollbild verlassen','Exit full screen'],
     ['Интерактивный тренажёр комплектации Schlingmann HLF 20: изучение оборудования, физика предметов и игра на правильную укладку.','Interaktiver Beladungstrainer für das Schlingmann HLF 20: Ausrüstung erkunden, bewegen und richtig verstauen.','Interactive Schlingmann HLF 20 equipment trainer: explore equipment, move it with physics and practise correct stowage.'],
     ['HLF 20 · Тренажёр комплектации','HLF 20 · Beladungstrainer','HLF 20 · Equipment trainer'],
     ['Трёхмерный тренажёр пожарной машины','Interaktiver 3D-Feuerwehrtrainer','Interactive 3D fire engine trainer'],
@@ -14195,8 +14197,40 @@ window.TRAINER_MODEL={"materials":{"red":{"color":[0.64,0.018,0.027,1],"metallic
       wantTarget.fromArray(t);orbit.wantTheta=orbit.theta+Math.atan2(Math.sin(theta-orbit.theta),Math.cos(theta-orbit.theta));orbit.wantPhi=phi;orbit.wantRadius=r;
       document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===name)));
     }
-    function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();if(currentView!=='custom')view(currentView);}
+    function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();if(currentView!=='custom')view(currentView);}
     new ResizeObserver(resize).observe(stage);resize();
+    const fullscreenButton=$('fullscreen');
+    let sceneExpanded=false,fullscreenIntent=false,hadNativeFullscreen=false,fullscreenEscapeUntil=0;
+    const ownsFullscreen=()=>document.fullscreenElement===stage||document.webkitFullscreenElement===stage;
+    function syncFullscreenLabel(){const label=t(sceneExpanded?'Выйти из полноэкранного режима':'На весь экран');fullscreenButton.title=label;fullscreenButton.setAttribute('aria-label',label);fullscreenButton.setAttribute('aria-pressed',String(sceneExpanded));}
+    function expandScene(expanded){
+      sceneExpanded=expanded;currentView='custom';
+      document.body.classList.toggle('scene-expanded',expanded);syncFullscreenLabel();
+      canvas.focus({preventScroll:true});
+    }
+    async function exitNativeFullscreen(){
+      const exit=document.exitFullscreen||document.webkitExitFullscreen;
+      try{if(exit&&ownsFullscreen())await exit.call(document);}catch(_){if(ownsFullscreen()){fullscreenIntent=true;expandScene(true);}}
+    }
+    async function closeFullscreen(){fullscreenIntent=false;expandScene(false);await exitNativeFullscreen();}
+    fullscreenButton.onclick=async()=>{
+      if(sceneExpanded){await closeFullscreen();return;}
+      fullscreenIntent=true;expandScene(true);
+      const request=stage.requestFullscreen||stage.webkitRequestFullscreen;
+      try{if(request)await request.call(stage);}catch(_){/* Keep the scene expanded within the browser when native fullscreen is unavailable. */}
+      if(!fullscreenIntent&&ownsFullscreen())await exitNativeFullscreen();
+    };
+    function fullscreenChanged(){
+      if(ownsFullscreen()){hadNativeFullscreen=true;if(fullscreenIntent)expandScene(true);else void exitNativeFullscreen();}
+      else if(hadNativeFullscreen){hadNativeFullscreen=false;fullscreenIntent=false;fullscreenEscapeUntil=performance.now()+300;expandScene(false);}
+    }
+    document.addEventListener('fullscreenchange',fullscreenChanged);
+    document.addEventListener('webkitfullscreenchange',fullscreenChanged);
+    window.addEventListener('keydown',e=>{
+      if(e.key!=='Escape'||(!sceneExpanded&&performance.now()>fullscreenEscapeUntil))return;
+      e.preventDefault();e.stopImmediatePropagation();if(sceneExpanded)void closeFullscreen();
+    },true);
+    syncFullscreenLabel();
     function selectTab(next){tab=next;document.querySelectorAll('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==next);document.querySelectorAll('[data-tab]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.tab===next)));updateUI();}
     document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.tab)));
     document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>view(b.dataset.view)));
@@ -14221,6 +14255,7 @@ window.TRAINER_MODEL={"materials":{"red":{"color":[0.64,0.018,0.027,1],"metallic
     }
     function renderSlots(){const frag=document.createDocumentFragment();for(const i of items){const b=document.createElement('button');b.textContent=i.code;b.className=session.get(i.id).status==='stowed'?'full':'';b.title=session.mode==='game'?i.code:name(i);b.setAttribute('aria-label',t('Установить в ')+i.code);b.onclick=()=>{const carried=physics.held?byId.get(physics.held.id):selected;if(carried)place(carried,i);};b.onpointerenter=b.onfocus=()=>{if(physics.held&&bayOpen(i.bay,i))setSlotHover(i);};b.onpointerleave=b.onblur=clearSlotHover;frag.appendChild(b);}$('slotList').replaceChildren(frag);}
     function updateUI(){
+      syncFullscreenLabel();
       const ss=session.snapshot();$('inventoryCount').textContent=ss.stowed+' / '+ss.total+t(' на месте');$('gameSummary').hidden=ss.mode!=='game'&&!ss.finishedAt;
       $('score').textContent=ss.score;$('gamePlaced').textContent=ss.completed+' / '+ss.total;$('firstTry').textContent=ss.firstTry;$('progressBar').style.width=(100*ss.completed/ss.total)+'%';$('gameTitle').textContent=ss.finishedAt?t('Тренировка завершена'):t('Укладка снаряжения');
       if(ss.finishedAt)$('gameResult').textContent=t('Все предметы на месте. С первой попытки: ')+ss.firstTry+t(' из ')+ss.total+'.';else $('gameResult').textContent=t('100 очков за правильное место с первой попытки.');
@@ -14369,7 +14404,7 @@ window.TRAINER_MODEL={"materials":{"red":{"color":[0.64,0.018,0.027,1],"metallic
     }
     canvas.addEventListener('pointerup',e=>pointerEnd(e,false));canvas.addEventListener('pointercancel',e=>pointerEnd(e,true));canvas.addEventListener('pointerleave',()=>{pointerInside=false;$('hover').hidden=true;clearSlotHover();});
     canvas.addEventListener('wheel',e=>{e.preventDefault();if(physics.held){carryHeight=clamp(carryHeight-e.deltaY*.003,.15,4.3);if(heldSticky){const p=physics.held.body.position;physics.move([p.x,p.y,carryHeight]);}else moveHeld(lastPointer.x,lastPointer.y);}else{orbit.wantRadius=clamp(orbit.wantRadius*Math.exp(clamp(e.deltaY,-180,180)*.0013),.45,65);currentView='custom';}},{passive:false});
-    window.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea'))return;if(e.key==='Escape'){release();return;}if((e.key==='r'||e.key==='R'||e.key==='к'||e.key==='К')&&physics.held){physics.held.body.angularVelocity.z=3.5;return;}if(e.target!==canvas)return;let yes=true;switch(e.key){case'ArrowLeft':orbit.wantTheta+=.13;break;case'ArrowRight':orbit.wantTheta-=.13;break;case'ArrowUp':orbit.wantPhi=clamp(orbit.wantPhi-.09,.13,1.56);break;case'ArrowDown':orbit.wantPhi=clamp(orbit.wantPhi+.09,.13,1.56);break;case'+':case'=':orbit.wantRadius*=.9;break;case'-':orbit.wantRadius*=1.11;break;default:yes=false;}if(yes){e.preventDefault();currentView='custom';}});
+    window.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea'))return;if(e.key==='Escape'){if(!e.repeat)release();return;}if((e.key==='r'||e.key==='R'||e.key==='к'||e.key==='К')&&physics.held){physics.held.body.angularVelocity.z=3.5;return;}if(e.target!==canvas)return;let yes=true;switch(e.key){case'ArrowLeft':orbit.wantTheta+=.13;break;case'ArrowRight':orbit.wantTheta-=.13;break;case'ArrowUp':orbit.wantPhi=clamp(orbit.wantPhi-.09,.13,1.56);break;case'ArrowDown':orbit.wantPhi=clamp(orbit.wantPhi+.09,.13,1.56);break;case'+':case'=':orbit.wantRadius*=.9;break;case'-':orbit.wantRadius*=1.11;break;default:yes=false;}if(yes){e.preventDefault();currentView='custom';}});
     canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fail(new Error(t('Графическая сцена остановлена. Обновите страницу.')));});
     function updateLabels(){
       const show=$('showLabels').checked,labelRects=[];camera.updateMatrixWorld();
