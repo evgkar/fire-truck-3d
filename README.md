@@ -6,7 +6,7 @@ Interactive reconstruction of the Feuerwehr Liederbach MAN TGM / Schlingmann HLF
 
 ## Languages
 
-Deutsch is the initial default. English and Russian are available in the top-right selector. Language choice is saved locally. Switching language preserves the camera, equipment positions and training score. Interface, item names, descriptions, mass notes, source captions and accessibility labels are translated; original German lettering on the vehicle stays unchanged.
+The saved language is restored on load. On a first visit, the browser/system language is used when supported (Deutsch, English or Russian), with Deutsch as the fallback. The loading message is translated before the 3D libraries and model initialize. Language choice is saved locally. Switching language preserves the camera, equipment positions and training score. Interface, item names, descriptions, mass notes, source captions and accessibility labels are translated; original German lettering on the vehicle stays unchanged.
 
 ## Interaction
 
