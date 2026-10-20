@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "researchedAt": "2026-10-20",
+  "subject": "Feuerwehr Liederbach am Taunus, Florian Liederbach 46, MTK-LI 46, Schlingmann HLF 20 / MAN TGM 13.290 4×4 BL, 2016",
+  "summaryRu": "Повторный поиск не дал новых фотографий именно MTK-LI 46 с детализацией выше уже найденных оригиналов 4592×2584. Полезные новые материалы — официальные изображения и чертёж Jokon L935 для сравнения задних фонарей, документация звуковых сигналов Martin/Hänsch и муниципальное подтверждение ввода HLF20 в строй в 2016 году. Повторное изучение исходных фотографий выявило важное различие: четыре центральных раструба на крыше относятся к звуковому сигналу, а не к освещению.",
+  "exactVehicleSources": [
+    {
+      "id": "brigade-gallery",
+      "status": "previously_known_rechecked",
+      "pageUrl": "https://www.feuerwehr-liederbach.de/hlf-20/",
+      "manifest": "site/references/sources.json",
+      "imageCount": 7,
+      "bestOriginalResolutionPx": [4592, 2584],
+      "findingsRu": [
+        "Официальная страница по-прежнему указывает MAN TGM 13.290 4×4 BL, Schlingmann, 2016, экипаж 1/8.",
+        "FPN 10-2000 с AWR; вода 2000 л; пенообразователь 120 л; AutoMix 30 DE.",
+        "Старая ссылка /ausstattung/fahrzeuge/ теперь ведёт на современную страницу с той же фотографией HLF-6 и её уменьшенными вариантами. Нового набора высокого разрешения там нет."
+      ],
+      "limitsRu": "2025/09 в URL — дата размещения в структуре сайта, не доказанная дата съёмки. Точные габариты конкретной машины не опубликованы в проверенной карточке."
+    },
+    {
+      "id": "ws-delivery-gallery",
+      "status": "previously_known_rechecked",
+      "pageUrl": "https://www.ws-brandschutztechnik.de/referenzen/feuerwehrfahrzeuge",
+      "manifest": "site/references/ws-2016/sources.json",
+      "imageCount": 8,
+      "maxSidePx": 720,
+      "findingsRu": [
+        "Публичный HTML галереи ссылается непосредственно на уже сохранённые файлы 03–10 из папки Liederbach-HLF-20/2016-11-01.",
+        "Ссылки просмотрщика не дают отдельного варианта большего разрешения.",
+        "Фото 05 остаётся самым полезным подтверждённым видом открытого насосного отсека GR; 06 — прямым видом кормы; 08/09 — ранними видами кабины экипажа."
+      ],
+      "limitsRu": "Файлы поставщика малы: крупные надписи и органы управления видны, мелкие маркировки не следует восстанавливать как достоверные."
+    },
+    {
+      "id": "municipality-handover-2016",
+      "status": "new_primary_source",
+      "title": "Amtsblatt der Gemeinde Liederbach am Taunus, KW 47, 26. November 2016",
+      "url": "https://www.liederbach.eu/datei/de/gemeinde/-/2599/extLink",
+      "localPath": "site/references/research-v5/municipality-2016-47.pdf",
+      "page": 1,
+      "articleDate": "2016-11-22",
+      "findingsRu": [
+        "На первой странице муниципалитет сообщает о передаче ключей нового HLF20 на предыдущей субботней встрече пожарной части.",
+        "Перед вводом в эксплуатацию проводилось интенсивное обучение; подготовка и постройка заняли более четырёх лет.",
+        "HLF20 назначен первым выезжающим автомобилем для пожаров и технической помощи.",
+        "Он заменил 28-летний LF16. Это подтверждает, что фотографии старого Florian Liederbach 44 относятся к другой машине."
+      ],
+      "limitsRu": "В статье нет нового фото HLF20, чертежа, точных размеров или перечня светотехники. Муниципальный текст подтверждает хронологию, а не геометрию."
+    },
+    {
+      "id": "municipality-ceremony-2017",
+      "status": "new_primary_source",
+      "title": "Amtsblatt Gemeinde Liederbach, KW 21, 27. Mai 2017",
+      "url": "https://www.liederbach.eu/datei/de/gemeinde/-/2738/extLink",
+      "findingsRu": [
+        "В сообщении о заседании 11 мая объявлена официальная передача HLF20 с благословением 25 мая 2017 года в 13:30 на празднике пожарной части."
+      ],
+      "limitsRu": "Это объявление церемонии, не подтверждение новой даты постройки. Не следует заменять им официальный год изготовления 2016."
+    }
+  ],
+  "componentSources": [
+    {
+      "id": "jokon-l935",
+      "status": "new_primary_comparison_source",
+      "manufacturer": "Jokon",
+      "model": "L 935",
+      "pageUrl": "https://www.jokon.de/produkt/led-multifunktionsleuchte-l-935/",
+      "productImageUrl": "https://www.jokon.de/wp-content/uploads/2020/12/LED-MULTIFUNKTIONSLEUCHTE-L-935.jpg",
+      "drawingUrl": "https://www.jokon.de/wp-content/uploads/2020/11/LED-Multifunktionsleuchte-L-935-skizze.jpg",
+      "productImageLocalPath": "site/references/research-v5/jokon-l935-product.jpg",
+      "drawingLocalPath": "site/references/research-v5/jokon-l935-drawing.jpg",
+      "productImageResolutionPx": [1200, 1200],
+      "drawingResolutionPx": [1200, 1200],
+      "manufacturerDimensionsMm": [224.5, 104.5, 24],
+      "manufacturerFactsRu": [
+        "Производитель указывает функции указателя поворота, торможения и заднего габаритного света, а также встроенный отражатель.",
+        "Допускается горизонтальная и вертикальная установка.",
+        "Видимая центральная серебристая планка — хромированная декоративная деталь.",
+        "Чертёж показывает 224,5×104,5 мм по лицевой стороне и глубину 24 мм."
+      ],
+      "vehicleIdentification": "probable_visual_match",
+      "vehicleMatchRu": "Верхняя и нижняя задние группы на HLF-7 имеют очень близкую конфигурацию: наружная красная LED-рамка, прозрачное внутреннее кольцо, красный внутренний отражатель и узкая хромированная середина. Совпадает характерная форма всех четырёх вложенных элементов.",
+      "implementationRu": "Форма L935 пригодна как обоснованный прототип. Прозрачное кольцо можно трактовать как amber-секцию поворотника; это вывод из комбинации функций и красно-прозрачной конструкции, а не кадр включённого поворотника именно этой машины.",
+      "limitsRu": "Маркировка на фонарях MTK-LI 46 не читается. Артикул, напряжение, разводка и фактические размеры установленной детали не подтверждены; нельзя выдавать совпадение формы за проверенный заводской артикул."
+    },
+    {
+      "id": "martin-four-horns",
+      "status": "new_primary_comparison_source",
+      "manufacturer": "Max B. Martin",
+      "modelForComparison": "MARTIN-HORN 2298 GM",
+      "pageUrl": "https://maxbmartin.de/produkte/martin-horn-2298-gm/membran-schallbecher",
+      "datasheetUrl": "https://www.maxbmartin.de/fileadmin/produkte/MARTIN-Horn-2298-gm/Max-B-Martin_22_Produktblatt-MH_2298GM.pdf",
+      "installationDocumentUrl": "https://www.maxbmartin.de/fileadmin/produkte/Einbauanleitungen-Montage-Sets/Max-B-Martin_19_Einbauanleitung-2097-2298-Einzelseiten.pdf",
+      "faqUrl": "https://maxbmartin.de/seite-3/faq",
+      "manufacturerFactsRu": [
+        "Семейство 2298 GM использует четыре мембранных звуковых раструба.",
+        "Производитель описывает две пары раструбов с близкими частотами, создающими эффект тремоло.",
+        "Официальная страница запчастей показывает защитные сетки и разные диаметры раструбов."
+      ],
+      "vehicleEvidenceRu": "На HLF-5 отчётливо видны четыре центральных хромированных раструба с сетками и длинными корпусами за устьями. Это звуковой кластер, не ряд прожекторов.",
+      "vehicleIdentification": "equipment_type_confirmed_exact_model_unconfirmed",
+      "limitsRu": "Шильдик и компрессор конкретного автомобиля не видны; точная модель, настройка и запись звучания не установлены. Игровой синтезированный сигнал должен оставаться обозначенным как условный."
+    },
+    {
+      "id": "haensch-acoustic-2015",
+      "status": "new_primary_comparison_source",
+      "manufacturer": "Hänsch",
+      "title": "Tonfolgeanlagen 614/624 und 610/620, product sheet 2015",
+      "url": "https://www.fg-haensch.de/pdf_files/tonfolgeanlagen-6x0-6x4_2079_1.pdf",
+      "manufacturerFactsRu": [
+        "Документ соответствующей эпохи иллюстрирует круглые Druckkammerlautsprecher DKL 604/600 и отдельные усилители.",
+        "Для TFA620 описана конфигурация с двумя DKL600."
+      ],
+      "vehicleEvidenceRu": "По обе стороны четырёх центральных раструбов на HLF-5 стоят два круглых корпуса с чёрной серединой и белой эмблемой, визуально соответствующей Hänsch.",
+      "vehicleIdentification": "brand_visual_match_exact_model_unconfirmed",
+      "limitsRu": "Внешний вид не доказывает DKL600, DKL604 либо модель усилителя. Эти устройства следует моделировать как громкоговорители без вымышленной точной маркировки, а не как светящиеся фары."
+    }
+  ],
+  "photoObservations": [
+    {
+      "id": "roof-acoustic-layout",
+      "sourceId": "brigade-gallery",
+      "sourceImageUrl": "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-5.jpg",
+      "sourceResolutionPx": [4592, 2584],
+      "localCrop": "site/references/research-v5/roof-horns-and-searchlights.jpg",
+      "cropBoxPx": [1550, 0, 2750, 270],
+      "cropResolutionPx": [1200, 270],
+      "confidence": "high_for_layout_medium_for_brand",
+      "observationRu": "Между двумя синими блоками находятся четыре центральных хромированных звуковых раструба на общем основании и два отдельных круглых громкоговорителя. Имя crop содержит старое рабочее предположение searchlights; содержимое не следует трактовать как прожекторы.",
+      "modelActionRu": "Убрать у этих шести акустических деталей светящиеся лампы, оставить металл, сетки и чёрные центры."
+    },
+    {
+      "id": "extra-passenger-mirrors",
+      "sourceId": "brigade-gallery",
+      "sourceImageUrl": "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-5.jpg",
+      "sourceResolutionPx": [4592, 2584],
+      "localCrop": "site/references/research-v5/front-mirrors-right.jpg",
+      "cropBoxPx": [970, 250, 1440, 1100],
+      "cropResolutionPx": [470, 850],
+      "confidence": "high",
+      "observationRu": "Помимо двух основных зеркальных головок справа по ходу видны два дополнительных зеркала около стойки: верхнее направлено вниз перед кабиной, второе расположено ниже сбоку. Это асимметричное оснащение пассажирской стороны.",
+      "modelActionRu": "Не копировать дополнительные зеркала симметрично на водительскую сторону без референса. Сохранить наклон зеркальных поверхностей и отдельные опоры."
+    },
+    {
+      "id": "front-bumper-detail",
+      "sourceId": "brigade-gallery",
+      "sourceImageUrl": "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-5.jpg",
+      "sourceResolutionPx": [4592, 2584],
+      "localCrop": "site/references/research-v5/front-bumper.jpg",
+      "cropBoxPx": [1200, 1650, 3130, 2140],
+      "cropResolutionPx": [1930, 490],
+      "confidence": "high",
+      "observationRu": "Два буксировочных кольца свисают под крупными чёрными крышками по сторонам номера. В белом бампере четыре небольших чёрных круглых элемента и два малых белых прямоугольных лючка между рядами фар. Нижняя центральная решётка имеет ромбическую сетку и толстую тёмную рамку.",
+      "modelActionRu": "Учитывать разницу ромбической нижней решётки и мелких отверстий верхней. Назначение четырёх круглых элементов не подписывать как доказанное."
+    },
+    {
+      "id": "rear-light-shape",
+      "sourceId": "brigade-gallery",
+      "sourceImageUrl": "https://www.feuerwehr-liederbach.de/wp-content/uploads/2025/09/HLF-7.jpg",
+      "sourceResolutionPx": [4592, 2584],
+      "localCrops": [
+        {
+          "path": "site/references/research-v5/rear-upper-light-crop.jpg",
+          "cropBoxPx": [1400, 360, 1560, 640],
+          "resolutionPx": [160, 280]
+        },
+        {
+          "path": "site/references/research-v5/rear-lower-light-crop.jpg",
+          "cropBoxPx": [1440, 1330, 1620, 1635],
+          "resolutionPx": [180, 305]
+        }
+      ],
+      "confidence": "high_for_shape_probable_for_model",
+      "observationRu": "На каждом заднем углу две одинаково оформленные вертикальные группы, всего четыре. Средняя узкая серебристая вставка отражает окружение; вокруг неё красное поле и прозрачная петля. См. сравнение Jokon L935.",
+      "modelActionRu": "Задний поворотник не изображать отдельной низкой горизонтальной оранжевой пластиной. Не путать с боковым оранжевым маркером под нижним краем кузова."
+    },
+    {
+      "id": "rear-pump-layout",
+      "sourceId": "ws-delivery-gallery",
+      "sourceImageUrl": "https://www.ws-brandschutztechnik.de/fileadmin/user_upload/Bilder/Fahrzeuge/2016/Liederbach-HLF-20/2016-11-01-liederbach-hlf20-05.jpg",
+      "localImage": "site/references/ws-2016/liederbach-hlf20-05.jpg",
+      "sourceResolutionPx": [502, 720],
+      "confidence": "high_for_visible_layout",
+      "observationRu": "Насосный GR имеет синюю панель с четырьмя крупными штурвалами в ряд и двумя круглыми манометрами по центру ниже них. Передний корпус насоса светло-серый, внизу видны красные заглушки с тёмными удерживающими петлями. Над панелью — серебристый выдвижной лоток с чёрной ручкой, выше наклонная металлическая поверхность.",
+      "limitsRu": "Референс достаточно чёткий для размещения крупных деталей. Мелкие тексты, диаметры соединений и полную гидравлическую схему из него надёжно не восстановить."
+    },
+    {
+      "id": "rear-upper-modules",
+      "sourceId": "ws-delivery-gallery",
+      "sourceImageUrl": "https://www.ws-brandschutztechnik.de/fileadmin/user_upload/Bilder/Fahrzeuge/2016/Liederbach-HLF-20/2016-11-01-liederbach-hlf20-06.jpg",
+      "localImage": "site/references/ws-2016/liederbach-hlf20-06.jpg",
+      "sourceResolutionPx": [540, 720],
+      "confidence": "high_for_count_low_for_function",
+      "observationRu": "На выступающей красной полосе над задним роллетом видны четыре небольших тёмных прямоугольных модуля и светлый центральный корпус; сверху одиночный синий маяк.",
+      "limitsRu": "На этом неактивном фото нельзя доказать цвет свечения каждого модуля, точную модель либо функцию центрального корпуса. Не выдавать предположение о распределении сигналов за проверенную схему."
+    }
+  ],
+  "excludedNewMaterial": [
+    {
+      "pageUrl": "https://www.feuerwehr-liederbach.de/atemschutzuebung-23-05-2026/",
+      "imageUrl": "https://www.feuerwehr-liederbach.de/wp-content/uploads/2026/05/Atemschutzuebung_23052026-4.jpeg",
+      "localPath": "site/references/research-v5/Atemschutzuebung_23052026-4.jpeg",
+      "resolutionPx": [1200, 1600],
+      "reasonRu": "Новая официальная фотография показывает другой автомобиль: на двери StLF20 и номер MTK-LI140, новая генерация кабины MAN. Остальные пять фото этой серии относятся к тем же учениям и не подтверждают оснащение MTK-LI46."
+    },
+    {
+      "pageUrl": "https://www.kompled.de/produkte/heckbeleuchtung/lungo-heckleuchte-fr-sl-br/",
+      "imageUrl": "https://www.kompled.de/wp-content/uploads/2023/06/609235_Lungo_Heckleuchte_Web_Titel.webp",
+      "localPath": "site/references/research-v5/609235_Lungo_Heckleuchte_Web_Titel.webp",
+      "resolutionPx": [1200, 1200],
+      "reasonRu": "Проверен как возможный фонарь, но конструкция не совпадает с красно-прозрачными концентрическими группами HLF7. Не использован для геометрии."
+    },
+    {
+      "pageUrl": "https://bos-fahrzeuge.info/einsatzfahrzeuge/34912/Florian_Liederbach_44_aD/tab/detail",
+      "reasonRu": "Mercedes-Benz/Ziegler 1988, предыдущая машина Florian44. Её марки светотехники и оборудования не переносить на HLF20."
+    },
+    {
+      "pageUrl": "https://www.feuerwehrmagazin.de/nachrichten/news/ungewoehnlicher-fuhrpark-bei-der-feuerwehr-alsfeld-80468",
+      "reasonRu": "Alsfeld-Liederbach — другой населённый пункт, другой HLF20."
+    }
+  ],
+  "searchLimitsRu": [
+    "Поиск по точному номеру, радиопозывному и сочетанию Liederbach/Schlingmann не обнаружил нового официального заводского набора фотографий именно этой машины.",
+    "Имеющиеся 15 фотографий остаются основой. Каталоги деталей служат сравнительными источниками, а не доказательством комплектации конкретного VIN.",
+    "Точного водительского кокпита MTK-LI46, рабочего чертежа и заводской карты электрических/звуковых систем не найдено.",
+    "Новые исходные изображения и HTML сохранены только как локальные исследовательские материалы; разрешение на перепубликацию не установлено.",
+    "Модель может точнее воспроизводить видимые формы, но остаётся приближённой реконструкцией. Невидимые детали, подписи и функции не должны получать ложную точность."
+  ]
+}

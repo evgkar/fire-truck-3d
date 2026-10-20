@@ -19,12 +19,16 @@ The saved language is restored on load. On a first visit, the browser/system lan
 - “Hide cab” removes the cab shell and doors while retaining seats, dashboard, fixed mounts and portable equipment.
 - Storage-position buttons provide a keyboard and touch alternative to precise 3D selection.
 - “Unload all” and “Load all” handle the complete inventory.
+- On loading, three synchronized high-beam/hazard pulses welcome the visitor. Successful individual stowage triggers two short hazard pulses after docking; bulk loading does not trigger a siren or a pulse per item.
+- The brief synthesized two-tone siren plays when audio is permitted, otherwise after the first interaction. The speaker button mutes it immediately and remembers the preference. The Vehicle tab can replay the welcome. It is not a recording of this particular truck.
 
 ## Training
 
 Items are scattered randomly in front of the truck. Correct placement on the first attempt awards 100 points per item. A wrong mount forfeits that item's points. Dropping onto the ground is not a placement attempt. Loading everything automatically ends the exercise without extra points. The hover highlight never reveals which mount is correct.
 
 ## Reconstruction and limits
+
+The latest exterior pass refines separate optical chambers, reflector surfaces, indicator lenses, rear light clusters, passenger-side observation mirrors, cab handles, shutter bars and towing hardware. The four chrome roof fittings are now hollow horn bells instead of lamps, following the photographs. Paint, glass, rubber, fabric and brushed metal have separate surface responses. The visible shapes follow the vehicle photographs; the exact electrical assignment of unlit headlight/rear-light sections remains a reconstruction.
 
 This is a detailed procedural reconstruction for learning storage positions, not a photographic digital scan or a certified operational simulator. Visible crew-cab equipment and exterior details follow photographs. The exact Liederbach dashboard is not fully documented; its shape follows MAN TGM 13.290 reference vehicles from Dachau (2015) and Günding (2016). Pedals, gauge markings and individual switches remain approximate. Unconfirmed models, masses, dimensions and closed-case contents are identified as such.
 
@@ -36,6 +40,8 @@ The EISEMANN BSKA 13EV generator is documented at 820 × 440 × 580 mm and 150 k
 
 - [Feuerwehr Liederbach — HLF 20](https://www.feuerwehr-liederbach.de/hlf-20/): vehicle description and seven original photographs, up to 4592 × 2584.
 - [WS Brandschutztechnik — delivery photographs](https://www.ws-brandschutztechnik.de/referenzen/feuerwehrfahrzeuge): eight further images, including crew compartment and pump panel.
+- [Gemeinde Liederbach — Amtsblatt, 26 November 2016](https://www.liederbach.eu/datei/de/gemeinde/-/2599/extLink): official handover and commissioning history.
+- [Additional detail research](detail-research-v5.json): checked sources, visual observations, uncertain identifications and excluded vehicles.
 - [Kreisbrandinspektion Dachau — Günding 2016](https://www.kbi-dachau.de/florian-guending-401.html): MAN TGM cockpit reference.
 - [Kreisbrandinspektion Dachau — Dachau 2015](https://www.kbi-dachau.de/florian-dachau-401-und-402.html): MAN TGM dashboard and seat reference.
 - [Original video, 1:34–1:45](https://youtu.be/vlrIXLORpqk?t=94).
