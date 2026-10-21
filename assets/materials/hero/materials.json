@@ -1,0 +1,359 @@
+{
+  "version": 1,
+  "method": "Authored PBR approximations, no photograph-derived lighting.",
+  "channels": {
+    "baseColor": "sRGB",
+    "normal": "linear, tangent OpenGL +Y",
+    "metallicRoughness": "linear: R=unused white, G=roughness, B=metallic"
+  },
+  "materials": {
+    "training_ob_hero_paint": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "textures": {
+        "baseColor": {
+          "path": "assets/materials/hero/paint-base.png",
+          "wrap": "repeat"
+        },
+        "normal": {
+          "path": "assets/materials/hero/paint-normal.png",
+          "wrap": "repeat",
+          "scale": 0.6
+        },
+        "metallicRoughness": {
+          "path": "assets/materials/hero/paint-orm.png",
+          "wrap": "repeat"
+        }
+      },
+      "extras": {
+        "authoredSurface": true,
+        "photoMeasured": false,
+        "tileSizeMetres": 0.14,
+        "family": "powder-coat",
+        "normalConvention": "OpenGL +Y"
+      }
+    },
+    "training_ob_hero_plastic": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "textures": {
+        "baseColor": {
+          "path": "assets/materials/hero/plastic-base.png",
+          "wrap": "repeat"
+        },
+        "normal": {
+          "path": "assets/materials/hero/plastic-normal.png",
+          "wrap": "repeat",
+          "scale": 0.6
+        },
+        "metallicRoughness": {
+          "path": "assets/materials/hero/plastic-orm.png",
+          "wrap": "repeat"
+        }
+      },
+      "extras": {
+        "authoredSurface": true,
+        "photoMeasured": false,
+        "tileSizeMetres": 0.14,
+        "family": "moulded-plastic",
+        "normalConvention": "OpenGL +Y"
+      }
+    },
+    "training_ob_hero_cast": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "textures": {
+        "baseColor": {
+          "path": "assets/materials/hero/cast-base.png",
+          "wrap": "repeat"
+        },
+        "normal": {
+          "path": "assets/materials/hero/cast-normal.png",
+          "wrap": "repeat",
+          "scale": 0.6
+        },
+        "metallicRoughness": {
+          "path": "assets/materials/hero/cast-orm.png",
+          "wrap": "repeat"
+        }
+      },
+      "extras": {
+        "authoredSurface": true,
+        "photoMeasured": false,
+        "tileSizeMetres": 0.14,
+        "family": "cast",
+        "normalConvention": "OpenGL +Y"
+      }
+    },
+    "training_ob_hero_steel": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "textures": {
+        "baseColor": {
+          "path": "assets/materials/hero/steel-base.png",
+          "wrap": "repeat"
+        },
+        "normal": {
+          "path": "assets/materials/hero/steel-normal.png",
+          "wrap": "repeat",
+          "scale": 0.6
+        },
+        "metallicRoughness": {
+          "path": "assets/materials/hero/steel-orm.png",
+          "wrap": "repeat"
+        }
+      },
+      "extras": {
+        "authoredSurface": true,
+        "photoMeasured": false,
+        "tileSizeMetres": 0.14,
+        "family": "brushed",
+        "normalConvention": "OpenGL +Y"
+      }
+    },
+    "training_ob_hero_rubber": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "textures": {
+        "baseColor": {
+          "path": "assets/materials/hero/rubber-base.png",
+          "wrap": "repeat"
+        },
+        "normal": {
+          "path": "assets/materials/hero/rubber-normal.png",
+          "wrap": "repeat",
+          "scale": 0.6
+        },
+        "metallicRoughness": {
+          "path": "assets/materials/hero/rubber-orm.png",
+          "wrap": "repeat"
+        }
+      },
+      "extras": {
+        "authoredSurface": true,
+        "photoMeasured": false,
+        "tileSizeMetres": 0.14,
+        "family": "rubber",
+        "normalConvention": "OpenGL +Y"
+      }
+    },
+    "training_ob_hero_olive": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "textures": {
+        "baseColor": {
+          "path": "assets/materials/hero/olive-base.png",
+          "wrap": "repeat"
+        },
+        "normal": {
+          "path": "assets/materials/hero/olive-normal.png",
+          "wrap": "repeat",
+          "scale": 0.6
+        },
+        "metallicRoughness": {
+          "path": "assets/materials/hero/olive-orm.png",
+          "wrap": "repeat"
+        }
+      },
+      "extras": {
+        "authoredSurface": true,
+        "photoMeasured": false,
+        "tileSizeMetres": 0.14,
+        "family": "moulded-plastic",
+        "normalConvention": "OpenGL +Y"
+      }
+    },
+    "training_ob_hero_red": {
+      "color": [
+        0.55,
+        0.015,
+        0.022,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "textures": {
+        "normal": {
+          "path": "assets/materials/hero/paint-normal.png",
+          "wrap": "repeat",
+          "scale": 0.6
+        },
+        "metallicRoughness": {
+          "path": "assets/materials/hero/paint-orm.png",
+          "wrap": "repeat"
+        }
+      },
+      "extras": {
+        "authoredSurface": true,
+        "photoMeasured": false,
+        "tileSizeMetres": 0.14,
+        "family": "powder-coat",
+        "normalConvention": "OpenGL +Y"
+      }
+    },
+    "training_ob_hero_labels": {
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.6,
+      "alphaMode": "BLEND",
+      "doubleSided": false,
+      "textures": {
+        "baseColor": {
+          "path": "assets/materials/hero/generator-labels.png",
+          "wrap": "clamp"
+        }
+      },
+      "extras": {
+        "authoredSurface": true,
+        "photoMeasured": false,
+        "source": "Oberhaching user-12",
+        "qualification": "Confirmed inscriptions; typographic reconstruction, not original logo artwork."
+      }
+    }
+  },
+  "labelAtlas": {
+    "Eisemann": [
+      0,
+      0.0,
+      1,
+      0.25
+    ],
+    "BSKA 13": [
+      0,
+      0.25,
+      1,
+      0.5
+    ],
+    "HIGH PROTECTION": [
+      0,
+      0.5,
+      1,
+      0.75
+    ],
+    "Ölfilter": [
+      0,
+      0.75,
+      1,
+      1.0
+    ]
+  },
+  "files": {
+    "cast-base.png": {
+      "bytes": 56169,
+      "sha256": "8de2e573d2d212a9a8baccd90d1e230a7221a07856dee16c2e889c0ff8b498e4"
+    },
+    "cast-normal.png": {
+      "bytes": 308179,
+      "sha256": "4712bfc69ecf801d77c92584203deb7ca11392072505247fab741f933ae25d84"
+    },
+    "cast-orm.png": {
+      "bytes": 82231,
+      "sha256": "3c1f5dc580014ab93ec8f6c39d3b6fb9d71c6b3b0693c0041367682421fd7ae3"
+    },
+    "generator-labels.png": {
+      "bytes": 149931,
+      "sha256": "d708f9b9d3aaf519b3b6b96440410353bb19205960119f96ccb0b9fe91c9a13e"
+    },
+    "olive-base.png": {
+      "bytes": 47427,
+      "sha256": "69a584b6b713a0a6063e39abbf37f9eb87d217fdb98ce1850cb2fdb806ad3dfa"
+    },
+    "olive-normal.png": {
+      "bytes": 352524,
+      "sha256": "019a6d957ab95473470786837f8f133d2ad7fa5b344fb3d238553ab9a75b1b15"
+    },
+    "olive-orm.png": {
+      "bytes": 62093,
+      "sha256": "0dc98482ff1a62f2ad8fff5757c6f327ae87938c55d74108f3357ee731501d9f"
+    },
+    "paint-base.png": {
+      "bytes": 47618,
+      "sha256": "fb7baeb060dc3cb66aeda485910142d5dd21b5da001d1d32c350daa0cdf3c8cd"
+    },
+    "paint-normal.png": {
+      "bytes": 351818,
+      "sha256": "3b67feb576dfced276ce262107a0ed8cadaec1c3e2f5bfd822b63be14c82d043"
+    },
+    "paint-orm.png": {
+      "bytes": 62632,
+      "sha256": "bb914b06ef61692c2d9fd856531db3103894c53d2b38e0f18800acac60075fcc"
+    },
+    "plastic-base.png": {
+      "bytes": 47413,
+      "sha256": "ef733e705139731d1124b28a3cca6c806ffe9fc1c7948e7cdf9ddebbdc823096"
+    },
+    "plastic-normal.png": {
+      "bytes": 350034,
+      "sha256": "097eac945e632b44d5b8d6d403c30e64073149ef7fb4b0309847a744e6e91e02"
+    },
+    "plastic-orm.png": {
+      "bytes": 61972,
+      "sha256": "1b29a0f4f0b4d9425a002282d059c75845d958a3e59f444e18283102e046f0fd"
+    },
+    "rubber-base.png": {
+      "bytes": 46221,
+      "sha256": "49bb585700467f04877dbbec9fff35a80dd73dc657e4655953e72f387bc1f97b"
+    },
+    "rubber-normal.png": {
+      "bytes": 288085,
+      "sha256": "1f901ae69cb7e1a90acc0e7347eda3cdccd1a11324f9d1b10867108ca558f010"
+    },
+    "rubber-orm.png": {
+      "bytes": 72776,
+      "sha256": "658b0318f46042193097f75f2cc1c41c287e9a2e88253f97a1a3d692fef51858"
+    },
+    "steel-base.png": {
+      "bytes": 50180,
+      "sha256": "84a74691864413d05d6c78499da8e4f541cd4681924cf89a09ddc080995ae119"
+    },
+    "steel-normal.png": {
+      "bytes": 116146,
+      "sha256": "e0339b3eb789de34eb897114662cb93f7686041bdb82e2d6c6980a34cbdbae02"
+    },
+    "steel-orm.png": {
+      "bytes": 39404,
+      "sha256": "33fe0b04e62ef2f5bed70432316a2f0723d4c5d6bc2203855d7846861eeb179e"
+    }
+  }
+}

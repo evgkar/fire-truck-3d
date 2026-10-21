@@ -14126,6 +14126,60 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
   }
 }
 
+/* A single soft green pulse on successful docking, following the real mesh. */
+(function(root){
+  'use strict';
+  function create(THREE, options={}){
+    const active=new Map(), duration=options.reducedMotion?1.25:1.15;
+    function remove(id){
+      const entry=active.get(id);if(!entry)return;
+      entry.item.group.remove(entry.group);entry.material.dispose();active.delete(id);
+    }
+    function burst(item){
+      remove(item.id);
+      if(!item.group.visible)return;
+      const group=new THREE.Group();group.name='Successful placement glow';group.userData.placementFeedback=true;
+      const material=new THREE.ShaderMaterial({
+        uniforms:{strength:{value:0},rimColor:{value:new THREE.Color(0x22ff86)}},
+        vertexShader:`varying vec3 vNormal; varying vec3 vView;
+          void main(){vec3 p=position+normal*0.003;
+            vec4 mv=modelViewMatrix*vec4(p,1.0);
+            vNormal=normalize(normalMatrix*normal);vView=-mv.xyz;
+            gl_Position=projectionMatrix*mv;}`,
+        fragmentShader:`uniform float strength;uniform vec3 rimColor;
+          varying vec3 vNormal;varying vec3 vView;
+          void main(){float rim=pow(1.0-abs(dot(normalize(vNormal),normalize(vView))),1.7);
+            gl_FragColor=vec4(rimColor,strength*(0.10+0.90*rim));}`,
+        transparent:true,depthWrite:false,depthTest:true,blending:THREE.AdditiveBlending,
+        polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1,toneMapped:false
+      });
+      item.group.updateMatrixWorld(true);
+      const inverse=new THREE.Matrix4().copy(item.group.matrixWorld).invert();
+      item.group.traverse(object=>{
+        if(!object.isMesh||!object.visible||object.userData.placementFeedback)return;
+        for(let parent=object.parent;parent&&parent!==item.group;parent=parent.parent)if(!parent.visible||parent.userData.placementFeedback)return;
+        const mesh=new THREE.Mesh(object.geometry,material);
+        mesh.matrix.copy(inverse).multiply(object.matrixWorld);mesh.matrixAutoUpdate=false;
+        mesh.renderOrder=4;mesh.userData.placementFeedback=true;group.add(mesh);
+      });
+      item.group.add(group);active.set(item.id,{item,group,material,elapsed:0});
+    }
+    function update(dt){
+      for(const [id,entry] of active){
+        entry.elapsed+=Math.max(0,dt);
+        if(entry.elapsed>=duration||!entry.item.group.visible){remove(id);continue;}
+        const u=entry.elapsed/duration;
+        const attack=Math.min(1,u/(options.reducedMotion?.24:.12));
+        const fade=Math.pow(1-u,1.5);
+        entry.material.uniforms.strength.value=attack*fade*(options.reducedMotion?.48:1.35);
+      }
+    }
+    function clear(){for(const id of [...active.keys()])remove(id);}
+    return {burst,update,clear,dispose:clear,get size(){return active.size;}};
+  }
+  const api={create};if(typeof module==='object'&&module.exports)module.exports=api;else root.PlacementFeedback=api;
+})(typeof window==='object'?window:globalThis);
+
 /* Deterministic inventory and scoring rules, independent of rendering. */
 (function(root){
   'use strict';
@@ -14556,6 +14610,33 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
     check(buckets.length > 0, 'no geometry');
     model.meshes = [];
     model.geometryBuckets = buckets;
+    // Keep the embedded PBR maps with the geometry. No external image URLs are
+    // accepted here, including on the authenticated deployment.
+    if (gltf.images && gltf.images.length) {
+      const images = gltf.images.map(image => {
+        check(!image.uri && ['image/png', 'image/jpeg'].includes(image.mimeType), 'unsupported embedded image');
+        const view = gltf.bufferViews[image.bufferView];
+        const offset = view && (view.byteOffset || 0);
+        check(view && view.buffer === 0 && !view.byteStride && Number.isInteger(offset) && offset >= 0 &&
+          Number.isInteger(view.byteLength) && view.byteLength > 0 &&
+          offset + view.byteLength <= gltf.buffers[0].byteLength, 'image outside binary buffer');
+        return {bytes: new Uint8Array(buffer, binStart + offset, view.byteLength), mimeType: image.mimeType};
+      });
+      const textures = gltf.textures || [], samplers = gltf.samplers || [];
+      for (const texture of textures) {
+        check(Number.isInteger(texture.source) && images[texture.source], 'invalid image source');
+        check(texture.sampler == null || (Number.isInteger(texture.sampler) && samplers[texture.sampler]), 'invalid image sampler');
+      }
+      for (const material of gltf.materials) {
+        const pbr = material.pbrMetallicRoughness || {};
+        for (const map of [pbr.baseColorTexture, pbr.metallicRoughnessTexture, material.normalTexture, material.occlusionTexture, material.emissiveTexture]) {
+          if (!map) continue;
+          check(Number.isInteger(map.index) && textures[map.index], 'invalid material texture');
+          check((map.texCoord || 0) === 0 && !map.extensions, 'unsupported texture coordinates');
+        }
+      }
+      model.embeddedMaterials = {definitions: gltf.materials, textures, samplers, images};
+    }
     model.assetPackage = {id: metadata.id, schema: SCHEMA, version: VERSION, stats: metadata.stats};
     if (metadataUrl) {
       const resolve = relative => {
@@ -14591,7 +14672,66 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
     notify({phase: 'ready', loaded: binary.byteLength, total: binary.byteLength});
     return model;
   }
-  const api = {load, parse, schema: SCHEMA, version: VERSION};
+  async function applyMaterials(THREE, model, materials, options = {}) {
+    const bundle = model.embeddedMaterials;
+    if (!bundle) return materials;
+    const cache = new Map(), decoded = new Map();
+    const decode = options.decodeImage || (image => new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(new Blob([image.bytes], {type: image.mimeType}));
+      new THREE.ImageLoader().load(url, value => { URL.revokeObjectURL(url); resolve(value); }, undefined,
+        () => { URL.revokeObjectURL(url); reject(new Error('Vehicle GLB: embedded texture could not be decoded')); });
+    }));
+    function texture(info, color) {
+      if (!info) return Promise.resolve(null);
+      const key = info.index + (color ? ':srgb' : ':linear');
+      if (!cache.has(key)) cache.set(key, (async () => {
+        const entry = bundle.textures[info.index], source = entry.source;
+        if (!decoded.has(source)) decoded.set(source, Promise.resolve(decode(bundle.images[source])));
+        const tex = new THREE.Texture(await decoded.get(source)), sampler = bundle.samplers[entry.sampler] || {};
+        check(sampler.magFilter == null || [9728,9729].includes(sampler.magFilter), 'unsupported sampler magnification filter');
+        const wraps = {10497: THREE.RepeatWrapping, 33071: THREE.ClampToEdgeWrapping, 33648: THREE.MirroredRepeatWrapping};
+        const filters = {9728: THREE.NearestFilter, 9729: THREE.LinearFilter, 9984: THREE.NearestMipmapNearestFilter,
+          9985: THREE.LinearMipmapNearestFilter, 9986: THREE.NearestMipmapLinearFilter, 9987: THREE.LinearMipmapLinearFilter};
+        tex.flipY = false; // glTF uses image-top origin UVs, including normal maps.
+        tex.encoding = color ? THREE.sRGBEncoding : THREE.LinearEncoding;
+        tex.wrapS = wraps[sampler.wrapS || 10497]; tex.wrapT = wraps[sampler.wrapT || 10497];
+        tex.magFilter = filters[sampler.magFilter || 9729]; tex.minFilter = filters[sampler.minFilter || 9987];
+        check(tex.wrapS !== undefined && tex.wrapT !== undefined && tex.minFilter !== undefined && tex.magFilter !== undefined,
+          'unsupported sampler setting');
+        tex.anisotropy = Math.min(8, options.maxAnisotropy || 8); tex.needsUpdate = true;
+        return tex;
+      })());
+      return cache.get(key);
+    }
+    await Promise.all(bundle.definitions.map(async definition => {
+      const pbr = definition.pbrMetallicRoughness || {};
+      if (!pbr.baseColorTexture && !pbr.metallicRoughnessTexture && !definition.normalTexture && !definition.occlusionTexture && !definition.emissiveTexture) return;
+      const material = materials[definition.name];
+      check(material, 'embedded material has no runtime counterpart');
+      // Authored PBR maps supersede the generic procedural surface treatment.
+      material.bumpMap = null; material.clearcoat = 0; material.clearcoatNormalMap = null;
+      const color = pbr.baseColorFactor || [1, 1, 1, 1];
+      material.color.setRGB(color[0], color[1], color[2]); material.opacity = color[3];
+      material.metalness = pbr.metallicFactor == null ? 1 : pbr.metallicFactor;
+      material.roughness = pbr.roughnessFactor == null ? 1 : pbr.roughnessFactor;
+      const [base, mr, normal, ao, emissive] = await Promise.all([
+        texture(pbr.baseColorTexture, true), texture(pbr.metallicRoughnessTexture, false),
+        texture(definition.normalTexture, false), texture(definition.occlusionTexture, false), texture(definition.emissiveTexture, true)
+      ]);
+      material.map = base; material.roughnessMap = mr; material.metalnessMap = mr;
+      material.normalMap = normal; material.aoMap = ao; material.emissiveMap = emissive;
+      const scale = definition.normalTexture && definition.normalTexture.scale;
+      material.normalScale.setScalar(scale == null ? 1 : scale);
+      material.aoMapIntensity = definition.occlusionTexture && definition.occlusionTexture.strength != null ? definition.occlusionTexture.strength : 1;
+      if (definition.emissiveFactor) material.emissive.fromArray(definition.emissiveFactor);
+      material.transparent = definition.alphaMode === 'BLEND'; material.depthWrite = !material.transparent;
+      material.alphaTest = definition.alphaMode === 'MASK' ? (definition.alphaCutoff == null ? .5 : definition.alphaCutoff) : 0;
+      material.side = definition.doubleSided ? THREE.DoubleSide : THREE.FrontSide;
+      material.needsUpdate = true;
+    }));
+    return materials;
+  }
+  const api = {load, parse, applyMaterials, schema: SCHEMA, version: VERSION};
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.VehicleAssets = api;
 })(typeof window === 'object' ? window : globalThis);
@@ -14661,6 +14801,7 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
       scene.add(new THREE.HemisphereLight(0xdcecff,0x6c685e,1.2));
       for(const [position,intensity] of [[[2,-3,4],3.3],[[-3,2,2],2]]){const light=new THREE.DirectionalLight(0xfff2df,intensity);light.position.set(...position);scene.add(light);}
       const group=item.group.clone(true);group.visible=true;group.position.set(0,0,0);group.quaternion.identity();scene.add(group);
+      const transient=[];group.traverse(object=>{if(object.userData.placementFeedback)transient.push(object);});for(const object of transient)if(object.parent)object.parent.remove(object);
       const box=new THREE.Box3().setFromObject(group),center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3());group.position.sub(center);
       const camera=new THREE.PerspectiveCamera(30,560/380,.005,80);camera.up.set(0,0,1);
       const radius=Math.max(size.length()/2,.06),distance=radius/Math.sin(15*Math.PI/180)*1.12;
@@ -15013,7 +15154,7 @@ window.TRAINING_REFERENCES={"schemaVersion":1,"researchedAt":"2026-10-21","statu
   return { point, vector };
 });
 
-window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20", "title": "Schlingmann HLF 20", "station": "Feuerwehr Liederbach", "chassis": "MAN TGM 13.290", "badge": "HLF 20", "metadata": "assets/liederbach/metadata.json?v=23b28910febb", "researchNote": {"de": "Die sichtbaren Details folgen den Liederbacher Fotos. Das nicht vollständig fotografierte Armaturenbrett wurde anhand anderer MAN TGM von 2015–2016 rekonstruiert. Einzelne Maße, Bedienelemente und Gewichte bleiben Schätzungen.", "en": "Visible details follow the Liederbach photographs. The incompletely photographed dashboard was reconstructed using other 2015–2016 MAN TGM vehicles. Some dimensions, controls and masses remain estimates.", "ru": "Видимые детали сверены с фотографиями Liederbach. Не полностью снятая приборная панель восстановлена по другим MAN TGM 2015–2016. Отдельные размеры, органы управления и массы остаются оценочными."}}, {"id": "oberhaching", "name": "Mercedes-Benz · Ziegler LF 16/12", "title": "Ziegler LF 16/12", "station": "Feuerwehr Oberhaching · 40/1", "chassis": "Mercedes-Benz Atego 1528 · 2003", "badge": "LF 16/12", "metadata": "assets/oberhaching/metadata.json?v=f944362c70dc", "researchNote": {"de": "Die Geräteräume folgen den bereitgestellten Fotos und der Miro-Beladeliste. Außenform und Fahrzeugdaten wurden mit den offiziellen Oberhachinger Fotos abgeglichen. Verdeckte Kofferinhalte werden beschrieben; nicht sichtbare Details, Maße, Massen und das Fahrer-Cockpit sind angenäherte Rekonstruktionen.", "en": "Compartments follow the supplied photographs and Miro inventory. Exterior shape and vehicle data were cross-checked against official Oberhaching photographs. Closed-case contents are described; unseen details, dimensions, masses and the driver cockpit are approximate reconstructions.", "ru": "Отсеки восстановлены по вашим фотографиям и списку Miro. Внешний вид и характеристики сверены с официальными фотографиями Oberhaching. Содержимое закрытых ящиков описано; невидимые детали, размеры, массы и кокпит водителя восстановлены приблизительно."}, "sources": [{"title": "Feuerwehr Oberhaching — LF 16/12 · 40/1", "url": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/", "de": "Originalfotos und technische Fahrzeugdaten.", "en": "Original photographs and vehicle specifications.", "ru": "Оригинальные фотографии и технические характеристики."}, {"title": "Miro — Oberhaching 40/1", "url": "https://miro.com/app/board/uXjVKwGF5Ug=/", "de": "Vom Nutzer bereitgestellte Beladeliste und beschriftete Fotos.", "en": "User-provided inventory and annotated photographs.", "ru": "Предоставленные вами списки оборудования и фотографии с подписями."}, {"title": "Beladung / Inventory / Каталог", "url": "oberhaching-catalog.json", "de": "Benennung, Quellen und Grenzen der Identifikation für jedes Gerät.", "en": "Names, sources and identification limits for each item.", "ru": "Названия, источники и ограничения идентификации каждого предмета."}]}];
+window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20", "title": "Schlingmann HLF 20", "station": "Feuerwehr Liederbach", "chassis": "MAN TGM 13.290", "badge": "HLF 20", "metadata": "assets/liederbach/metadata.json?v=23b28910febb", "researchNote": {"de": "Die sichtbaren Details folgen den Liederbacher Fotos. Das nicht vollständig fotografierte Armaturenbrett wurde anhand anderer MAN TGM von 2015–2016 rekonstruiert. Einzelne Maße, Bedienelemente und Gewichte bleiben Schätzungen.", "en": "Visible details follow the Liederbach photographs. The incompletely photographed dashboard was reconstructed using other 2015–2016 MAN TGM vehicles. Some dimensions, controls and masses remain estimates.", "ru": "Видимые детали сверены с фотографиями Liederbach. Не полностью снятая приборная панель восстановлена по другим MAN TGM 2015–2016. Отдельные размеры, органы управления и массы остаются оценочными."}}, {"id": "oberhaching", "name": "Mercedes-Benz · Ziegler LF 16/12", "title": "Ziegler LF 16/12", "station": "Feuerwehr Oberhaching · 40/1", "chassis": "Mercedes-Benz Atego 1528 · 2003", "badge": "LF 16/12", "metadata": "assets/oberhaching/metadata.json?v=0575cd0fc472", "researchNote": {"de": "Die Geräteräume folgen den bereitgestellten Fotos und der Miro-Beladeliste. Außenform und Fahrzeugdaten wurden mit den offiziellen Oberhachinger Fotos abgeglichen. Verdeckte Kofferinhalte werden beschrieben; nicht sichtbare Details, Maße, Massen und das Fahrer-Cockpit sind angenäherte Rekonstruktionen.", "en": "Compartments follow the supplied photographs and Miro inventory. Exterior shape and vehicle data were cross-checked against official Oberhaching photographs. Closed-case contents are described; unseen details, dimensions, masses and the driver cockpit are approximate reconstructions.", "ru": "Отсеки восстановлены по вашим фотографиям и списку Miro. Внешний вид и характеристики сверены с официальными фотографиями Oberhaching. Содержимое закрытых ящиков описано; невидимые детали, размеры, массы и кокпит водителя восстановлены приблизительно."}, "sources": [{"title": "Feuerwehr Oberhaching — LF 16/12 · 40/1", "url": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/", "de": "Originalfotos und technische Fahrzeugdaten.", "en": "Original photographs and vehicle specifications.", "ru": "Оригинальные фотографии и технические характеристики."}, {"title": "Miro — Oberhaching 40/1", "url": "https://miro.com/app/board/uXjVKwGF5Ug=/", "de": "Vom Nutzer bereitgestellte Beladeliste und beschriftete Fotos.", "en": "User-provided inventory and annotated photographs.", "ru": "Предоставленные вами списки оборудования и фотографии с подписями."}, {"title": "Beladung / Inventory / Каталог", "url": "oberhaching-catalog.json", "de": "Benennung, Quellen und Grenzen der Identifikation für jedes Gerät.", "en": "Names, sources and identification limits for each item.", "ru": "Названия, источники и ограничения идентификации каждого предмета."}]}];
 (async function(){
   'use strict';
   const $=id=>document.getElementById(id);
@@ -15045,6 +15186,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
     const canvas=renderer.domElement;canvas.tabIndex=0;canvas.setAttribute('aria-label',t('3D-сцена: стрелки вращают камеру, плюс и минус меняют масштаб, Esc отпускает инструмент.'));
     const camera=new THREE.PerspectiveCamera(39,1,.025,180);camera.up.set(0,0,1);
     const materials=setupRealisticMaterials(THREE,model),fallback=new THREE.MeshStandardMaterial({color:0x777777});
+    await VehicleAssets.applyMaterials(THREE,model,materials,{maxAnisotropy:renderer.capabilities.getMaxAnisotropy()});
     const pickMeshes=[],signalPickMeshes=[],slotMeshes=[],actuators=[],actById=new Map(),items=[],byId=new Map(),staticBatches={},shellBatches={},shellNames=new Set(model.cabinShellNames||[]);
     const session=new TrainingSession(model.items),physics=new EquipmentPhysics(CANNON,model.physicsProfile);
     let selected=null,tab='equipment',heldSticky=false,carryHeight=1.35,drag=null,lastPointer={x:0,y:0},noticeUntil=0,firstFrame=true,labelTick=0,actionRevision=0,inspectedItem=null,activeSlot=null,pointerInside=false,lastTap=null;
@@ -15055,6 +15197,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
     const target=new THREE.Vector3(.1,0,1.45),wantTarget=target.clone();
     const orbit={theta:-2.28,phi:1.34,radius:15,wantTheta:-2.28,wantPhi:1.34,wantRadius:15};let currentView='overview';
     const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const placementFeedback=PlacementFeedback.create(THREE,{reducedMotion:reduced});
     const vehicleViewSpan=vehicleInfo.id==='oberhaching'?10.4:9.1;
     const welcomeTour=new WelcomeCamera.WelcomeTour(reduced);
     function syncIdentity(){
@@ -15099,6 +15242,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
       if(!parent)throw new Error('Missing geometry owner: '+b.id);
       const geometry=new THREE.BufferGeometry();
       geometry.setAttribute('position',new THREE.BufferAttribute(b.positions,3));geometry.setAttribute('normal',new THREE.BufferAttribute(b.normals,3));geometry.setAttribute('uv',new THREE.BufferAttribute(b.uvs,2));geometry.setIndex(new THREE.BufferAttribute(b.indices,1));geometry.computeBoundingSphere();
+      if(materials[b.material]?.aoMap)geometry.setAttribute('uv2',geometry.getAttribute('uv'));
       const mesh=new THREE.Mesh(geometry,materials[b.material]||fallback);mesh.castShadow=b.material!=='glass';mesh.receiveShadow=true;
       if(b.owner==='item')mesh.userData.itemId=b.id;else if(b.owner==='actuator')mesh.userData.actuatorId=b.id;else if(b.owner==='shell')mesh.userData.cabinShell=true;
       parent.add(mesh);pickMeshes.push(mesh);
@@ -15295,6 +15439,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
     }
     function animate(item,positions,done,duration){physics.stow(item.id);const points=[item.group.position.toArray(),...positions],motion=TrainerMotion.create(points);item.transition={elapsed:0,duration:duration||clamp(motion.length/3.8,1.1,3.8),motion,points:points.map(V),fromQuaternion:item.group.quaternion.clone(),docking:!!item.mountActuator&&session.get(item.id).status==='stowed',done};}
     function extract(item,destination,done){
+      placementFeedback.clear();
       if(!session.take(item.id)){notice(t('Этот предмет уже зачтён. Выберите оставшийся инструмент.'));return;}
       openBay(item.bay);const out=outsidePosition(item);
       const route=[...(item.extractionWaypoints||[]),out];if(destination){const side=out[1]>=0?1:-1;route.push([-4.8,side*2.45,Math.max(item.home[2],1.4)]);route.push(destination);}
@@ -15324,7 +15469,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
       physics.release();heldSticky=false;clearSlotHover();
       const out=outsidePosition(item),route=TrainerMotion.route(item.group.position.toArray(),item.home,out,item.dimensions,item.bay);
       if(item.extractionWaypoints){route.pop();route.push(...item.extractionWaypoints.slice().reverse(),item.home);}
-      animate(item,route.slice(1),()=>{item.slotSuccessUntil=performance.now()+650;signals.success();exercises?.onDocked(item.id);});
+      animate(item,route.slice(1),()=>{item.slotSuccessUntil=performance.now()+1150;placementFeedback.burst(item);signals.success();exercises?.onDocked(item.id);});
       if(exerciseResult){notice(({de:'Richtig verstaut.',en:'Correctly placed.',ru:'Правильно уложено.'})[I.language]+(result.points?' +100':''),'success');updateUI();return;}
       notice(result.finished?t('Все предметы уложены. Итог: ')+session.score+t(' очков.'):name(item)+t(' — на своём месте.')+(result.points?t(' +100 очков'):''),'success');updateUI();
     }
@@ -15510,6 +15655,7 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
       const span=Math.max(item.dimensions[0]/Math.max(.4,camera.aspect),item.dimensions[2],.38);orbit.wantRadius=span/.6+.4;
     }
     function resetExerciseLayout({outsideIds=[],visibleIds,openBays=[]}){
+      placementFeedback.clear();
       actionRevision++;cancelWelcome();physics.release();heldSticky=false;drag=null;lastTap=null;inspectedItem=null;selected=null;clearSlotHover();session.end();session.loadAll();
       const outside=new Set(outsideIds),visible=visibleIds?new Set(visibleIds):new Set(items.map(i=>i.id));
       const staged=items.filter(item=>outside.has(item.id)&&visible.has(item.id));
@@ -15566,7 +15712,7 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
       camera.position.set(target.x+orbit.radius*Math.sin(orbit.phi)*Math.cos(orbit.theta),target.y+orbit.radius*Math.sin(orbit.phi)*Math.sin(orbit.theta),target.z+orbit.radius*Math.cos(orbit.phi));camera.lookAt(target);
       for(const a of actuators){a.value+=(Number(a.open)-a.value)*(reduced?1:1-Math.exp(-dt*9));if(Math.abs(Number(a.open)-a.value)<.002)a.value=Number(a.open);if(a.kind==='door')a.group.rotation.z=a.angle*a.value;else a.group.scale.z=1-.96*a.value;}
       syncMounts();
-      physics.step(dt);let transitionsFinished=false;
+      placementFeedback.update(dt);physics.step(dt);let transitionsFinished=false;
       for(const i of items){
         if(i.transition){
           const t=i.transition;

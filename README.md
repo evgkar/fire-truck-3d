@@ -17,7 +17,7 @@ The viewer fetches separate GLB geometry and JSON metadata for the selected vehi
 - [Oberhaching vehicle GLB](assets/oberhaching/scene.glb) · [metadata](assets/oberhaching/metadata.json).
 - Each item's detail card includes a download link to its standalone GLB.
 
-The browser supplies authored procedural surface maps and lettering from metadata; those runtime maps/decals are not baked into the standalone GLBs. Light effects, physics, storage logic and camera movement are implemented by the viewer. To run locally, serve the complete folder over HTTP; opening the HTML directly with `file://` does not permit fetching the asset files.
+The Oberhaching G6 generator, three foam-agent containers and collecting breeching use embedded PBR colour, normal and metallic/roughness maps. The BSKA 13 labels are UV-authored geometry within the standalone GLB, so these materials and markings travel with the asset. Other equipment retains the browser's procedural surface maps and runtime lettering. Light effects, physics, storage logic and camera movement are implemented by the viewer. To run locally, serve the complete folder over HTTP; opening the HTML directly with `file://` does not permit fetching the asset files.
 
 ## Languages
 
@@ -34,6 +34,7 @@ The saved language is restored on load. On a first visit, the browser/system lan
 - “Hide cab” removes the cab shell and doors while retaining seats, dashboard, fixed mounts and portable equipment.
 - Storage-position buttons provide a keyboard and touch alternative to precise 3D selection.
 - “Unload all” and “Load all” handle the complete inventory.
+- Successfully docking an individual tool produces one soft green rim glow on its actual shape. The effect fades out, respects reduced-motion preferences and does not trigger on a wrong placement or bulk loading.
 - On loading, three synchronized high-beam, hazard and blue-beacon pulses welcome the visitor. Successful individual stowage triggers two short hazard pulses after docking; bulk loading does not trigger a siren or a pulse per item.
 - Click a blue beacon or the roof horns to toggle the siren and blue beacons. Click a headlight to toggle steady high beams independently. The Vehicle tab provides the same two controls and can replay the welcome.
 - The synthesized two-tone siren plays when audio is permitted, otherwise after the first interaction. The speaker button mutes audio immediately and remembers the preference; light signals remain active. It is not a recording of this particular truck.
