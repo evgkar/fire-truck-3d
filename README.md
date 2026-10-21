@@ -19,6 +19,8 @@ The viewer fetches separate GLB geometry and JSON metadata for the selected vehi
 
 The Oberhaching G6 generator, three foam-agent containers and collecting breeching use embedded PBR colour, normal and metallic/roughness maps. The BSKA 13 labels are UV-authored geometry within the standalone GLB, so these materials and markings travel with the asset. Other equipment retains the browser's procedural surface maps and runtime lettering. Light effects, physics, storage logic and camera movement are implemented by the viewer. To run locally, serve the complete folder over HTTP; opening the HTML directly with `file://` does not permit fetching the asset files.
 
+The Oberhaching vehicle body also carries physically scaled embedded paint, metal and rubber maps. Painted panels include a separate lacquer layer using the standard KHR_materials_clearcoat extension. The exterior refinement adds real pierced steel wheel centers, rear dual tires, layered radiator grille and wipers, shutter guides and clamps, and open-section ladder rails with retention hardware. The same photographed M 6087 vehicle remains the reference; unseen parts and dimensions are approximations. Doors, shutters, cab hiding, portable equipment and light controls retain their original independent groups.
+
 ## Languages
 
 The saved language is restored on load. On a first visit, the browser/system language is used when supported (Deutsch, English or Russian), with Deutsch as the fallback. The loading message is translated before the 3D libraries and model initialize. Language choice is saved locally. Switching language preserves the camera, equipment positions and training score. Interface, item names, descriptions, mass notes, source captions and accessibility labels are translated; original German lettering on the vehicle stays unchanged.
@@ -29,7 +31,7 @@ The saved language is restored on load. On a first visit, the browser/system lan
 - Drag empty background to orbit; scroll or pinch to zoom. After "Pick up", dragging anywhere on the scene rotates the camera while the item stays held. A camera gesture never places or drops the item.
 - Hold the mouse wheel (middle button) and drag, or use Ctrl + drag, to move the scene forward, backward, left and right along the horizontal plane without changing camera height. On a touchscreen, move two fingers together for the same movement; spreading or pinching them still zooms.
 - Click an item for its details. Double-click/double-tap or choose “Pick up” to lift it.
-- Point at a storage position to highlight it. Click the item's own position to animate it back into its mount. A wrong mount releases the item and it falls.
+- Point at a storage position to highlight it. Click a compatible position to animate the item into that mount. The two Oberhaching G3 C delivery hoses (C 1 and C 2) can use either of their two mounts; an occupied mount cannot accept a second item. Other equipment retains its documented individual positions. A wrong mount releases the item and it falls.
 - Direct dragging also moves equipment with physics. While carrying, Shift + scroll changes item height, R rotates the item, and Esc releases it. Ordinary scrolling still zooms the camera.
 - “Hide cab” removes the cab shell and doors while retaining seats, dashboard, fixed mounts and portable equipment.
 - Storage-position buttons provide a keyboard and touch alternative to precise 3D selection.
@@ -44,11 +46,11 @@ The saved language is restored on load. On a first visit, the browser/system lan
 The Training tab provides four guided modes in German, English and Russian:
 
 0. Learn a compartment: face the open compartment, then use the arrows to focus each tool and read its description alongside an original reference photo.
-1. Find the compartment: identify a large isolated 3D tool and choose its bay, without a shelf-level answer.
+1. Find the compartment: identify a tool from its 3D preview and reference photograph, then choose its bay without a shelf-level answer. A correct answer moves the camera to the actual storage position and briefly highlights the mounted tool green. The revealed position remains visible until Next tool, including the final answer.
 2. Fill a compartment: choose tools from a scrollable visual list and put each into its own mount in the empty compartment.
 3. Place one tool: every compartment starts open and empty; place the current tool in its exact mount before receiving the next one.
 
-Each test awards 100 points for a correct first attempt. Incorrect valid answers forfeit only that item's points; closed or nonexistent targets do not consume an attempt. Camera movement remains available while holding equipment. Buttons provide alternatives to precise 3D clicking. Descriptions, source links and location-bearing names are hidden during tests. Three Oberhaching positions that were inferred rather than documented are excluded from tests and marked in learning. Switching to another tab ends the guided exercise and returns to free exploration.
+Each test awards 100 points for a correct first attempt. Incorrect valid answers forfeit only that item's points; closed or nonexistent targets do not consume an attempt. Camera movement remains available while holding equipment. Buttons provide alternatives to precise 3D clicking. All three test modes show the current tool's genuine reference photograph alongside its 3D preview. Available close-up crops are used; full-context photographs are explicitly labelled when no individual photograph is available. Descriptions, source links and location-bearing captions are hidden before the answer. Three Oberhaching positions that were inferred rather than documented are excluded from tests and marked in learning. Switching to another tab ends the guided exercise and returns to free exploration.
 
 The dated [evidence catalog](training-mode-research.json) covers all 124 items, with source-qualified DE/EN/RU descriptions, 54 photographic crops and full-frame compartment photos where no individual view is available. Crops are display windows into real photographs, never generated tool images. The 3D previews are explicitly labelled reconstructions. Learning cards link the original sources.
 

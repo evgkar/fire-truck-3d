@@ -40,6 +40,7 @@ THE SOFTWARE.
 #trainingModesHost .exercise-photo-crop{position:relative;overflow:hidden;width:100%;border-radius:6px;background:#0a131b}#trainingModesHost .exercise-photo-crop img{position:absolute;max-width:none;max-height:none;height:auto;display:block;margin:0;border-radius:0}
 #trainingModesHost .training-mode-picker.compact{display:flex;align-items:flex-start;gap:8px;padding-bottom:10px}.exercise-mode-details{flex:1;min-width:0}.exercise-mode-details summary{cursor:pointer;font-size:12px;font-weight:600;padding:10px 4px;min-height:36px}.exercise-mode-details[open] .training-mode-choices{margin-top:9px}.exercise-stop{font-size:11px!important;padding:9px!important;min-height:36px;flex-shrink:0}.exercise-summary{padding:9px;margin:9px 0}.exercise-stats b{font-size:18px}.exercise-summary .exercise-muted{font-size:10px!important;margin-bottom:0}.exercise-summary progress{margin:8px 0 5px}
 .exercise-description-sources{display:flex;flex-direction:column;gap:7px;margin:12px 0}.exercise-description-sources a{font-size:11px;color:#a7dcca;overflow-wrap:anywhere}.exercise-qualification{font-size:12px;line-height:1.5;padding:10px;background:#382e1f;border:1px solid #665237;border-radius:6px;color:#efd8a8}
+#trainingModesHost .exercise-photo-test .exercise-photo-crop{margin-inline:auto}.exercise-photo-test{margin-top:12px}.exercise-photo-test h4{margin-top:9px!important}
 
 .tool-preview{position:relative}.tool-preview-caption{position:absolute;bottom:5px;right:7px;color:#b4c4cd;font:9px Arial;pointer-events:none}.exercise-thumbnail .tool-preview-caption{display:none}#exercisePlacement{padding:14px 0}#exercisePlacement h4{margin:0 0 9px;font-size:12px}.classic-training{margin-top:22px;border-top:1px solid #344751;padding-top:14px}.classic-training summary{cursor:pointer;color:#aab9c3;font-size:12px}.exercise-learning-nav button{font-size:16px!important}
 </style>
@@ -14183,36 +14184,47 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
 /* Deterministic inventory and scoring rules, independent of rendering. */
 (function(root){
   'use strict';
+  // Only these two photographed, identically sized C-pressure hoses share
+  // mounts. Similar names or dimensions never make other tools equivalent.
+  const C_HOSES=new Set(['ob_closed_case_g3_1','ob_closed_case_g3_2']);
+  const EquipmentSlots=Object.freeze({
+    compatible(id,slotId){return id===slotId||(C_HOSES.has(id)&&C_HOSES.has(slotId));}
+  });
   class TrainingSession {
     constructor(items){
-      this.items=new Map(items.map(item=>[item.id,{id:item.id,status:'stowed',attempts:0,awarded:false,completed:false}]));
+      this.items=new Map(items.map(item=>[item.id,{id:item.id,status:'stowed',assignedSlot:item.id,attempts:0,awarded:false,completed:false}]));
       if(this.items.size!==items.length)throw new Error('Duplicate equipment id');
       this.mode='explore';this.score=0;this.startedAt=0;this.finishedAt=0;this.assisted=false;
     }
     get(id){const item=this.items.get(id);if(!item)throw new Error('Unknown equipment: '+id);return item;}
-    start(now){this.mode='game';this.score=0;this.startedAt=now||Date.now();this.finishedAt=0;this.assisted=false;this.items.forEach(s=>{s.status='outside';s.attempts=0;s.awarded=false;s.completed=false;});}
-    take(id){const s=this.get(id);if(this.mode==='game'&&s.completed)return false;s.status='outside';return true;}
+    compatible(id,slotId){this.get(id);this.get(slotId);return EquipmentSlots.compatible(id,slotId);}
+    slotFor(id){const item=this.get(id);return item.status==='stowed'?item.assignedSlot:null;}
+    occupant(slotId){this.get(slotId);for(const item of this.items.values())if(item.status==='stowed'&&item.assignedSlot===slotId)return item.id;return null;}
+    start(now){this.mode='game';this.score=0;this.startedAt=now||Date.now();this.finishedAt=0;this.assisted=false;this.items.forEach(s=>{s.status='outside';s.assignedSlot=null;s.attempts=0;s.awarded=false;s.completed=false;});}
+    take(id){const s=this.get(id);if(this.mode==='game'&&s.completed)return false;s.status='outside';s.assignedSlot=null;return true;}
     place(id,slotId,accessible,now){
       const item=this.get(id);this.get(slotId);
       if(item.status==='stowed')return {ok:false,reason:'already_stowed',points:0};
       if(!accessible)return {ok:false,reason:'closed',points:0};
+      if(this.occupant(slotId))return {ok:false,reason:'occupied',points:0};
       if(this.mode==='game')item.attempts++;
-      if(id!==slotId)return {ok:false,reason:'wrong_slot',points:0};
-      item.status='stowed';let points=0;
+      if(!this.compatible(id,slotId))return {ok:false,reason:'wrong_slot',points:0};
+      item.status='stowed';item.assignedSlot=slotId;let points=0;
       if(this.mode==='game'){
         item.completed=true;
         if(item.attempts===1&&!item.awarded&&!this.assisted){points=100;item.awarded=true;this.score+=points;}
         if([...this.items.values()].every(s=>s.completed))this.finishedAt=now||Date.now();
       }
-      return {ok:true,points,finished:!!this.finishedAt};
+      return {ok:true,points,finished:!!this.finishedAt,slotId};
     }
-    unloadAll(){if(this.mode==='game')this.end();this.items.forEach(s=>s.status='outside');}
-    loadAll(){if(this.mode==='game'){this.assisted=true;this.mode='explore';}this.items.forEach(s=>s.status='stowed');}
+    unloadAll(){if(this.mode==='game')this.end();this.items.forEach(s=>{s.status='outside';s.assignedSlot=null;});}
+    loadAll(){if(this.mode==='game'){this.assisted=true;this.mode='explore';}this.items.forEach(s=>{s.status='stowed';s.assignedSlot=s.id;});}
     end(){this.mode='explore';this.finishedAt=0;}
     snapshot(){const rows=[...this.items.values()];return {mode:this.mode,score:this.score,stowed:rows.filter(s=>s.status==='stowed').length,total:rows.length,completed:rows.filter(s=>s.completed).length,firstTry:rows.filter(s=>s.awarded).length,finishedAt:this.finishedAt,startedAt:this.startedAt,assisted:this.assisted};}
   }
   root.TrainingSession=TrainingSession;
-  if(typeof module!=='undefined'&&module.exports)module.exports={TrainingSession};
+  root.EquipmentSlots=EquipmentSlots;
+  if(typeof module!=='undefined'&&module.exports)module.exports={TrainingSession,EquipmentSlots};
 })(typeof window!=='undefined'?window:globalThis);
 
 /* Z-up rigid bodies: gravity, inertia, friction, collisions and a finite-force hand. */
@@ -14629,6 +14641,14 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
       }
       for (const material of gltf.materials) {
         const pbr = material.pbrMetallicRoughness || {};
+        const coat = material.extensions && material.extensions.KHR_materials_clearcoat;
+        if (coat) {
+          check(Object.keys(coat).every(key => ['clearcoatFactor', 'clearcoatRoughnessFactor'].includes(key)),
+            'unsupported clearcoat texture');
+          check([coat.clearcoatFactor == null ? 0 : coat.clearcoatFactor,
+            coat.clearcoatRoughnessFactor == null ? 0 : coat.clearcoatRoughnessFactor]
+            .every(value => Number.isFinite(value) && value >= 0 && value <= 1), 'invalid clearcoat factor');
+        }
         for (const map of [pbr.baseColorTexture, pbr.metallicRoughnessTexture, material.normalTexture, material.occlusionTexture, material.emissiveTexture]) {
           if (!map) continue;
           check(Number.isInteger(map.index) && textures[map.index], 'invalid material texture');
@@ -14710,6 +14730,11 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
       check(material, 'embedded material has no runtime counterpart');
       // Authored PBR maps supersede the generic procedural surface treatment.
       material.bumpMap = null; material.clearcoat = 0; material.clearcoatNormalMap = null;
+      const coat = definition.extensions && definition.extensions.KHR_materials_clearcoat;
+      if (coat) {
+        material.clearcoat = coat.clearcoatFactor == null ? 0 : coat.clearcoatFactor;
+        material.clearcoatRoughness = coat.clearcoatRoughnessFactor == null ? 0 : coat.clearcoatRoughnessFactor;
+      }
       const color = pbr.baseColorFactor || [1, 1, 1, 1];
       material.color.setRGB(color[0], color[1], color[2]); material.opacity = color[3];
       material.metalness = pbr.metallicFactor == null ? 1 : pbr.metallicFactor;
@@ -14825,6 +14850,7 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
 /* Training rules are independent of Three.js and of the page's free-exploration inventory. */
 (function(root){
   'use strict';
+  const equipmentSlots=typeof module!=='undefined'&&module.exports?require('./training-core.js').EquipmentSlots:root.EquipmentSlots;
   const MODES=['learn','find-bay','fill-bay','place-one'];
   const BAY_CODES={left1:'G1',right1:'G2',left2:'G3',right2:'G4',left3:'G5',right3:'G6',rear:'GR',cabin:'K'};
   function trainingName(value){
@@ -14892,7 +14918,7 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
       if(!this.bays.includes(bay))return this.reject('unknown');
       return this.record(this.currentId,this.items.get(this.currentId).bay===bay,now);
     }
-    place(id,slotId,accessible,now){
+    place(id,slotId,accessible,now,occupied=false){
       if(!this.testing)return null;
       if(this.kind==='find-bay')return this.reject('wrong_mode');
       if(!this.items.has(id)||!this.items.has(slotId))return this.reject('unknown');
@@ -14900,8 +14926,9 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
       if(this.states.get(id).completed)return this.reject('already_completed');
       if(this.kind==='place-one'&&id!==this.currentId)return this.reject('not_current');
       if(!accessible)return this.reject('closed');
+      if(occupied)return this.reject('occupied');
       if(this.kind==='fill-bay')this.choose(id);
-      return this.record(id,id===slotId,now);
+      return this.record(id,equipmentSlots?equipmentSlots.compatible(id,slotId):id===slotId,now);
     }
     next(){
       if(!this.testing||this.finished||!this.states.get(this.currentId).completed)return false;
@@ -14925,6 +14952,21 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
   COPY.de.noVerified='Für diese Übung sind noch keine ausreichend belegten Lagerplätze verfügbar. Die Geräte können im Lernmodus angesehen werden.';COPY.en.noVerified='No sufficiently verified storage positions are available for this exercise yet. You can inspect the equipment in Learn mode.';COPY.ru.noVerified='Для этого упражнения пока нет достаточно подтверждённых мест хранения. Предметы можно осмотреть в режиме обучения.';
   COPY.de.unverifiedBay='Lagerplätze noch nicht belegt';COPY.en.unverifiedBay='Storage positions not yet verified';COPY.ru.unverifiedBay='Места хранения пока не подтверждены';
   COPY.de.descriptionSource='Quelle zur Beschreibung';COPY.en.descriptionSource='Description source';COPY.ru.descriptionSource='Источник описания';
+  COPY.de.revealPrompt='Richtig: Das Gerät wird an seinem genauen Lagerplatz kurz grün hervorgehoben. Schau dir die Position an und gehe dann zum nächsten Gerät.';
+  COPY.en.revealPrompt='Correct: the tool briefly glows green in its exact storage position. Inspect the position, then continue to the next tool.';
+  COPY.ru.revealPrompt='Верно: инструмент ненадолго подсвечивается зелёным на своём точном месте. Рассмотри его расположение, затем переходи к следующему инструменту.';
+  COPY.de.generalPhoto='Allgemeines Referenzfoto; ein separates Foto dieses Geräts liegt noch nicht vor.';
+  COPY.en.generalPhoto='General reference image; a separate photograph of this tool is not available yet.';
+  COPY.ru.generalPhoto='Общий снимок; отдельного фото этого предмета пока нет.';
+  COPY.de.sharedPhoto='Gemeinsamer Fotoausschnitt des Gerätesatzes; die Werkzeuge überdecken einander.';
+  COPY.en.sharedPhoto='Shared photo crop of the equipment set; the tools overlap.';
+  COPY.ru.sharedPhoto='Общий фрагмент фото комплекта; инструменты перекрывают друг друга.';
+  COPY.de.photoLoadFailed='Das Foto konnte nicht geladen werden.';
+  COPY.en.photoLoadFailed='The photograph could not be loaded.';
+  COPY.ru.photoLoadFailed='Не удалось загрузить фотографию.';
+  COPY.de.occupied='Dieser Lagerplatz ist bereits belegt. Wähle einen freien Platz; dieser Versuch kostet keine Punkte.';
+  COPY.en.occupied='This storage position is already occupied. Choose a free position; this attempt does not cost any points.';
+  COPY.ru.occupied='Это место уже занято. Выбери свободное место; эта попытка не отнимает очки.';
   function create(bridge){
     const doc=root.document,host=doc.getElementById('trainingModesHost'),overlay=doc.getElementById('exerciseOverlay');
     if(!host)throw new Error('Missing #trainingModesHost');
@@ -14941,6 +14983,7 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
     const element=(tag,className,text)=>{const n=doc.createElement(tag);if(className)n.className=className;if(text!==undefined)n.textContent=text;return n;};
     const button=(label,handler,className)=>{const n=element('button',className,label);n.type='button';n.onclick=handler;return n;};
     const call=(name,...args)=>typeof bridge[name]==='function'?bridge[name](...args):undefined;
+    const revealed=()=>engine.kind==='find-bay'&&!!engine.states.get(engine.currentId)?.completed;
     function shuffled(ids){const list=ids.slice();for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}return list;}
     function stateVisibility(){
       if(engine.kind==='find-bay')return [];
@@ -14977,17 +15020,19 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
     }
     function handlePlace(itemId,slotId,accessible){
       if(dockingId)return engine.reject('docking');
-      const result=engine.place(itemId,slotId,accessible);
+      const result=engine.place(itemId,slotId,accessible,undefined,call('slotOccupied',slotId,itemId)===true);
       if(result===null)return null;
       if(result.ok){dockingId=itemId;feedback=words().correct+(result.points?' +100':'');feedbackKind='success';}
       else if(result.reason==='wrong_slot'){feedback=words().wrong;feedbackKind='error';}
       else if(result.reason==='closed'){feedback=words().closed;feedbackKind='error';}
+      else if(result.reason==='occupied'){feedback=words().occupied;feedbackKind='error';}
       renderKey='';update();return result;
     }
     function handleBay(bay){
       if(engine.kind!=='find-bay')return null;
       const result=engine.answerBay(bay);
       if(result.reason==='already_completed')return result;
+      if(result.ok)call('revealStorage',engine.currentId);
       feedback=result.ok?words().correct+(result.points?' +100':''):words().wrongBay;feedbackKind=result.ok?'success':'error';
       call('notice',feedback,feedbackKind);renderKey='';update();call('refresh');return result;
     }
@@ -15000,15 +15045,19 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
     }
     function renderPhoto(item,parent){
       const w=words(),reference=call('photo',item);
-      const section=element('section','exercise-photo');section.appendChild(element('h4','',w.photo));
+      const beforeAnswer=engine.testing&&!engine.states.get(item.id)?.completed;
+      const section=element('section','exercise-photo'+(engine.testing?' exercise-photo-test':''));section.appendChild(element('h4','',w.photo));
       if(reference&&typeof reference.url==='string'&&(/^(https:\/\/|assets\/|references\/)/.test(reference.url))){
-        const img=element('img');img.src=reference.url;img.alt=reference.caption||itemName(item);img.loading='lazy';img.referrerPolicy='no-referrer';
         const crop=reference.crop,validCrop=Array.isArray(crop)&&crop.length===4&&crop.every(Number.isFinite)&&crop[0]>=0&&crop[1]>=0&&crop[2]>0&&crop[3]>0&&crop[0]+crop[2]<=1.001&&crop[1]+crop[3]<=1.001&&reference.width>0&&reference.height>0;
+        const general=reference.kind==='vehicle'&&(!validCrop||(crop[2]>=.999&&crop[3]>=.999));
+        const shared=['ob_hydraulic_cutter','ob_hydraulic_spreader'].includes(item.id);
+        const caption=engine.testing&&general?w.generalPhoto:beforeAnswer?(shared?w.sharedPhoto:''):(reference.caption||'');
+        const img=element('img');img.src=reference.url;img.alt=beforeAnswer?(general?w.generalPhoto+' — ':'')+itemName(item):(reference.caption||itemName(item));img.loading='lazy';img.referrerPolicy='no-referrer';
         const frame=element('div',validCrop?'exercise-photo-crop':'exercise-photo-full');
-        if(validCrop){const [x,y,wc,hc]=crop;frame.style.aspectRatio=(wc*reference.width)/(hc*reference.height);img.style.width=(100/wc)+'%';img.style.left=(-x/wc*100)+'%';img.style.top=(-y/hc*100)+'%';}
-        img.onerror=()=>{frame.className='exercise-photo-full';frame.style.aspectRatio='auto';img.replaceWith(element('p','exercise-muted',w.photoUnavailable));};frame.appendChild(img);section.appendChild(frame);
-        if(reference.caption)section.appendChild(element('p','exercise-muted',reference.caption));
-        if(reference.sourceUrl&&/^(https:\/\/|assets\/|references\/)/.test(reference.sourceUrl)){const link=element('a','',w.source);link.href=reference.sourceUrl;link.target='_blank';link.rel='noopener noreferrer';section.appendChild(link);}
+        if(validCrop){const [x,y,wc,hc]=crop,aspect=(wc*reference.width)/(hc*reference.height);frame.style.aspectRatio=aspect;img.style.width=(100/wc)+'%';img.style.left=(-x/wc*100)+'%';img.style.top=(-y/hc*100)+'%';if(engine.testing)frame.style.maxWidth='min(100%, '+Math.round(aspect*260)+'px)';}
+        img.onerror=()=>{frame.className='exercise-photo-full';frame.style.aspectRatio='auto';img.replaceWith(element('p','exercise-muted',w.photoLoadFailed));};frame.appendChild(img);section.appendChild(frame);
+        if(caption)section.appendChild(element('p','exercise-muted',caption));
+        if(!beforeAnswer&&reference.sourceUrl&&/^(https:\/\/|assets\/|references\/)/.test(reference.sourceUrl)){const link=element('a','',w.source);link.href=reference.sourceUrl;link.target='_blank';link.rel='noopener noreferrer';section.appendChild(link);}
       }else section.appendChild(element('p','exercise-muted',w.photoUnavailable));
       parent.appendChild(section);
     }
@@ -15062,6 +15111,7 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
         if(engine.kind!=='find-bay'&&!state.completed){const take=button(w.pick,()=>pick(item.id),'primary');take.disabled=!!dockingId;actions.appendChild(take);if(typeof bridge.release==='function')actions.appendChild(button(w.release,()=>call('release')));}
         if(state.completed&&!engine.finished){const nextButton=button(dockingId?w.wait:w.next,next,'primary');nextButton.disabled=!!dockingId;actions.appendChild(nextButton);}
         if(actions.childNodes.length)card.appendChild(actions);
+        renderPhoto(item,card);
       }
       parent.appendChild(card);
     }
@@ -15080,7 +15130,7 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
     function renderOverlay(){
       if(!overlay)return;overlay.replaceChildren();overlay.hidden=!engine.active;if(!engine.active)return;
       const w=words(),snapshot=engine.snapshot(),box=element('div','exercise-scene-prompt');box.appendChild(element('strong','',MODES.indexOf(engine.kind)+'. '+w.modeNames[MODES.indexOf(engine.kind)]));
-      const current=byId.get(engine.currentId),text=engine.kind==='learn'?bayName(engine.bay)+' · '+itemName(current):itemName(current);
+      const current=byId.get(engine.currentId),text=engine.kind==='learn'?bayName(engine.bay)+' · '+itemName(current):revealed()?bayName(current.bay||current.compartment)+' · '+itemName(current):itemName(current);
       box.appendChild(element('span','',text));
       const actions=element('div','exercise-overlay-actions');
       if(engine.kind==='learn'){
@@ -15097,7 +15147,7 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
         host.replaceChildren();renderSetup();
         if(engine.active){
           const w=words(),body=element('section','exercise-body');body.appendChild(element('h3','',MODES.indexOf(engine.kind)+'. '+w.modeNames[MODES.indexOf(engine.kind)]));
-          body.appendChild(element('p','exercise-instruction',w[{learn:'learnPrompt','find-bay':'findPrompt','fill-bay':'fillPrompt','place-one':'onePrompt'}[engine.kind]]));
+          body.appendChild(element('p','exercise-instruction',revealed()?w.revealPrompt:w[{learn:'learnPrompt','find-bay':'findPrompt','fill-bay':'fillPrompt','place-one':'onePrompt'}[engine.kind]]));
           if(engine.testing)renderSummary(body);
           if(feedback){const message=element('p','exercise-feedback '+feedbackKind,feedback);message.setAttribute('role','status');body.appendChild(message);}
           if(snapshot.finished){body.appendChild(element('h3','exercise-complete',w.done+' · '+snapshot.score+' '+w.points.toLocaleLowerCase()));body.appendChild(button(w.review,()=>start('learn',(byId.get(engine.currentId).bay||byId.get(engine.currentId).compartment))));}
@@ -15113,6 +15163,7 @@ function addEquipmentDecals(THREE,items,interactiveMeshes){
     return {
       get active(){return engine.active;},get kind(){return engine.kind;},get testing(){return engine.testing;},
       get currentId(){return engine.currentId;},get bay(){return engine.bay;},get docking(){return dockingId!==null;},
+      get revealed(){return revealed();},
       displayName:itemName,
       start,stop,update,handlePlace,handleBay,onDocked,next,
       allowPick:id=>!dockingId&&engine.canPick(id),
@@ -15154,7 +15205,7 @@ window.TRAINING_REFERENCES={"schemaVersion":1,"researchedAt":"2026-10-21","statu
   return { point, vector };
 });
 
-window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20", "title": "Schlingmann HLF 20", "station": "Feuerwehr Liederbach", "chassis": "MAN TGM 13.290", "badge": "HLF 20", "metadata": "assets/liederbach/metadata.json?v=23b28910febb", "researchNote": {"de": "Die sichtbaren Details folgen den Liederbacher Fotos. Das nicht vollständig fotografierte Armaturenbrett wurde anhand anderer MAN TGM von 2015–2016 rekonstruiert. Einzelne Maße, Bedienelemente und Gewichte bleiben Schätzungen.", "en": "Visible details follow the Liederbach photographs. The incompletely photographed dashboard was reconstructed using other 2015–2016 MAN TGM vehicles. Some dimensions, controls and masses remain estimates.", "ru": "Видимые детали сверены с фотографиями Liederbach. Не полностью снятая приборная панель восстановлена по другим MAN TGM 2015–2016. Отдельные размеры, органы управления и массы остаются оценочными."}}, {"id": "oberhaching", "name": "Mercedes-Benz · Ziegler LF 16/12", "title": "Ziegler LF 16/12", "station": "Feuerwehr Oberhaching · 40/1", "chassis": "Mercedes-Benz Atego 1528 · 2003", "badge": "LF 16/12", "metadata": "assets/oberhaching/metadata.json?v=0575cd0fc472", "researchNote": {"de": "Die Geräteräume folgen den bereitgestellten Fotos und der Miro-Beladeliste. Außenform und Fahrzeugdaten wurden mit den offiziellen Oberhachinger Fotos abgeglichen. Verdeckte Kofferinhalte werden beschrieben; nicht sichtbare Details, Maße, Massen und das Fahrer-Cockpit sind angenäherte Rekonstruktionen.", "en": "Compartments follow the supplied photographs and Miro inventory. Exterior shape and vehicle data were cross-checked against official Oberhaching photographs. Closed-case contents are described; unseen details, dimensions, masses and the driver cockpit are approximate reconstructions.", "ru": "Отсеки восстановлены по вашим фотографиям и списку Miro. Внешний вид и характеристики сверены с официальными фотографиями Oberhaching. Содержимое закрытых ящиков описано; невидимые детали, размеры, массы и кокпит водителя восстановлены приблизительно."}, "sources": [{"title": "Feuerwehr Oberhaching — LF 16/12 · 40/1", "url": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/", "de": "Originalfotos und technische Fahrzeugdaten.", "en": "Original photographs and vehicle specifications.", "ru": "Оригинальные фотографии и технические характеристики."}, {"title": "Miro — Oberhaching 40/1", "url": "https://miro.com/app/board/uXjVKwGF5Ug=/", "de": "Vom Nutzer bereitgestellte Beladeliste und beschriftete Fotos.", "en": "User-provided inventory and annotated photographs.", "ru": "Предоставленные вами списки оборудования и фотографии с подписями."}, {"title": "Beladung / Inventory / Каталог", "url": "oberhaching-catalog.json", "de": "Benennung, Quellen und Grenzen der Identifikation für jedes Gerät.", "en": "Names, sources and identification limits for each item.", "ru": "Названия, источники и ограничения идентификации каждого предмета."}]}];
+window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20", "title": "Schlingmann HLF 20", "station": "Feuerwehr Liederbach", "chassis": "MAN TGM 13.290", "badge": "HLF 20", "metadata": "assets/liederbach/metadata.json?v=23b28910febb", "researchNote": {"de": "Die sichtbaren Details folgen den Liederbacher Fotos. Das nicht vollständig fotografierte Armaturenbrett wurde anhand anderer MAN TGM von 2015–2016 rekonstruiert. Einzelne Maße, Bedienelemente und Gewichte bleiben Schätzungen.", "en": "Visible details follow the Liederbach photographs. The incompletely photographed dashboard was reconstructed using other 2015–2016 MAN TGM vehicles. Some dimensions, controls and masses remain estimates.", "ru": "Видимые детали сверены с фотографиями Liederbach. Не полностью снятая приборная панель восстановлена по другим MAN TGM 2015–2016. Отдельные размеры, органы управления и массы остаются оценочными."}}, {"id": "oberhaching", "name": "Mercedes-Benz · Ziegler LF 16/12", "title": "Ziegler LF 16/12", "station": "Feuerwehr Oberhaching · 40/1", "chassis": "Mercedes-Benz Atego 1528 · 2003", "badge": "LF 16/12", "metadata": "assets/oberhaching/metadata.json?v=1fb065fd3abd", "researchNote": {"de": "Die Geräteräume folgen den bereitgestellten Fotos und der Miro-Beladeliste. Außenform und Fahrzeugdaten wurden mit den offiziellen Oberhachinger Fotos abgeglichen. Verdeckte Kofferinhalte werden beschrieben; nicht sichtbare Details, Maße, Massen und das Fahrer-Cockpit sind angenäherte Rekonstruktionen.", "en": "Compartments follow the supplied photographs and Miro inventory. Exterior shape and vehicle data were cross-checked against official Oberhaching photographs. Closed-case contents are described; unseen details, dimensions, masses and the driver cockpit are approximate reconstructions.", "ru": "Отсеки восстановлены по вашим фотографиям и списку Miro. Внешний вид и характеристики сверены с официальными фотографиями Oberhaching. Содержимое закрытых ящиков описано; невидимые детали, размеры, массы и кокпит водителя восстановлены приблизительно."}, "sources": [{"title": "Feuerwehr Oberhaching — LF 16/12 · 40/1", "url": "https://www.feuerwehr-oberhaching.de/fahrzeuge/lf-1612-401/", "de": "Originalfotos und technische Fahrzeugdaten.", "en": "Original photographs and vehicle specifications.", "ru": "Оригинальные фотографии и технические характеристики."}, {"title": "Miro — Oberhaching 40/1", "url": "https://miro.com/app/board/uXjVKwGF5Ug=/", "de": "Vom Nutzer bereitgestellte Beladeliste und beschriftete Fotos.", "en": "User-provided inventory and annotated photographs.", "ru": "Предоставленные вами списки оборудования и фотографии с подписями."}, {"title": "Beladung / Inventory / Каталог", "url": "oberhaching-catalog.json", "de": "Benennung, Quellen und Grenzen der Identifikation für jedes Gerät.", "en": "Names, sources and identification limits for each item.", "ru": "Названия, источники и ограничения идентификации каждого предмета."}]}];
 (async function(){
   'use strict';
   const $=id=>document.getElementById(id);
@@ -15190,7 +15241,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
     const pickMeshes=[],signalPickMeshes=[],slotMeshes=[],actuators=[],actById=new Map(),items=[],byId=new Map(),staticBatches={},shellBatches={},shellNames=new Set(model.cabinShellNames||[]);
     const session=new TrainingSession(model.items),physics=new EquipmentPhysics(CANNON,model.physicsProfile);
     let selected=null,tab='equipment',heldSticky=false,carryHeight=1.35,drag=null,lastPointer={x:0,y:0},noticeUntil=0,firstFrame=true,labelTick=0,actionRevision=0,inspectedItem=null,activeSlot=null,pointerInside=false,lastTap=null;
-    let exercises=null;
+    let exercises=null,pendingExerciseReveal=null;
     const safeName=item=>exercises?.testing?exercises.displayName(item):name(item);
     const bayTargets=[];
     const V=(p)=>new THREE.Vector3(...p),clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -15397,7 +15448,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
       }
       $('inventory').replaceChildren(fragment);if(!count){const p=document.createElement('div');p.className='empty';p.textContent=t('Ничего не найдено');$('inventory').appendChild(p);}
     }
-    function renderSlots(){const frag=document.createDocumentFragment();for(const i of items){const b=document.createElement('button');b.textContent=i.code;b.className=session.get(i.id).status==='stowed'?'full':'';b.title=session.mode==='game'?i.code:name(i);b.setAttribute('aria-label',t('Установить в ')+i.code);b.onclick=()=>{const carried=physics.held?byId.get(physics.held.id):selected;if(carried)place(carried,i);};b.onpointerenter=b.onfocus=()=>{if(physics.held&&bayOpen(i.bay,i))setSlotHover(i);};b.onpointerleave=b.onblur=clearSlotHover;frag.appendChild(b);}$('slotList').replaceChildren(frag);}
+    function renderSlots(){const frag=document.createDocumentFragment();for(const i of items){const b=document.createElement('button');b.textContent=i.code;b.className=session.occupant(i.id)?'full':'';b.disabled=!!session.occupant(i.id);b.title=session.mode==='game'?i.code:name(i);b.setAttribute('aria-label',t('Установить в ')+i.code);b.onclick=()=>{const carried=physics.held?byId.get(physics.held.id):selected;if(carried)place(carried,i);};b.onpointerenter=b.onfocus=()=>{if(physics.held&&bayOpen(i.bay,i))setSlotHover(i);};b.onpointerleave=b.onblur=clearSlotHover;frag.appendChild(b);}$('slotList').replaceChildren(frag);}
     function updateUI(){
       syncFullscreenLabel();
       signals.refresh();
@@ -15420,13 +15471,15 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
       if(exercises?.active)$('selection').hidden=true;
       $('placementPanel').hidden=!selected||selectedState().status==='stowed'||!!exercises?.active;renderInventory();renderSlots();
       exercises?.update();renderExerciseSlots();
-      for(const target of bayTargets)target.visible=exercises?.kind==='find-bay';
+      for(const target of bayTargets)target.visible=exercises?.kind==='find-bay'&&!exercises.revealed;
       const held=physics.held&&byId.get(physics.held.id);$('heldBadge').hidden=!held;if(held){$('heldName').textContent=safeName(held);$('heldMass').textContent=massLabel(held);}
       $('sceneHint').textContent=held?t('Тяните — вращение · зажатое колесо / Ctrl / 2 пальца — сдвиг по земле · клик по нише — установить · Esc — отпустить'):t('Тяните — вращение · зажатое колесо / Ctrl / 2 пальца — сдвиг по земле · колесо / щипок — масштаб');
     }
     $('itemSearch').oninput=renderInventory;$('bayFilter').onchange=renderInventory;
     function stagePosition(index){const row=Math.floor(index/7),col=index%7;return [-5.75-row*1.16,-3+col*1.0,.8];}
-    function outsidePosition(item){const h=item.home,d=item.dimensions;if(item.extractionPoint&&!item.mountActuator)return item.extractionPoint.slice();if(item.bay==='rear')return [4.5+d[0]/2,h[1],h[2]];const side=item.bay==='cabin'?(h[1]<=0?-1:1):item.bay.startsWith('left')?-1:1;return [h[0],side*Math.max(Math.abs(h[1])+.35+d[1]/2,1.75+d[1]/2),h[2]];}
+    function storageSlot(item){return byId.get(session.slotFor(item.id))||item;}
+    function slotOccupied(slotId,itemId){const occupant=session.occupant(slotId);return !!occupant&&occupant!==itemId;}
+    function outsidePosition(item,slot=storageSlot(item)){const h=slot.home,d=item.dimensions;if(slot.extractionPoint&&!slot.mountActuator)return slot.extractionPoint.slice();if(slot.bay==='rear')return [4.5+d[0]/2,h[1],h[2]];const side=slot.bay==='cabin'?(h[1]<=0?-1:1):slot.bay.startsWith('left')?-1:1;return [h[0],side*Math.max(Math.abs(h[1])+.35+d[1]/2,1.75+d[1]/2),h[2]];}
     function mountedQuaternion(item){const a=item.mountActuator&&actById.get(item.mountActuator);return a?new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,0,1),a.angle*a.value):new THREE.Quaternion();}
     function syncMounts(){
       for(const item of items){const a=item.mountActuator&&actById.get(item.mountActuator);if(!a)continue;
@@ -15439,10 +15492,11 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
     }
     function animate(item,positions,done,duration){physics.stow(item.id);const points=[item.group.position.toArray(),...positions],motion=TrainerMotion.create(points);item.transition={elapsed:0,duration:duration||clamp(motion.length/3.8,1.1,3.8),motion,points:points.map(V),fromQuaternion:item.group.quaternion.clone(),docking:!!item.mountActuator&&session.get(item.id).status==='stowed',done};}
     function extract(item,destination,done){
+      const stored=storageSlot(item);
       placementFeedback.clear();
       if(!session.take(item.id)){notice(t('Этот предмет уже зачтён. Выберите оставшийся инструмент.'));return;}
-      openBay(item.bay);const out=outsidePosition(item);
-      const route=[...(item.extractionWaypoints||[]),out];if(destination){const side=out[1]>=0?1:-1;route.push([-4.8,side*2.45,Math.max(item.home[2],1.4)]);route.push(destination);}
+      openBay(stored.bay);const out=outsidePosition(item,stored);
+      const route=[...(stored.extractionWaypoints||[]),out];if(destination){const side=out[1]>=0?1:-1;route.push([-4.8,side*2.45,Math.max(item.home[2],1.4)]);route.push(destination);}
       animate(item,route,()=>{physics.activate(item.id,destination||out);if(done)done();},destination?2.0:.8);item.transition.delay=.44;updateUI();
     }
     function grab(item,sticky,hitPoint){
@@ -15457,6 +15511,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
     function release(){actionRevision++;const held=physics.held;physics.release();heldSticky=false;clearSlotHover();if(held){notice(t('Предмет отпущен: ')+name(byId.get(held.id)));updateUI();}}
     function place(item,slot){
       if(item.transition)return;
+      if(slotOccupied(slot.id,item.id)){notice(({de:'Dieser Lagerplatz ist bereits belegt.',en:'This storage position is already occupied.',ru:'Это место уже занято.'})[I.language],'error');return;}
       const exerciseResult=exercises?.handlePlace(item.id,slot.id,bayOpen(slot.bay,slot));
       const result=exerciseResult||session.place(item.id,slot.id,bayOpen(slot.bay,slot));
       if(exerciseResult?.ok)session.place(item.id,slot.id,true);
@@ -15467,19 +15522,20 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
         physics.release();heldSticky=false;clearSlotHover();slot.slotFlashUntil=performance.now()+900;notice(t('Это чужое крепление. Предмет отпущен и падает.')+(session.mode==='game'?t(' Очки за первую попытку этого предмета потеряны.'):''),'error');updateUI();return;
       }
       physics.release();heldSticky=false;clearSlotHover();
-      const out=outsidePosition(item),route=TrainerMotion.route(item.group.position.toArray(),item.home,out,item.dimensions,item.bay);
-      if(item.extractionWaypoints){route.pop();route.push(...item.extractionWaypoints.slice().reverse(),item.home);}
-      animate(item,route.slice(1),()=>{item.slotSuccessUntil=performance.now()+1150;placementFeedback.burst(item);signals.success();exercises?.onDocked(item.id);});
+      const out=outsidePosition(item,slot),route=TrainerMotion.route(item.group.position.toArray(),slot.home,out,item.dimensions,slot.bay);
+      if(slot.extractionWaypoints){route.pop();route.push(...slot.extractionWaypoints.slice().reverse(),slot.home);}
+      animate(item,route.slice(1),()=>{slot.slotSuccessUntil=performance.now()+1150;placementFeedback.burst(item);signals.success();exercises?.onDocked(item.id);});
       if(exerciseResult){notice(({de:'Richtig verstaut.',en:'Correctly placed.',ru:'Правильно уложено.'})[I.language]+(result.points?' +100':''),'success');updateUI();return;}
       notice(result.finished?t('Все предметы уложены. Итог: ')+session.score+t(' очков.'):name(item)+t(' — на своём месте.')+(result.points?t(' +100 очков'):''),'success');updateUI();
     }
     $('takeItem').onclick=()=>{if(selected)grab(selected,true);};$('releaseItem').onclick=release;
-    $('returnItem').onclick=()=>{if(selected){openBay(selected.bay);const item=selected,revision=++actionRevision;setTimeout(()=>{if(session.mode==='explore'&&revision===actionRevision)place(item,item);},650);}};
+    $('returnItem').onclick=()=>{if(selected){openBay(selected.bay);const item=selected,revision=++actionRevision;setTimeout(()=>{if(session.mode==='explore'&&revision===actionRevision){const slot=!slotOccupied(item.id,item.id)?item:items.find(candidate=>session.compatible(item.id,candidate.id)&&!slotOccupied(candidate.id,item.id));if(slot)place(item,slot);}},650);}};
     $('inspectItem').onclick=()=>{if(!selected)return;cancelWelcome();currentView='custom';inspectedItem=selected;camera.fov=45;camera.updateProjectionMatrix();wantTarget.copy(selected.group.position);orbit.wantPhi=1.23;orbit.wantTheta=selected.bay.startsWith('right')?Math.PI/2:-Math.PI/2;orbit.wantRadius=fitRadius(Math.max(.8,Math.max(...selected.dimensions)*1.45));};
     $('unloadAll').onclick=()=>{
       if(exercises?.active)exercises.stop();
+      const storedSlots=new Map(items.map(item=>[item.id,storageSlot(item)]));
       actionRevision++;physics.release();heldSticky=false;session.unloadAll();setShutters(true);openBay('cabin');
-      items.forEach((item,index)=>{const dest=stagePosition(index);dest[2]=Math.max(.65,item.dimensions[2]/2+.25);const out=outsidePosition(item),side=out[1]>=0?1:-1;animate(item,[...(item.extractionWaypoints||[]),out,[-4.8,side*2.55,1.7],dest],()=>physics.activate(item.id,dest),1.7+(index%7)*.12);});
+      items.forEach((item,index)=>{const dest=stagePosition(index);dest[2]=Math.max(.65,item.dimensions[2]/2+.25);const stored=storedSlots.get(item.id),out=outsidePosition(item,stored),side=out[1]>=0?1:-1;animate(item,[...(stored.extractionWaypoints||[]),out,[-4.8,side*2.55,1.7],dest],()=>physics.activate(item.id,dest),1.7+(index%7)*.12);});
       view('ground');updateUI();notice(t('Снаряжение извлекается и раскладывается перед машиной.'));
     };
     $('loadAll').onclick=()=>{
@@ -15511,7 +15567,7 @@ window.TRAINER_VEHICLES=[{"id": "liederbach", "name": "MAN · Schlingmann HLF 20
     }
     function hitSlot(x,y){
       setRay(x,y);const hits=ray.intersectObjects(slotMeshes,false);
-      const candidate=hits.find(h=>{const i=byId.get(h.object.userData.slotId);if(!i.slot.visible||!bayOpen(i.bay,i))return false;return i.bay==='cabin'?true:i.bay==='rear'?camera.position.x>3.6:i.bay.startsWith('left')?camera.position.y<-.7:camera.position.y>.7;});
+      const candidate=hits.find(h=>{const i=byId.get(h.object.userData.slotId);if(!i.slot.visible||session.occupant(i.id)||!bayOpen(i.bay,i))return false;return i.bay==='cabin'?true:i.bay==='rear'?camera.position.x>3.6:i.bay.startsWith('left')?camera.position.y<-.7:camera.position.y>.7;});
       if(!candidate)return null;
       const obstacle=ray.intersectObjects(pickMeshes,false).find(h=>worldVisible(h.object)&&!(physics.held&&h.object.userData.itemId===physics.held.id)&&!h.object.material.transparent);
       return obstacle&&obstacle.distance<candidate.distance-.045?null:candidate;
@@ -15605,7 +15661,7 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
     canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fail(new Error(t('Графическая сцена остановлена. Обновите страницу.')));});
     function updateLabels(){
       const show=$('showLabels').checked,labelRects=[];camera.updateMatrixWorld();
-      for(const proxy of bayTargets)proxy.visible=exercises?.kind==='find-bay'&&bayFacesCamera(proxy.userData.bay)&&(proxy.userData.bay!=='cabin'||camera.position.y*proxy.position.y>0);
+      for(const proxy of bayTargets)proxy.visible=exercises?.kind==='find-bay'&&!exercises.revealed&&bayFacesCamera(proxy.userData.bay)&&(proxy.userData.bay!=='cabin'||camera.position.y*proxy.position.y>0);
       for(const item of (selected?[selected,...items.filter(i=>i!==selected)]:items)){
         item.label.textContent=safeName(item);
         const outside=session.get(item.id).status==='outside',p=item.group.position.clone();p.z+=item.dimensions[2]*.55+.08;const c=p.clone().project(camera);
@@ -15615,10 +15671,10 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
         if(display)labelRects.push({x:lx,y:ly});
         item.label.hidden=!display;if(display){item.label.style.left=((c.x*.5+.5)*stage.clientWidth)+'px';item.label.style.top=((-c.y*.5+.5)*stage.clientHeight)+'px';item.label.classList.toggle('selected',selected===item);}
         const flash=item.slotFlashUntil>performance.now()||item.slotSuccessUntil>performance.now();
-        const eligible=(outside||!!physics.held||flash)&&bayOpen(item.bay,item);item.slot.visible=eligible&&($('showSlots').checked||!!physics.held||session.mode==='game'||flash);
+        const eligible=(!session.occupant(item.id)||flash)&&bayOpen(item.bay,item);item.slot.visible=eligible&&($('showSlots').checked||!!physics.held||session.mode==='game'||flash);
         if(exercises?.active){
           if(exercises.kind==='find-bay'||exercises.kind==='learn')item.slot.visible=false;
-          else item.slot.visible=item.trainingPlacementVerified!==false&&bayOpen(item.bay,item)&&(exercises.kind!=='fill-bay'||item.bay===exercises.bay);
+          else item.slot.visible=item.trainingPlacementVerified!==false&&(!session.occupant(item.id)||flash)&&bayOpen(item.bay,item)&&(exercises.kind!=='fill-bay'||item.bay===exercises.bay);
         }
         paintSlot(item);
       }
@@ -15631,9 +15687,10 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
       const actuator=actById.get(bayActId(bay));if(actuator)box.union(new THREE.Box3().setFromObject(actuator.group));
       bayBounds.set(bay,box);
       const size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
-      if(bay==='cabin'){center.y=-1.34;center.z=1.85;}else center.y=(bay.startsWith('left')?-1:1)*1.34;
-      const proxy=new THREE.Mesh(new THREE.PlaneGeometry(Math.max(.65,size.x),Math.max(.65,size.z)),new THREE.MeshBasicMaterial({color:0x88cfd1,transparent:true,opacity:.07,side:THREE.DoubleSide,depthWrite:false}));
+      if(bay==='cabin'){center.y=-1.34;center.z=1.85;}else if(bay==='rear'){center.x=3.84;center.y=0;}else center.y=(bay.startsWith('left')?-1:1)*1.34;
+      const proxy=new THREE.Mesh(new THREE.PlaneGeometry(Math.max(.65,bay==='rear'?size.y:size.x),Math.max(.65,size.z)),new THREE.MeshBasicMaterial({color:0x88cfd1,transparent:true,opacity:.07,side:THREE.DoubleSide,depthWrite:false}));
       proxy.rotation.x=Math.PI/2;proxy.position.copy(center);proxy.userData.bay=bay;proxy.visible=false;
+      if(bay==='rear')proxy.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(new THREE.Vector3(0,1,0),new THREE.Vector3(0,0,1),new THREE.Vector3(1,0,0)));
       const border=new THREE.LineSegments(new THREE.EdgesGeometry(proxy.geometry),new THREE.LineBasicMaterial({color:0x9ad6d5,transparent:true,opacity:.8}));proxy.add(border);
       const badge=document.createElement('canvas');badge.width=128;badge.height=64;const ctx=badge.getContext('2d');ctx.fillStyle='#10242ee8';ctx.fillRect(0,0,128,64);ctx.font='700 36px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#e5fbf4';ctx.fillText(bayNames[bay],64,34);
       const texture=new THREE.CanvasTexture(badge);texture.encoding=THREE.sRGBEncoding;const label=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,depthTest:false}));label.scale.set(.35,.175,1);label.position.z=.02;proxy.add(label);
@@ -15644,10 +15701,10 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
       cancelWelcome();currentView='custom';inspectedItem=null;camera.fov=39;camera.updateProjectionMatrix();
       const box=bayBounds.get(bay);if(!box)return;const center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3());
       if(bay==='cabin'){view('crew_door');return;}
-      wantTarget.copy(center);wantTarget.y=(bay.startsWith('left')?-1:1)*1.12;
-      orbit.wantPhi=Math.PI/2-.03;orbit.wantTheta=bay.startsWith('left')?-Math.PI/2:Math.PI/2;
+      wantTarget.copy(center);if(bay==='rear'){wantTarget.x=3.75;wantTarget.y=0;}else wantTarget.y=(bay.startsWith('left')?-1:1)*1.12;
+      orbit.wantPhi=Math.PI/2-.03;orbit.wantTheta=bay==='rear'?0:bay.startsWith('left')?-Math.PI/2:Math.PI/2;
       while(orbit.wantTheta-orbit.theta>Math.PI)orbit.wantTheta-=Math.PI*2;while(orbit.wantTheta-orbit.theta< -Math.PI)orbit.wantTheta+=Math.PI*2;
-      const aspect=Math.max(.35,camera.aspect);orbit.wantRadius=Math.max(size.z/.68,size.x/(.68*aspect))*1.18+.25;
+      const aspect=Math.max(.35,camera.aspect);orbit.wantRadius=Math.max(size.z/.68,(bay==='rear'?size.y:size.x)/(.68*aspect))*1.18+.25;
     }
     function focusTool(id){
       const item=byId.get(id);if(!item)return;cancelWelcome();currentView='custom';inspectedItem=item;
@@ -15655,6 +15712,7 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
       const span=Math.max(item.dimensions[0]/Math.max(.4,camera.aspect),item.dimensions[2],.38);orbit.wantRadius=span/.6+.4;
     }
     function resetExerciseLayout({outsideIds=[],visibleIds,openBays=[]}){
+      pendingExerciseReveal=null;
       placementFeedback.clear();
       actionRevision++;cancelWelcome();physics.release();heldSticky=false;drag=null;lastTap=null;inspectedItem=null;selected=null;clearSlotHover();session.end();session.loadAll();
       const outside=new Set(outsideIds),visible=visibleIds?new Set(visibleIds):new Set(items.map(i=>i.id));
@@ -15675,8 +15733,29 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
         }
       }
     }
+    function revealExerciseStorage(id){
+      const item=byId.get(id);
+      if(!item||exercises?.kind!=='find-bay'||!exercises.revealed||exercises.currentId!==id)return false;
+      // Restore the whole answered bay at its actual mounts. Do not activate
+      // outside bodies: showing a previously hidden item alone stages it below.
+      resetExerciseLayout({outsideIds:[],visibleIds:items.filter(other=>other.bay===item.bay).map(other=>other.id),openBays:[item.bay]});
+      focusBay(item.bay);
+      if(item.bay==='cabin')view(item.home[1]<0?'cabin_left':'cabin_right');
+      selected=item;
+      // Camera and shutters settle before the brief pulse, including a view
+      // from the opposite side. The answer remains visible until explicit Next.
+      pendingExerciseReveal={id,revision:actionRevision,remaining:reduced ? .05 : .65};
+      return true;
+    }
+    function updateExerciseReveal(dt){
+      const pending=pendingExerciseReveal;if(!pending)return;
+      if(pending.revision!==actionRevision||exercises?.kind!=='find-bay'||!exercises.revealed||exercises.currentId!==pending.id){pendingExerciseReveal=null;return;}
+      pending.remaining-=dt;if(pending.remaining>0)return;
+      pendingExerciseReveal=null;const item=byId.get(pending.id);
+      if(item?.group.visible){item.slotSuccessUntil=performance.now()+1150;placementFeedback.burst(item);}
+    }
     const previews=ToolPreview.create(THREE,scene,byId,()=>I.language,safeName);
-    exercises=TrainerModes.create({items,name,description,language:()=>I.language,focusBay,focusItem:focusTool,selectItem,resetLayout:resetExerciseLayout,showItems:showExerciseItems,focusOverview:()=>view('overview'),pick:id=>grab(byId.get(id),true),release,preview:previews.preview,photo:evidence.photo,sources:item=>item.sourceUrls,qualification:item=>item.trainingPlacementVerified===false?({de:"Der Lagerplatz ist nicht durch Fotos belegt. Dieses Gerät wird nicht geprüft.",en:"This storage position is not confirmed by photographs. This item is excluded from tests.",ru:"Место хранения не подтверждено фотографиями. Этот предмет исключён из проверок."}[I.language]):"",notice,refresh:updateUI});
+    exercises=TrainerModes.create({items,name,description,slotOccupied,language:()=>I.language,focusBay,focusItem:focusTool,selectItem,resetLayout:resetExerciseLayout,showItems:showExerciseItems,revealStorage:revealExerciseStorage,focusOverview:()=>view('overview'),pick:id=>grab(byId.get(id),true),release,preview:previews.preview,photo:evidence.photo,sources:item=>item.sourceUrls,qualification:item=>item.trainingPlacementVerified===false?({de:"Der Lagerplatz ist nicht durch Fotos belegt. Dieses Gerät wird nicht geprüft.",en:"This storage position is not confirmed by photographs. This item is excluded from tests.",ru:"Место хранения не подтверждено фотографиями. Этот предмет исключён из проверок."}[I.language]):"",notice,refresh:updateUI});
     function renderExerciseSlots(){
       const host=$('exercisePlacement'),list=$('exerciseSlotList');
       if(!host)return;
@@ -15686,7 +15765,7 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
       $('exerciseSlotTitle').textContent=title[I.language];
       const fragment=document.createDocumentFragment();
       for(const item of items){if(item.trainingPlacementVerified===false||(exercises.kind==='fill-bay'&&item.bay!==exercises.bay))continue;
-        const b=document.createElement('button');b.type='button';b.textContent=item.code;b.setAttribute('aria-label',title[I.language]+' '+item.code);b.className=session.get(item.id).status==='stowed'?'full':'';
+        const b=document.createElement('button');b.type='button';b.textContent=item.code;b.setAttribute('aria-label',title[I.language]+' '+item.code);b.className=session.occupant(item.id)?'full':'';b.disabled=!!session.occupant(item.id);
         b.onclick=()=>{const held=physics.held&&byId.get(physics.held.id);if(held)place(held,item);};
         b.onpointerenter=b.onfocus=()=>{if(bayOpen(item.bay,item))setSlotHover(item);};b.onpointerleave=b.onblur=clearSlotHover;fragment.appendChild(b);
       }list.replaceChildren(fragment);
@@ -15712,7 +15791,7 @@ function finishDrop(x,y,signalClick=false){if(!physics.held)return;const control
       camera.position.set(target.x+orbit.radius*Math.sin(orbit.phi)*Math.cos(orbit.theta),target.y+orbit.radius*Math.sin(orbit.phi)*Math.sin(orbit.theta),target.z+orbit.radius*Math.cos(orbit.phi));camera.lookAt(target);
       for(const a of actuators){a.value+=(Number(a.open)-a.value)*(reduced?1:1-Math.exp(-dt*9));if(Math.abs(Number(a.open)-a.value)<.002)a.value=Number(a.open);if(a.kind==='door')a.group.rotation.z=a.angle*a.value;else a.group.scale.z=1-.96*a.value;}
       syncMounts();
-      placementFeedback.update(dt);physics.step(dt);let transitionsFinished=false;
+      placementFeedback.update(dt);updateExerciseReveal(dt);physics.step(dt);let transitionsFinished=false;
       for(const i of items){
         if(i.transition){
           const t=i.transition;
